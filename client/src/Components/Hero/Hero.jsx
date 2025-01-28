@@ -36,9 +36,9 @@ const LifestyleRewards = () => {
         <div class="p-6 bg-white relative -top-14 lg:w-64 lg:h-72 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
         <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/location-pin%201_0.png" alt="Icon" class="w-20 h-20 mb-4" />
   <div class="w-full">
-    <div class="w-full h-0.5 bg-black rounded-full mb-4"></div>
+    <div class="w-full h-0.5 bg-black rounded-full mb-8"></div>
     <div class="text-center">
-      <h3 class="text-4xl font-bold">5</h3>
+      <h3 class="text-6xl font-bold">5</h3>
       <p class="text-lg">Countries</p>
     </div>
   </div>
@@ -49,9 +49,9 @@ const LifestyleRewards = () => {
 <div class="p-6 bg-white lg:w-64 lg:h-72 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
 <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/premium%20%281%29%201.png" alt="Icon" class="w-20 h-20 mb-4" />
   <div class="w-full">
-    <div class="w-full h-0.5 bg-black rounded-full mb-4"></div>
+    <div class="w-full h-0.5 bg-black rounded-full mb-8"></div>
     <div class="text-center">
-      <h3 class="text-4xl font-bold">3</h3>
+      <h3 class="text-6xl font-bold">3</h3>
       <p class="text-lg">Tiers</p>
     </div>
   </div>
@@ -60,10 +60,10 @@ const LifestyleRewards = () => {
 <div class="p-6 bg-white lg:w-64 lg:h-72 relative -top-14 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
 <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/favorite%201_0.png" alt="Icon" class="w-20 h-20 mb-4" />
   <div class="w-full">
-  <div class="w-full h-0.5 bg-black rounded-full mb-4"></div>
+  <div class="w-full h-0.5 bg-black rounded-full mb-8"></div>
 
     <div class="text-center">
-      <h3 class="text-4xl font-bold">50</h3>
+      <h3 class="text-6xl font-bold">50</h3>
       <p class="text-lg">Rewards</p>
     </div>
   </div>
