@@ -1,8 +1,13 @@
 import React from 'react';
 import "../../App.css";  // Relative path up two levels
+import ImageSlider from '../ImageSlider/ImageSlider';
+import TierCard from '../TierCard/TierCard';
+import MostLovedBrands from '../MostLovedBrands/MostLovedBrands';
 
 const LifestyleRewards = () => {
   return (
+    <div>
+      <ImageSlider />
     <div className="bg-white py-16 px-8 md:px-16  lg:px-24">
     <div className="flex flex-col max-w-5xl mx-auto lg:flex-row items-center justify-between">
       
@@ -73,6 +78,9 @@ const LifestyleRewards = () => {
   
     {/* Button Centered Below */}
   
+  </div>
+  <TierCard />
+  <MostLovedBrands />
   </div>
   );
 };
