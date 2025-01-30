@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 
 const countryRates = {
-  Kuwait: { hello: 10, star: 15, vip: 20, currency: "KWD" },
-  Qatar: { hello: 1, star: 1.5, vip: 2, currency: "QAR" },
-  Bahrain: { hello: 10, star: 15, vip: 20, currency: "BHD" },
-  UAE: { hello: 1, star: 1.5, vip: 2, currency: "AED" },
-  KSA: { hello: 1, star: 1.5, vip: 2, currency: "SAR" },
+  Kuwait: { hello: 10, star: 15, vip: 20, currency: "KWD", flag: "https://flagcdn.com/w40/kw.png" },
+  Qatar: { hello: 1, star: 1.5, vip: 2, currency: "QAR", flag: "https://flagcdn.com/w40/qa.png" },
+  Bahrain: { hello: 10, star: 15, vip: 20, currency: "BHD", flag: "https://flagcdn.com/w40/bh.png" },
+  UAE: { hello: 1, star: 1.5, vip: 2, currency: "AED", flag: "https://flagcdn.com/w40/ae.png" },
+  KSA: { hello: 1, star: 1.5, vip: 2, currency: "SAR", flag: "https://flagcdn.com/w40/sa.png" },
 };
 
 const PointsCalculator = () => {
   const [selectedCountry, setSelectedCountry] = useState("Bahrain");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("1");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleCountryChange = (e) => {
-    setSelectedCountry(e.target.value);
+  const handleCountryChange = (country) => {
+    setSelectedCountry(country);
+    setIsDropdownOpen(false); // Close the dropdown after selection
   };
 
   const handleAmountChange = (e) => {
@@ -37,19 +39,39 @@ const PointsCalculator = () => {
         Discover how your Aura points can get you more.
       </p>
 
-      <div className="mt-6 w-80">
+      <div className="mt-6 w-80 relative">
         <label className="block text-gray-700">Country</label>
-        <select
-          className="w-full p-2 border rounded-lg"
-          value={selectedCountry}
-          onChange={handleCountryChange}
+        <div
+          className="w-full p-2 border rounded-lg cursor-pointer"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          {Object.keys(countryRates).map((country) => (
-            <option key={country} value={country}>
-              {country}
-            </option>
-          ))}
-        </select>
+          <div className="flex items-center">
+            <img
+              src={countryRates[selectedCountry].flag}
+              alt={selectedCountry}
+              className="inline-block w-6 h-4 mr-2"
+            />
+            <span>{selectedCountry}</span>
+          </div>
+        </div>
+        {isDropdownOpen && (
+          <div className="absolute w-full mt-2 bg-white shadow-lg rounded-lg z-10">
+            {Object.keys(countryRates).map((country) => (
+              <div
+                key={country}
+                className="flex items-center p-2 cursor-pointer hover:bg-gray-200"
+                onClick={() => handleCountryChange(country)}
+              >
+                <img
+                  src={countryRates[country].flag}
+                  alt={country}
+                  className="inline-block w-6 h-4 mr-2"
+                />
+                <span>{country}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-4 w-80">
@@ -68,8 +90,9 @@ const PointsCalculator = () => {
       <div className="mt-6 w-80">
         <h3 className="text-gray-700 mt-4">Your Earning Potential</h3>
         <div className="mt-3">
-          {Object.entries(countryRates[selectedCountry]).map(([tier, rate]) =>
-            tier !== "currency" ? (
+          {Object.entries(countryRates[selectedCountry])
+            .filter(([tier]) => tier !== "currency" && tier !== "flag") // Exclude flag and currency from calculation
+            .map(([tier, rate]) => (
               <div
                 key={tier}
                 className="flex justify-between items-center p-4 rounded-lg mt-2 text-white font-semibold shadow-md bg-Green"
@@ -80,8 +103,7 @@ const PointsCalculator = () => {
                 </span>
                 <span className="uppercase">{tier}</span>
               </div>
-            ) : null
-          )}
+            ))}
         </div>
       </div>
     </div>

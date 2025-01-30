@@ -35,10 +35,10 @@ const Navbar = () => {
       {/* Center: Menu Items */}
       <ul className="flex flex-col md:flex-row ml-20 md:flex-1 md:justify-start space-y-2 md:space-y-0 md:space-x-6 text-white font-medium">
         {[
-          { href: "/explore", label: "Explore Tiers" },
-          { href: "/brand", label: "Discover Brands" },
-          { href: "/product", label: "Unlock Rewards" },
-          { href: "#", label: "Get Support" },
+          { href: "/tiers-benefits", label: "Explore Tiers" },
+          { href: "/brands", label: "Discover Brands" },
+          { href: "/offers-rewards", label: "Unlock Rewards" },
+          { href: "/contact-us", label: "Get Support" },
         ].map((item, index) => (
           <li key={index} className="relative group">
             <a

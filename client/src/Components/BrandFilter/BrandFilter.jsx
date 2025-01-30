@@ -4,7 +4,7 @@ import React from "react";
 const brands = [
  
   { name: "H&M", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/HEN.png", alt: "H&M" },
-  { name: "Bath & Body Works", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/BAT.png", alt: "Bath & Body Works" },
+
   { name: "American Eagle", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/AME.png", alt: "American Eagle" },
   { name: "Victoria's Secret", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/VIF.png", alt: "Victoria's Secret" },
   { name: "Claire's", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CLA.png", alt: "Claire's" },
@@ -19,28 +19,45 @@ const brands = [
   { name: "Justice", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/LIM.png", alt: "Justice" },
   { name: "JACK WILLS", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-06/JAC.png", alt: "JACK WILLS" },
   { name: "Harvey Nichols", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-06/HAS.png", alt: "Harvey Nichols" },
-  { name: "Charlotte Tilbury", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CHA.png", alt: "Charlotte Tilbury" },
+ 
   { name: "The Heart of Sneakers", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/FOO_0.png", alt: "The Heart of Sneakers" },
   
 
 
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
+  { name: "PinkBerry", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/Pinkberry.png", alt: "PinkBerry" },
   { name: "Starbucks", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/SBX%20295.png", alt: "Starbucks" },
-  { name: "Amiti Noura", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/KUR.png", alt: "Chipotle Mexican Grill" },
   { name: "Ashas", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/ASH.png", alt: "Ashas" },
-  { name: "Babel", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BAB.png", alt: "Babel" },
-  { name: "Bebabel", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BBA.png", alt: "Bebabel" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-  { name: "Chipotle", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png", alt: "Chipotle Mexican Grill" },
-
+  { name: "Pf Changs", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/PFC.png", alt: "Pf Changs" },
+  { name: "The Cheese Cake Factory", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CHE.png", alt: "The Cheese Cake Factory" },
+  { name: "Texas Roadhouse", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/TEX.png", alt: "Texas Roadhouse" },
+  { name: "Rising Canes", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/RAI_0.png", alt: "Rising Canes" },
   { name: "Shake Shack", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/SHA_0.png", alt: "Shake Shack" },
 
+
+  { name: "Bath & Body Works", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/BAT.png", alt: "Bath & Body Works" },
+  { name: "Boots", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BOO.png", alt: "Boots" },
+  { name: "DebanHams", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/DCO.png", alt: "DebanHams" },
+  { name: "Jo Malone", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/JOM.png", alt: "Jo Malone" },
+  { name: "MAC", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/MAC.png", alt: "MAC" },
+  { name: "nyx", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/NYX.png", alt: "NYX" },
+  { name: "Solaris", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/SOL_2.png", alt: "Solaris" },
+
+
+  { name: "Pottery barn Kids", category: "Home Furnishings", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/PBK.png", alt: "Pottery barn Kids" },
+  { name: "West elm", category: "Home Furnishings", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/WES_1.png", alt: "West elm" },
+
+  { name: "MotherCare", category: "Kids", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/MOT.png", alt: "MotherCare" },
+  
+  { name: "aerie", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/AME-AER.png", alt: "aerie" },
+  { name: "DebanHams", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/DCO.png", alt: "DebanHams" },
+  { name: "River Island", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/RIV.png", alt: "River Island" },
+  { name: "The Body Shop", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BOD.png", alt: "The Body Shop" },
+  
+
 ];
+
+
+
 
 const categories = ["All", "Fashion & Footwear", "Food & Restaurants", "Health & Beauty", "Home Furnishings", "Kids", "Leisure & Entertainment"];
 
@@ -52,6 +69,20 @@ export default function BrandFilter() {
     (selectedCategory === "All" || brand.category === selectedCategory) &&
     brand.alt.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Create a Set to keep track of already displayed brand names
+  const uniqueBrands = [];
+  const displayedBrandNames = new Set();
+
+  // Filter out duplicate brands by their names
+  const finalBrands = filteredBrands.filter((brand) => {
+    if (!displayedBrandNames.has(brand.name)) {
+      displayedBrandNames.add(brand.name);
+      uniqueBrands.push(brand);
+      return true;
+    }
+    return false;
+  });
 
   return (
     <div className="p-6 max-w-5xl mx-auto mt-32">
@@ -82,7 +113,7 @@ export default function BrandFilter() {
       </div>
       
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {filteredBrands.map((brand) => (
+        {finalBrands.map((brand) => (
           <div key={brand.name} className="bg-white shadow-custom rounded-lg p-4 flex items-center justify-center">
             <img src={brand.src} alt={brand.alt} className="h-24 w-auto" />
           </div>

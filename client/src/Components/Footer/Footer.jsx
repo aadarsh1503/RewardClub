@@ -5,13 +5,14 @@ const Footer = () => {
     <footer className="bg-white text-black py-10 px-6 md:px-20">
       <div className="max-w-7xl relative ml-9 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <div className="md:col-span-2">
-          <ul className="space-y-2 relative left-38 text-black font-medium">
-            <li>Explore Tiers</li>
-            <li>Discover Brands</li> 
-            <li>Unlock Rewards</li>
-            <li>Get Support</li>
-            <li>FAQs</li>
-          </ul>
+        <ul className="space-y-2 relative left-38 text-black font-medium">
+  <li><a href="/">Explore Tiers</a></li>
+  <li><a href="/">Discover Brands</a></li> 
+  <li><a href="/">Unlock Rewards</a></li>
+  <li><a href="/">Get Support</a></li>
+  <li><a href="/">FAQs</a></li>
+</ul>
+
         </div>
         <div className="relative right-10">
           <h3 className="font-semibold text-center">Customer Support</h3>
@@ -48,8 +49,8 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between text-gray-500 text-sm text-center md:text-left">
         <p>©2024 Copyright M.H. Alshaya Co. W.L.L.</p>
         <div className="flex space-x-4">
-          <span>Terms & Conditions</span>
-          <span>Privacy Policy</span>
+          <a href="/terms-conditions">Terms & Conditions</a>
+          <a href="/privacy-statement">Privacy Policy</a>
           <span>Sitemap</span>
         </div>
       </div>

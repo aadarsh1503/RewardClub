@@ -1,0 +1,89 @@
+import { useState } from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import React from "react";
+
+const SupportSection = () => {
+  const [country, setCountry] = useState("Bahrain");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const supportInfo = {
+    Bahrain: { phone: "8000 1320", email: "support@aura-mena.com", address: "Bahrain", flag: "https://flagcdn.com/w40/bh.png" },
+    UAE: { phone: "8000 5678", email: "support@uae-mena.com", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" }
+  };
+
+  return (
+    <div className="flex flex-col items-center mt-20 text-center py-10 px-4 bg-white">
+      <h2 className="text-3xl font-semibold text-Green">Get Support</h2>
+      <p className="mt-2 text-gray-600 max-w-lg">
+        You are welcome to get in touch through any of the below contact options.
+        Please select the country in which you require support and either call
+        Customer Service directly or send an email.
+      </p>
+      <h3 className="mt-6 font-semibold text-black">Get Support in Your Selected Country</h3>
+
+      {/* Custom Dropdown */}
+      <div className="mt-4 relative inline-block w-48">
+        <button
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+          className="flex items-center justify-between w-full border border-gray-300 rounded-lg px-4 py-2 bg-white shadow-sm cursor-pointer"
+        >
+          <div className="flex items-center">
+            <img src={supportInfo[country].flag} alt={`${country} Flag`} className="w-5 h-5 mr-2" />
+            <span>{country}</span>
+          </div>
+          <IoIosArrowDown className="text-gray-500" />
+        </button>
+
+        {/* Dropdown List */}
+        {dropdownOpen && (
+          <div className="absolute w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+            {Object.keys(supportInfo).map((ctry) => (
+              <div
+                key={ctry}
+                onClick={() => {
+                  setCountry(ctry);
+                  setDropdownOpen(false);
+                }}
+                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+              >
+                <img src={supportInfo[ctry].flag} alt={`${ctry} Flag`} className="w-5 h-5 mr-2" />
+                <span>{ctry}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Support Info Cards */}
+      <div className="flex flex-wrap justify-center gap-6 mt-6">
+        <div className="w-72 h-32 bg-white rounded-[30px]  p-4 shadow-md flex flex-col items-center justify-center border border-gray-200">
+          <FaPhoneAlt className="text-5xl text-Green" />
+          <hr className="w-56 border-t-2 border-gray-300 mt-4" />
+          <p className="mt-2 font-bold text-lg">{supportInfo[country].phone}</p>
+        </div>
+        <div className="w-72 h-32 bg-white rounded-[30px] p-2 shadow-md flex flex-col items-center justify-center border border-gray-200">
+          <MdEmail className="text-6xl text-Green" />
+          <hr className="w-56 border-t-2 border-gray-300 mt-" />
+          <p className="mt-2 font-bold text-lg">{supportInfo[country].email}</p>
+        </div>
+      </div>
+
+      {/* Support Hours & Address */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-700">
+        <div>
+          <h4 className="font-bold">Support Hours</h4>
+          <p>09 am - 10 pm Sat - Thurs</p>
+          <p>01 pm - 10 pm Fri</p>
+        </div>
+        <div>
+          <h4 className="font-bold">Office address</h4>
+          <p>{supportInfo[country].address}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SupportSection;

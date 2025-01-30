@@ -77,14 +77,14 @@ const AuraStarCard = () => {
 
       {/* Card 3 */}
       <div className="w-full max-w-sm p-6 bg-Green rounded-[30px] shadow-lg border border-gray-200">
-        <div className="relative w-full flex justify-center">
-          <div className="absolute -top-16 px-20 py-6 bg-white rounded-full shadow-md border border-gray-300 text-3xl font-semibold text-Green">
+        <div className="relative w-full  flex justify-center">
+          <div className="absolute -top-16  px-20 py-6  bg-white rounded-full shadow-md border border-gray-300 text-3xl font-semibold text-Green">
             Aura VIP
           </div>
         </div>
         <div className="mt-8 text-center">
           <h2 className="text-2xl font-bold text-white">
-          <hr className="my-4 border-gray-300" />
+          <hr className="my-4  border-gray-300" />
             <span className="text-lg font-medium text-white">From </span> 
 24,000
 {" "}

@@ -10,6 +10,9 @@ import Footer from './Components/Footer/Footer';
 import AuraStarCard from './Components/AuraStarCard/AuraStarCard';
 import BrandFilter from './Components/BrandFilter/BrandFilter';
 import ProductSection from './Components/ProductSection/ProductSection';
+import SupportSection from './Components/SupportSection/SupportSection';
+import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
+import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
   return (
@@ -17,9 +20,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<LifestyleRewards />} />
-        <Route path="/explore" element={<AuraStarCard />} />
-        <Route path="/brand" element={<BrandFilter />} />
-        <Route path="/product" element={<ProductSection />} />
+        <Route path="/tiers-benefits" element={<AuraStarCard />} />
+        <Route path="/brands" element={<BrandFilter />} />
+        <Route path="/offers-rewards" element={<ProductSection />} />
+        <Route path="/contact-us" element={<SupportSection />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-statement" element={<PrivacyPolicy />} />
 
       </Routes>
       <Footer />
