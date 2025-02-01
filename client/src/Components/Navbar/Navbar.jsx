@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-Green shadow-md py-4 px-6 flex flex-col md:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
+      className={`bg-Green shadow-md py-4 px-6 lg:flex hidden  lg:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       } fixed top-0 left-0 w-full z-50`}
     >

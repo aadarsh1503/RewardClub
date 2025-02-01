@@ -13,11 +13,13 @@ import ProductSection from './Components/ProductSection/ProductSection';
 import SupportSection from './Components/SupportSection/SupportSection';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import MobileNavbar from './Components/MobileNavbar/MobileNavbar';
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <MobileNavbar />
       <Routes>
         <Route path="/" element={<LifestyleRewards />} />
         <Route path="/tiers-benefits" element={<AuraStarCard />} />

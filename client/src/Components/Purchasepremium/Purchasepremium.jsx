@@ -2,7 +2,7 @@ import React from "react";
 import { FaHome } from "react-icons/fa";
 const ProductCard = ({ imgSrc, brandLogo, title, points }) => {
   return (
-    <div className="h-[384px]">
+    <div className="lg:h-[384px] h-[400px]">
       <div className="rounded-xl shadow-lg mt-10 overflow-hidden bg-white flex flex-col h-full">
         <div className="relative">
           <img src={imgSrc} alt="Product" className="w-full h-64 object-cover" />

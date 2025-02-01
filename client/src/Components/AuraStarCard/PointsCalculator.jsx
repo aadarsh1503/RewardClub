@@ -31,7 +31,7 @@ const PointsCalculator = () => {
   };
 
   return (
-    <div className="flex flex-col mt-20 items-center py-10 bg-gray-50 min-h-screen">
+    <div className="flex flex-col mt-20 p-4 items-center py-10 bg-gray-50 min-h-screen">
       <h2 className="text-3xl font-bold text-gray-900">
         <span className="text-Green">Points</span> Calculator
       </h2>
@@ -39,13 +39,13 @@ const PointsCalculator = () => {
         Discover how your Aura points can get you more.
       </p>
 
-      <div className="mt-6 w-80 relative">
+      <div className="mt-6 w-80 p-4 lg:p-0 relative">
         <label className="block text-gray-700">Country</label>
         <div
-          className="w-full p-2 border rounded-lg cursor-pointer"
+          className="w-full p-2  border rounded-lg cursor-pointer"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <img
               src={countryRates[selectedCountry].flag}
               alt={selectedCountry}
@@ -74,7 +74,7 @@ const PointsCalculator = () => {
         )}
       </div>
 
-      <div className="mt-4 w-80">
+      <div className="mt-4 p-4 lg:p-0 w-80">
         <label className="block text-gray-700">Purchase Amount</label>
         <input
           type="number"
@@ -87,7 +87,7 @@ const PointsCalculator = () => {
         <p className="text-xs text-gray-500">Minimum 1 and maximum 99999</p>
       </div>
 
-      <div className="mt-6 w-80">
+      <div className="mt-6 p-4 lg:p-0 w-80">
         <h3 className="text-gray-700 mt-4">Your Earning Potential</h3>
         <div className="mt-3">
           {Object.entries(countryRates[selectedCountry])
