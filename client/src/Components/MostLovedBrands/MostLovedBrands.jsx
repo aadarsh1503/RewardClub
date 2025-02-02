@@ -11,9 +11,11 @@ const MostLovedBrands = () => {
             <p className="text-gray-600 mt-4">
               Enjoy personalised offers and exclusive rewards from an unrivalled collection of 70+ brands you love, from fashion to beauty, home furnishings to dining and more.
             </p>
+            <a href="/brands">
             <button className="mt-6 px-6 py-3 bg-Green hover:bg-white outline hover:outline-black hover:text-[#827127] cursor-pointer text-white font-semibold rounded-lg">
               Discover Brands
             </button>
+            </a>
           </div>
           <div className="md:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 md:mt-0">
             <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">

@@ -7,20 +7,20 @@ const PrivacyPolicy = () => {
       <p className="text-sm text-gray-500 mt-1">Version 1.0 Last updated on <span className="text-Green">29/06/2024</span></p>
       
       <p className="mt-4">
-        Alshaya is committed to respecting the privacy of everyone using our websites and mobile applications
+        RewardClub is committed to respecting the privacy of everyone using our websites and mobile applications
         ("the Web Sites/Apps") and the protection of any personally identifiable information which we may
         collect on our Websites/Apps and/or use as part of our data collection process.
       </p>
 
       <h2 className="text-xl font-semibold mt-6">1. Applicability and Scope</h2>
       <p className="mt-2">
-        This Privacy Statement ("Statement") applies to the Alshaya mobile applications available at
-        <a href="https://www.aura-mena.com" className="text-blue-600"> www.aura-mena.com</a>. It also applies to the personal information we process
+        This Privacy Statement ("Statement") applies to the RewardClub mobile applications available at
+        <a href="https://www.RewardClub-mena.com" className="text-blue-600"> www.RewardClub-mena.com</a>. It also applies to the personal information we process
         when you visit one of our stores in Qatar, Kuwait, UAE, or Saudi Arabia while using our Apps.
       </p>
 
       <ul className="list-disc pl-6 mt-4">
-        <li>Promote and increase Alshaya’s retail business lines.</li>
+        <li>Promote and increase RewardClub retail business lines.</li>
         <li>Support continuing engagement to incentivize customers.</li>
         <li>Expand the customer database for personalized marketing activities.</li>
         <li>Continuous offers and rewards from participating brands.</li>
@@ -28,10 +28,10 @@ const PrivacyPolicy = () => {
       </ul>
 
       <p className="mt-4 ">
-        M.H. Alshaya Co. W.L.L. (“Alshaya Group”), head office at Burj Alshaya, Al Soor Street, Al Mirqab,
+        RewardClub , head office at Burj RewardClub, Al Soor Street, Al Mirqab,
         P.O. Box 181, Safat 13002, Kuwait. Contact us at
-        <a href="https://aura-mena.com/contact" className="text-blue-600"> aura-mena.com/contact</a>
-        or email <a href="mailto:dpo@alshaya.com" className="text-blue-600">dpo@alshaya.com</a>.
+        <a href="https://RewardClub-mena.com/contact" className="text-blue-600"> RewardClub-mena.com/contact</a>
+        or email <a href="mailto:dpo@RewardClub.com" className="text-blue-600">dpo@RewardClub.com</a>.
       </p>
       
       <h2 className="text-xl font-semibold mb-1 mt-6">2. Updates to this Privacy Statement</h2>
@@ -50,12 +50,12 @@ const PrivacyPolicy = () => {
 <div>
   <h2 className="text-xl mb-1 font-bold">Consent</h2>
   <div>
-    <p>When you give us your consent, for example, to access your contacts on your phone or allow us to have access to your location. You have the right to withdraw your consent at any time. To withdraw your consent just go to the Privacy Settings in our Android or iOS Mobile app or contact us at <a href="mailto:support@aura-mena.com" className="text-blue-500">support@aura-mena.com</a>.</p>
+    <p>When you give us your consent, for example, to access your contacts on your phone or allow us to have access to your location. You have the right to withdraw your consent at any time. To withdraw your consent just go to the Privacy Settings in our Android or iOS Mobile app or contact us at <a href="mailto:support@RewardClub-mena.com" className="text-blue-500">support@RewardClub-mena.com</a>.</p>
   </div>
 
   <h2 className="text-xl font-bold mb-1 mt-4">Contract</h2>
   <div>
-    <p>When we need to execute a contract, you have entered with us by accepting applicable Aura terms and conditions. Where we need to collect Personal Data under the terms of a contract we have with you, and you fail to provide that data when requested, we may not be able to perform our services under the contract we have or are trying to enter with you (for example, to provide you with any of our services). In this case, we may have to cancel a service you have with us, but we will notify you if this is the case at the time.</p>
+    <p>When we need to execute a contract, you have entered with us by accepting applicable RewardClub terms and conditions. Where we need to collect Personal Data under the terms of a contract we have with you, and you fail to provide that data when requested, we may not be able to perform our services under the contract we have or are trying to enter with you (for example, to provide you with any of our services). In this case, we may have to cancel a service you have with us, but we will notify you if this is the case at the time.</p>
   </div>
 
   <h2 className="text-xl font-bold mb-1 mt-4">Legal or Regulatory Obligation</h2>
@@ -65,19 +65,19 @@ const PrivacyPolicy = () => {
 
   <h2 className="text-xl font-bold mb-1 mt-4">Email Communications, Push Notifications, and In-App Messages</h2>
   <div>
-    <p>The Application allows all users to set preferences for receiving promotional email communications from Alshaya, receiving push notifications on your device, and receiving inbox messages. Please note as well that you may opt out of receiving email communications at any time by adjusting your Aura online account settings by going to “My Account”  “Settings”  “Communication Preferences”, or by clicking the “unsubscribe” link included within any commercial email we send you.</p>
-    <p>Please note once you unsubscribe completely from our marketing communications, your preferences may take up to 48 hours to refresh the latest update. We may be unable to notify you of tailored offers to meet your needs however you will still receive operational and service messages from us regarding your Aura Account.</p>
+    <p>The Application allows all users to set preferences for receiving promotional email communications from RewardClub, receiving push notifications on your device, and receiving inbox messages. Please note as well that you may opt out of receiving email communications at any time by adjusting your RewardClub online account settings by going to “My Account”  “Settings”  “Communication Preferences”, or by clicking the “unsubscribe” link included within any commercial email we send you.</p>
+    <p>Please note once you unsubscribe completely from our marketing communications, your preferences may take up to 48 hours to refresh the latest update. We may be unable to notify you of tailored offers to meet your needs however you will still receive operational and service messages from us regarding your RewardClub Account.</p>
   </div>
 
   <h2 className="text-xl font-bold mb-1 mt-4">6. Automated Decisions - including Profiling - and Fraud Processing</h2>
   <div>
-    <p>Aura aims to build a detailed picture of you, including information such as individual motivations, what you value in a brand, what kind of communication you prefer. Segmentation will be managed by us based on your profile data, transaction history and loyalty program behavior recorded in our database.</p>
-    <p>Alshaya will be constantly monitoring incoming transactions and member activity to identify potential fraudulent behavior by automated means. The investigation of suspected fraudulent activities as well as continuous monitoring of fraud-related reports will be carried out by our employees. We will block any flagged as suspicious resulting event of a suspected fraudulent behavior once reviewed and confirmed by our Customer Service Agent. For more information, carefully read our Aura Terms of Use.</p>
+    <p>RewardClub aims to build a detailed picture of you, including information such as individual motivations, what you value in a brand, what kind of communication you prefer. Segmentation will be managed by us based on your profile data, transaction history and loyalty program behavior recorded in our database.</p>
+    <p>RewardClub will be constantly monitoring incoming transactions and member activity to identify potential fraudulent behavior by automated means. The investigation of suspected fraudulent activities as well as continuous monitoring of fraud-related reports will be carried out by our employees. We will block any flagged as suspicious resulting event of a suspected fraudulent behavior once reviewed and confirmed by our Customer Service Agent. For more information, carefully read our RewardClub Terms of Use.</p>
   </div>
 </div>
 <div>
     <h3 className="text-xl font-semibold mb-1 mt-6">7. Your Data Protection Choices and Rights</h3>
-    <p>Withdraw your Consent at any time where we are relying on consent to process your personal data. However, this will not affect the lawfulness of any processing carried out before you withdraw your consent. If you withdraw your consent, we may not be able to provide certain products or services to you. You have control over your promotional communications preferences, mobile application functionality, cookie settings, and interest-based advertising preferences by going to “My Account”  “Settings” or alternatively contacting us at https://aura-mena.com/contact-us or support@aura-mena.com</p><br />
+    <p>Withdraw your Consent at any time where we are relying on consent to process your personal data. However, this will not affect the lawfulness of any processing carried out before you withdraw your consent. If you withdraw your consent, we may not be able to provide certain products or services to you. You have control over your promotional communications preferences, mobile application functionality, cookie settings, and interest-based advertising preferences by going to “My Account”  “Settings” or alternatively contacting us at https://RewardClub-mena.com/contact-us or support@RewardClub-mena.com</p><br />
     <br />
     <p>Request Access to your Personal Data (commonly known as a "data access request"). This enables you to receive a copy of the Personal Data we hold about you in a structured, commonly used, machine-readable format, and to check that we are lawfully processing it.</p><br />
     <br />
@@ -113,7 +113,7 @@ When Personal Data is no longer needed, or in any event, after legal authority t
 </div>
 <div>
     <h3 className="text-xl font-semibold mb-1 mt-6">12. Contact Us</h3>
-    <p>We welcome your questions, comments or suggestions about our application Alshaya Customer Care can be contacted online at https://www.aura-mena.com/en/contact or support@aura-mena.com</p>
+    <p>We welcome your questions, comments or suggestions about our application RewardClub Customer Care can be contacted online at https://www.RewardClub-mena.com/en/contact or support@RewardClub-mena.com</p>
 </div>
 
 

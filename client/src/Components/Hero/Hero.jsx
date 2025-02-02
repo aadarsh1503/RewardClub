@@ -3,6 +3,7 @@ import "../../App.css";  // Relative path up two levels
 import ImageSlider from '../ImageSlider/ImageSlider';
 import TierCard from '../TierCard/TierCard';
 import MostLovedBrands from '../MostLovedBrands/MostLovedBrands';
+import Slide from '../Slide/Slide';
 
 const LifestyleRewards = () => {
   return (
@@ -18,11 +19,11 @@ const LifestyleRewards = () => {
           Aura amplifies your every day, making sure the extraordinary is always within reach.
           Embrace a rewards programme that makes it rewarding to be you!
         </p>
-        <div className="mt-8">
-      <button className="bg-Green text-white hover:bg-white  hover:text-[#827127] hover:outline-black outline py-2 px-6 rounded-lg font-semibold  focus:outline-none">
+        <a href='/offers-rewards' className="">
+      <button className="bg-Green mt-8  text-white cursor-pointer hover:bg-white  hover:text-[#827127] hover:outline-black outline py-2 px-6 rounded-lg font-semibold  focus:outline-none">
         Unlock Rewards
       </button>
-    </div>
+    </a>
       </div>
   
       {/* Right Section (Stats in 2x2 Grid) */}
@@ -79,6 +80,7 @@ const LifestyleRewards = () => {
     {/* Button Centered Below */}
   
   </div>
+  <Slide />
   <TierCard />
   <MostLovedBrands />
   </div>

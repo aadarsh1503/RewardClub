@@ -30,7 +30,7 @@ const Navbar = () => {
       } fixed top-0 left-0 w-full z-50`}
     >
       {/* Left Side: Logo */}
-      <div className="text-xl font-bold text-white mb-4 md:mb-0">LOGO</div>
+      <a href="/" className="text-xl font-bold text-white mb-4 md:mb-0">LOGO</a>
 
       {/* Center: Menu Items */}
       <ul className="flex flex-col md:flex-row ml-20 md:flex-1 md:justify-start space-y-2 md:space-y-0 md:space-x-6 text-white font-medium">
@@ -53,9 +53,12 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-
+<div>
+  <button className="px-4 py-2 mr-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Login</button>
+  <button className="px-4 py-2 mr-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Signup</button>
+   </div>
       {/* Right Side: Language Switch */}
-      <div className="text-white font-medium mt-4 md:mt-0">English | عربی</div>
+      <div className="text-white cursor-pointer font-medium mt-4 md:mt-0">عربی</div>
     </nav>
   );
 };

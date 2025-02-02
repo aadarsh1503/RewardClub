@@ -10,7 +10,11 @@ const SupportSection = () => {
 
   const supportInfo = {
     Bahrain: { phone: "8000 1320", email: "support@aura-mena.com", address: "Bahrain", flag: "https://flagcdn.com/w40/bh.png" },
-    UAE: { phone: "8000 5678", email: "support@uae-mena.com", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" }
+    UAE: { phone: "8000 5678", email: "support@uae-mena.com", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" },
+    Oman: { phone: "8000 7890", email: "support@oman-mena.com", address: "Oman", flag: "https://flagcdn.com/w40/om.png" },
+    Kuwait: { phone: "8000 4567", email: "support@kuwait-mena.com", address: "Kuwait", flag: "https://flagcdn.com/w40/kw.png" },
+    Qatar: { phone: "8000 2345", email: "support@qatar-mena.com", address: "Qatar", flag: "https://flagcdn.com/w40/qa.png" },
+    KSA: { phone: "8000 9876", email: "support@ksa-mena.com", address: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png" }
   };
 
   return (
@@ -58,7 +62,7 @@ const SupportSection = () => {
 
       {/* Support Info Cards */}
       <div className="flex flex-wrap justify-center gap-6 mt-6">
-        <div className="w-72 h-32 bg-white rounded-[30px]  p-4 shadow-md flex flex-col items-center justify-center border border-gray-200">
+        <div className="w-72 h-32 bg-white rounded-[30px] p-4 shadow-md flex flex-col items-center justify-center border border-gray-200">
           <FaPhoneAlt className="text-5xl text-Green" />
           <hr className="w-56 border-t-2 border-gray-300 mt-4" />
           <p className="mt-2 font-bold text-lg">{supportInfo[country].phone}</p>

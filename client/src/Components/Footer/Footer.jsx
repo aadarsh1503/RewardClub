@@ -10,7 +10,7 @@ const Footer = () => {
   <li><a href="/">Discover Brands</a></li> 
   <li><a href="/">Unlock Rewards</a></li>
   <li><a href="/">Get Support</a></li>
-  <li><a href="/">FAQs</a></li>
+ 
 </ul>
 
         </div>
@@ -19,7 +19,7 @@ const Footer = () => {
           <button className="border border-Green text-Green px-0 py-2 mt-2 rounded-[30px] w-full">
             Call 182-12-12
           </button>
-          <p className="text-Green text-center mt-2">support@aura-mena.com</p>
+          <p className="text-Green text-center mt-2">support@rewardclub.net</p>
         </div>
         
         <div className="relative left-0 lg:left-30 ">
@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
       <hr className="my-6  border-gray-300" />
       <div className="flex flex-col md:flex-row justify-between text-gray-500 text-sm text-center md:text-left">
-        <p>©2024 Copyright M.H. Alshaya Co. W.L.L.</p>
+        <p>©2024 Copyright RewardClub</p>
         <div className="flex lg:ml-0 ml-4  lg:mt-0 mt-2 space-x-4">
           <a href="/terms-conditions">Terms & Conditions</a>
           <a href="/privacy-statement">Privacy Policy</a>

@@ -48,7 +48,7 @@ const ProductSection = () => {
   return (
     <div >
         <h1 className="mt-24 text-5xl font-semibold text-Green ml-7 mb-5">Never miss a good offer!</h1>
-        <p className="ml-7 text-lg">Download the Aura app to access premium products and incredible deals. Limited-time offers<br /> provide discounts and special rewards, exclusively for Aura members. </p>
+        <p className="ml-7 text-lg">Download the RewardClub app to access premium products and incredible deals. Limited-time offers<br /> provide discounts and special rewards, exclusively for RewardClub members. </p>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-gray-50 rounded-xl">
         
       {products.map((product, index) => (

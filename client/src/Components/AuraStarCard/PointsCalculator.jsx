@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 const countryRates = {
-  Kuwait: { hello: 10, star: 15, vip: 20, currency: "KWD", flag: "https://flagcdn.com/w40/kw.png" },
-  Qatar: { hello: 1, star: 1.5, vip: 2, currency: "QAR", flag: "https://flagcdn.com/w40/qa.png" },
-  Bahrain: { hello: 10, star: 15, vip: 20, currency: "BHD", flag: "https://flagcdn.com/w40/bh.png" },
-  UAE: { hello: 1, star: 1.5, vip: 2, currency: "AED", flag: "https://flagcdn.com/w40/ae.png" },
-  KSA: { hello: 1, star: 1.5, vip: 2, currency: "SAR", flag: "https://flagcdn.com/w40/sa.png" },
+  Kuwait: { CLASSIC: 10, SILVER: 15, GOLD: 20, currency: "KWD", flag: "https://flagcdn.com/w40/kw.png" },
+  Qatar: { CLASSIC: 1, SILVER: 1.5, GOLD: 2, currency: "QAR", flag: "https://flagcdn.com/w40/qa.png" },
+  Bahrain: { CLASSIC: 10, SILVER: 15, GOLD: 20, currency: "BHD", flag: "https://flagcdn.com/w40/bh.png" },
+  UAE: { CLASSIC: 1, SILVER: 1.5, GOLD: 2, currency: "AED", flag: "https://flagcdn.com/w40/ae.png" },
+  KSA: { CLASSIC: 1, SILVER: 1.5, GOLD: 2, currency: "SAR", flag: "https://flagcdn.com/w40/sa.png" },
+  Oman: { CLASSIC: 1, SILVER: 1.5, GOLD: 2, currency: "OMR", flag: "https://flagcdn.com/w40/om.png" }, // Added Oman
 };
+
 
 const PointsCalculator = () => {
   const [selectedCountry, setSelectedCountry] = useState("Bahrain");
