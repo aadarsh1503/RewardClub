@@ -16,15 +16,20 @@ const Footer = () => {
         </div>
         <div className="relative right-0 lg:right-10">
           <h3 className="font-semibold text-center">Customer Support</h3>
-          <button className="border border-Green text-Green px-0 py-2 mt-2 rounded-[30px] w-full">
-            Call 182-12-12
-          </button>
-          <p className="text-Green text-center mt-2">support@rewardclub.net</p>
+          <a href="tel:+97145284037">
+  <button className="border border-Green  text-Green px-0 py-2 mt-2 cursor-pointer rounded-[30px] w-full">
+    Call +971 45284037
+  </button>
+</a>
+          <p className="text-Green text-center mt-2">
+  <a href="mailto:support@rewardclub.net">support@rewardclub.net</a>
+</p>
+
         </div>
         
         <div className="relative left-0 lg:left-30 ">
         <div className="mb-4">
-          <h3 className="font-semibold ">Follow AURA</h3>
+          <h3 className="font-semibold ">Follow RewardClub</h3>
           <div className="flex space-x-3 mt-2">
             <FaFacebookF className="text-Green text-xl" />
             <FaInstagram className="text-Green text-xl" />

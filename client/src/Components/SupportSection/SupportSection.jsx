@@ -9,12 +9,12 @@ const SupportSection = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const supportInfo = {
-    Bahrain: { phone: "8000 1320", email: "support@aura-mena.com", address: "Bahrain", flag: "https://flagcdn.com/w40/bh.png" },
-    UAE: { phone: "8000 5678", email: "support@uae-mena.com", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" },
-    Oman: { phone: "8000 7890", email: "support@oman-mena.com", address: "Oman", flag: "https://flagcdn.com/w40/om.png" },
-    Kuwait: { phone: "8000 4567", email: "support@kuwait-mena.com", address: "Kuwait", flag: "https://flagcdn.com/w40/kw.png" },
-    Qatar: { phone: "8000 2345", email: "support@qatar-mena.com", address: "Qatar", flag: "https://flagcdn.com/w40/qa.png" },
-    KSA: { phone: "8000 9876", email: "support@ksa-mena.com", address: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png" }
+    Bahrain: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Bahrain", flag: "https://flagcdn.com/w40/bh.png" },
+    UAE: { phone: "+971 45284037", email: "support@rewardclub.net", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" },
+    Oman: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Oman", flag: "https://flagcdn.com/w40/om.png" },
+    Kuwait: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Kuwait", flag: "https://flagcdn.com/w40/kw.png" },
+    Qatar: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Qatar", flag: "https://flagcdn.com/w40/qa.png" },
+    KSA: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png" }
   };
 
   return (
