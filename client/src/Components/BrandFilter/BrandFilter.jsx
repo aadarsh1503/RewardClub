@@ -1,5 +1,6 @@
 import { useState } from "react";
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const brands = [
  
@@ -59,22 +60,21 @@ const brands = [
 
 
 
-const categories = ["All", "Fashion & Footwear", "Food & Restaurants", "Health & Beauty", "Home Furnishings", "Kids", "Leisure & Entertainment"];
-
 export default function BrandFilter() {
+  const { t } = useTranslation(); // Fetch translations
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const categories = t("categories", { returnObjects: true }); // Get categories based on selected language
 
   const filteredBrands = brands.filter((brand) =>
     (selectedCategory === "All" || brand.category === selectedCategory) &&
     brand.alt.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Create a Set to keep track of already displayed brand names
   const uniqueBrands = [];
   const displayedBrandNames = new Set();
 
-  // Filter out duplicate brands by their names
   const finalBrands = filteredBrands.filter((brand) => {
     if (!displayedBrandNames.has(brand.name)) {
       displayedBrandNames.add(brand.name);
@@ -86,14 +86,16 @@ export default function BrandFilter() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto mt-32">
-      <h2 className="text-3xl font-semibold text-gray-800 mb-4">Discover <span className="text-Green">Brands</span></h2>
-      <p className="text-gray-600 mb-6">Explore brands across fashion, beauty, home, dining, and more.</p>
+      <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+        {t("discover_brands")} <span className="text-Green"> {t("discover_brands1")}</span>
+      </h2>
+      <p className="text-gray-600 mb-6">{t("explore_brands")}</p>
       
       {/* Basic Input and Button */}
       <div className="flex gap-4 mb-6">
         <input 
           type="text"
-          placeholder="Search brands..." 
+          placeholder={t("search_placeholder")} 
           className="w-full p-3 border rounded-lg"
           value={searchQuery} 
           onChange={(e) => setSearchQuery(e.target.value)} 
@@ -105,7 +107,7 @@ export default function BrandFilter() {
           <button
             key={category} 
             onClick={() => setSelectedCategory(category)} 
-            className={`px-4 py-2 rounded-full  border ${selectedCategory === category ? 'bg-Green text-white ' : 'bg-white text-gray-700 cursor-pointer'}`}
+            className={`px-4 py-2 rounded-full border ${selectedCategory === category ? 'bg-Green text-white' : 'bg-white text-gray-700 cursor-pointer'}`}
           >
             {category}
           </button>

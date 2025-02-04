@@ -1,31 +1,30 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
-import React from "react";
+import { useTranslation } from "react-i18next";
 
 const SupportSection = () => {
+  const { t, i18n } = useTranslation(); // Initialize translation
   const [country, setCountry] = useState("Bahrain");
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const supportInfo = {
-    Bahrain: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Bahrain", flag: "https://flagcdn.com/w40/bh.png" },
-    UAE: { phone: "+971 45284037", email: "support@rewardclub.net", address: "UAE", flag: "https://flagcdn.com/w40/ae.png" },
-    Oman: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Oman", flag: "https://flagcdn.com/w40/om.png" },
-    Kuwait: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Kuwait", flag: "https://flagcdn.com/w40/kw.png" },
-    Qatar: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Qatar", flag: "https://flagcdn.com/w40/qa.png" },
-    KSA: { phone: "+971 45284037", email: "support@rewardclub.net", address: "Saudi Arabia", flag: "https://flagcdn.com/w40/sa.png" }
+    Bahrain: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/bh.png" },
+    UAE: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("uae_address"), flag: "https://flagcdn.com/w40/ae.png" },
+    Oman: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("oman_address"), flag: "https://flagcdn.com/w40/om.png" },
+    Kuwait: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("kuwait_address"), flag: "https://flagcdn.com/w40/kw.png" },
+    Qatar: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("qatar_address"), flag: "https://flagcdn.com/w40/qa.png" },
+    KSA: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("ksa_address"), flag: "https://flagcdn.com/w40/sa.png" }
   };
 
   return (
     <div className="flex flex-col items-center mt-20 text-center py-10 px-4 bg-white">
-      <h2 className="text-3xl font-semibold text-Green">Get Support</h2>
+      <h2 className="text-3xl font-semibold text-Green">{t("support")}</h2>
       <p className="mt-2 text-gray-600 max-w-lg">
-        You are welcome to get in touch through any of the below contact options.
-        Please select the country in which you require support and either call
-        Customer Service directly or send an email.
+        {t("select_country")} {/* Translated message for selecting country */}
       </p>
-      <h3 className="mt-6 font-semibold text-black">Get Support in Your Selected Country</h3>
+      <h3 className="mt-6 font-semibold text-black">{t("support_in_your_country")}</h3>
 
       {/* Custom Dropdown */}
       <div className="mt-4 relative inline-block w-48">
@@ -34,30 +33,31 @@ const SupportSection = () => {
           className="flex items-center justify-between w-full border border-gray-300 rounded-lg px-4 py-2 bg-white shadow-sm cursor-pointer"
         >
           <div className="flex items-center">
-            <img src={supportInfo[country].flag} alt={`${country} Flag`} className="w-5 h-5 mr-2" />
-            <span>{country}</span>
+            <img src={supportInfo[country].flag} alt={`${country} Flag`} className="w-5 h-5 mr-4" />
+            <span className="mr-2">{t(country)}</span> {/* Dynamically change country names */}
           </div>
           <IoIosArrowDown className="text-gray-500" />
         </button>
 
         {/* Dropdown List */}
         {dropdownOpen && (
-          <div className="absolute w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-            {Object.keys(supportInfo).map((ctry) => (
-              <div
-                key={ctry}
-                onClick={() => {
-                  setCountry(ctry);
-                  setDropdownOpen(false);
-                }}
-                className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
-              >
-                <img src={supportInfo[ctry].flag} alt={`${ctry} Flag`} className="w-5 h-5 mr-2" />
-                <span>{ctry}</span>
-              </div>
-            ))}
-          </div>
-        )}
+  <div className="absolute w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+    {Object.keys(supportInfo).map((ctry) => (
+      <div
+        key={ctry}
+        onClick={() => {
+          setCountry(ctry);
+          setDropdownOpen(false);
+        }}
+        className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer"
+      >
+        <img src={supportInfo[ctry].flag} alt={`${ctry} Flag`} className="w-5 h-5  mr-6" />
+        <span className="mr-4">{t(ctry)}</span> {/* Dynamically change country names based on the selected language */}
+      </div>
+    ))}
+  </div>
+)}
+
       </div>
 
       {/* Support Info Cards */}
@@ -77,12 +77,12 @@ const SupportSection = () => {
       {/* Support Hours & Address */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-700">
         <div>
-          <h4 className="font-bold">Support Hours</h4>
-          <p>09 am - 10 pm Sat - Thurs</p>
-          <p>01 pm - 10 pm Fri</p>
+          <h4 className="font-bold">{t("support_hours")}</h4>
+          <p>09 am - 10 pm {t("sat")} - {t("thurs")}</p>
+          <p>01 pm - 10 pm {t("fri")}</p>
         </div>
         <div>
-          <h4 className="font-bold">Office address</h4>
+          <h4 className="font-bold">{t("office_address")}</h4>
           <p>{supportInfo[country].address}</p>
         </div>
       </div>

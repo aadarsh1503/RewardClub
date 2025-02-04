@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Import useLocation
+import LanguageToggle from "../../LanguageToggle";
 
 const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -33,7 +34,7 @@ const Navbar = () => {
       <a href="/" className="text-xl font-bold text-white mb-4 md:mb-0">LOGO</a>
 
       {/* Center: Menu Items */}
-      <ul className="flex flex-col md:flex-row ml-20 md:flex-1 md:justify-start space-y-2 md:space-y-0 md:space-x-6 text-white font-medium">
+      <ul className="flex flex-col md:flex-row ml-20 mr-20 md:flex-1 md:justify-start space-y-2 md:space-y-0 md:space-x-6 text-white font-medium">
         {[
           { href: "/tiers-benefits", label: "Explore Tiers" },
           { href: "/brands", label: "Discover Brands" },
@@ -54,11 +55,13 @@ const Navbar = () => {
         ))}
       </ul>
 <div>
-  <button className="px-4 py-2 mr-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Login</button>
-  <button className="px-4 py-2 mr-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Signup</button>
+  <button className="px-4 py-2 mr-  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Login</button>
+  <button className="px-4 py-2 mr-2 ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black ">Signup</button>
    </div>
+   <div className="text-white cursor-pointer">
       {/* Right Side: Language Switch */}
-      <div className="text-white cursor-pointer font-medium mt-4 md:mt-0">عربی</div>
+      <LanguageToggle />
+      </div>
     </nav>
   );
 };

@@ -14,10 +14,12 @@ import SupportSection from './Components/SupportSection/SupportSection';
 import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
 import MobileNavbar from './Components/MobileNavbar/MobileNavbar';
+import { DirectionProvider } from './Components/DirectionContext';
 
 function App() {
   return (
     <Router>
+      <DirectionProvider />
       <Navbar />
       <MobileNavbar />
       <Routes>

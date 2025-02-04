@@ -1,0 +1,86 @@
+{
+  "exploreTiers": "Explore Tiers",
+  "earnPointsDescription": "Earn points on every purchase and progress through tiers to unlock more benefits and receive personalized offers.",
+  "classic": "Classic",
+  "to": "To",
+  "points": "Points",
+  "earnPointsOnPurchase": "Earn points on every purchase.",
+  "redeemPointsAtBrands": "Redeem points at over 70 brands.",
+  "unlockPremiumExclusives": "Unlock exclusive benefits with your points.",
+  "accessMemberOffers": "Get access to exclusive member offers on the Rewards Club app.",
+  "silver": "Silver",
+  "earn1_5xPoints": "Earn 1.5x points compared to Classic on every purchase.",
+  "earlyAccessAndEvents": "Enjoy early access and special event invitations.",
+  "gold": "Gold",
+  "from": "From",
+  "earnDoublePoints": "Earn double the points compared to Silver on every purchase.",
+  "unlockLimitedEdition": "Unlock limited edition benefits with your points.",
+  "accessPersonalisedOffers": "Get access to personalized offers on the Rewards Club app.",
+  "priorityAccessAndVIP": "Enjoy priority access and VIP event invitations.",
+
+    "pointsCalculator": {
+      "title": "Points Calculator",
+      "description": "Discover how your Aura points can get you more.",
+      "country": "Country",
+      "purchaseAmount": "Purchase Amount",
+      "minMaxInfo": "Minimum 1 and maximum 99999",
+      "earningPotential": "Your Earning Potential",
+      "points":"Pts",
+      "currency": "currency",
+      "tiers": {
+        "classic": "Classic",
+        "silver": "Silver",
+        "gold": "Gold"
+      },
+      "countries": {
+        "Kuwait": "Kuwait",
+        "Qatar": "Qatar",
+        "Bahrain": "Bahrain",
+        "UAE": "United Arab Emirates",
+        "KSA": "Saudi Arabia",
+        "Oman": "Oman"
+      },
+      "currencies": {
+        "KWD": "KWD",
+        "QAR": "QAR",
+        "BHD": "BHD",
+        "AED": "AED",
+        "SAR": "SAR",
+        "OMR": "OMR"
+      }
+    },
+    
+      "discover_brands": "Discover",
+      "discover_brands1": "Brands",
+      "explore_brands": "Explore brands across fashion, beauty, home, dining, and more.",
+      "search_placeholder": "Search brands...",
+      "categories": [
+        "All",
+        "Fashion & Footwear",
+        "Food & Restaurants",
+        "Health & Beauty",
+        "Home Furnishings",
+        "Kids",
+        "Leisure & Entertainment"
+      ],
+      "support": "Get Support",
+      "select_country": "Select Country",
+      "support_in_your_country": "Get Support in Your Selected Country",
+      "support_hours": "Support Hours",
+      "office_address": "Office address",
+      "phone": "Phone",
+      "email": "Email",
+      "sat": "Sat",
+      "thurs": "Thurs",
+      "fri": "Fri",
+      "Bahrain": "Bahrain",
+      "UAE": "UAE",
+      "Oman": "Oman",
+      "Kuwait": "Kuwait",
+      "Qatar": "Qatar",
+      "KSA": "Saudi Arabia"
+    
+    
+  
+  
+}
