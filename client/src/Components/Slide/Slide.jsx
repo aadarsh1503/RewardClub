@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "./Slide.css";
+import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
 import i2 from "./i2.png";
 import i4 from "./i4.png";
 import i5 from "./i5.png";
@@ -15,11 +16,11 @@ import i10 from "./i10.png";
 import i11 from "./i11.png";
 import i12 from "./i12.png";
 
-
 const Slide = () => {
+    const { t } = useTranslation();  // Use the useTranslation hook to access translations
     const images = [i1, i2, i4, i5, i6 ,i7,i8,i9,i10,i11,i12];
     const imageLinks = [
-        
+        // Add image links if required
     ];
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -89,33 +90,33 @@ const Slide = () => {
     };
 
     return (
-        <section className="py-10 lg:max-w-7xl  mt-56 lg:w-full w-[200px] mx-auto">
-            <h1 className='text-center text-3xl font-semibold mb-14'>Trusted <span className='text-Green'>Brands</span> </h1>
-        <div className="">
-            {isLoaded ? (
-                <Slider ref={sliderRef} {...settings}>
-                    {images.map((src, index) => (
-                        <div key={index} className="slide-item">
-                            <a href={imageLinks[index]} target="_blank" rel="noopener noreferrer" className="image-link">
-                                <img
-                                    src={src}
-                                    alt={`Slide ${index + 1}`}
-                                    className="object-contain w-full md:w-4/4 mx-auto slide-image"
-                                    style={{ maxHeight: '200px' }}
-                                />
-                            </a>
-                        </div>
-                    ))}
-                </Slider>
-            ) : (
-                <div className="flex justify-center items-center" style={{ height: '300px' }}>
-                    <span>Loading...</span>
-                </div>
-            )}
-        </div>
-    </section>
-    
-
+        <section className="py-10 lg:max-w-7xl  mt-0 lg:mt-56 lg:w-full w-[200px] mx-auto">
+            <h1 className='text-center text-3xl font-semibold mb-14'>
+                {t('trusted_brands')} {/* Use i18next's t function to fetch the translation */}
+            </h1>
+            <div className="">
+                {isLoaded ? (
+                    <Slider ref={sliderRef} {...settings}>
+                        {images.map((src, index) => (
+                            <div key={index} className="slide-item">
+                                <a href={imageLinks[index]} target="_blank" rel="noopener noreferrer" className="image-link">
+                                    <img
+                                        src={src}
+                                        alt={`Slide ${index + 1}`}
+                                        className="object-contain w-full md:w-4/4 mx-auto slide-image"
+                                        style={{ maxHeight: '200px' }}
+                                    />
+                                </a>
+                            </div>
+                        ))}
+                    </Slider>
+                ) : (
+                    <div className="flex justify-center items-center" style={{ height: '300px' }}>
+                        <span>Loading...</span>
+                    </div>
+                )}
+            </div>
+        </section>
     );
 };
 

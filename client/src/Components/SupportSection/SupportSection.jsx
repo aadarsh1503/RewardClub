@@ -65,7 +65,10 @@ const SupportSection = () => {
         <div className="w-72 h-32 bg-white rounded-[30px] p-4 shadow-md flex flex-col items-center justify-center border border-gray-200">
           <FaPhoneAlt className="text-5xl text-Green" />
           <hr className="w-56 border-t-2 border-gray-300 mt-4" />
-          <p className="mt-2 font-bold text-lg">{supportInfo[country].phone}</p>
+          <p className="mt-2 font-bold text-lg" dir="ltr">
+  {supportInfo[country].phone}
+</p>
+
         </div>
         <div className="w-72 h-32 bg-white rounded-[30px] p-2 shadow-md flex flex-col items-center justify-center border border-gray-200">
           <MdEmail className="text-6xl text-Green" />

@@ -8,10 +8,10 @@ const AuraStarCard = () => {
   const isRTL = i18n.dir() === "rtl"; 
   return (
     <div>
-      <h1 className="text-Green p-2 lg:mt-44 max-w-7xl mx-auto text-3xl mt-32 lg:text-4xl font-semibold ml-0 lg:ml-32">
+      <h1 className="text-Green p-2 lg:mt-44 max-w-7xl mx-auto text-3xl mt-32 lg:text-4xl font-semibold ml-0 mr-0 lg:mr-32 lg:ml-32">
         {t("exploreTiers")}
       </h1>
-      <p className="lg:mb-24 p-2 mb-32 mt-0 lg:mt-5 max-w-7xl mx-auto text-lg lg:text-lg ml-0 lg:ml-32">
+      <p className="lg:mb-24 p-2 mb-32 mr-0 lg:mr-32 mt-0 lg:mt-5 max-w-7xl mx-auto text-lg lg:text-lg ml-0 lg:ml-32">
         {t("earnPointsDescription")}
       </p>
       <div className="flex flex-wrap justify-center space-x-0 lg:space-x-6 gap-y-6">

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { FaTimes } from 'react-icons/fa';
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next"; // Import useTranslation
+import LanguageToggle from "../../LanguageToggle";
 
 const MobileNavbar = () => {
+  const { t } = useTranslation(); // Get translation function
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white shadow-md font-Poppins border-b-2  ">
+    <div className="bg-white shadow-md font-Poppins border-b-2">
       <Helmet>
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
@@ -16,7 +19,7 @@ const MobileNavbar = () => {
 
       {/* Mobile Menu Button (Visible Only on Mobile) */}
       <button
-        className="absolute top-2 right-4 z-50 bg-white  p-2 rounded-md text-Green outline-Green outline-2 shadow-md md:hidden  transition duration-300 ease-in-out"
+        className="absolute top-2 right-4 z-50 bg-white p-2 rounded-md text-Green outline-Green outline-2 shadow-md md:hidden transition duration-300 ease-in-out"
         onClick={() => setIsOpen(true)}
       >
         ☰ {/* Hamburger Icon */}
@@ -26,7 +29,7 @@ const MobileNavbar = () => {
       <div
         className={`fixed top-0 left-0 h-full w-3/4 bg-Green text-white shadow-lg transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden z-40 flex flex-col p-6  `}
+        } md:hidden z-40 flex flex-col p-6`}
       >
         {/* Close Button */}
         <button
@@ -37,31 +40,32 @@ const MobileNavbar = () => {
         </button>
 
         {/* Menu Items */}
-        <nav className="flex flex-col space-y-6 text-xl ">
+        <nav className="flex flex-col space-y-6 text-xl">
           <a
             href="/tiers-benefits"
-            className="px-4 py-2 border-b-2 border-white hover:text-black text-white  hover:border-green-200 transition duration-300 ease-in-out"
+            className="px-4 py-2 border-b-2 border-white hover:text-black text-white hover:border-green-200 transition duration-300 ease-in-out"
           >
-            Explore Tiers
+            {t("Explore Tiers")}
           </a>
           <a
             href="/brands"
             className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
           >
-            Discover Brands
+            {t("Discover Brands")}
           </a>
           <a
             href="/offers-rewards"
             className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
           >
-            Unlock Rewards
+            {t("Unlock Rewards")}
           </a>
           <a
             href="/contact-us"
             className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
           >
-            Get Support
+            {t("Get Support")}
           </a>
+          <LanguageToggle />
         </nav>
       </div>
     </div>
