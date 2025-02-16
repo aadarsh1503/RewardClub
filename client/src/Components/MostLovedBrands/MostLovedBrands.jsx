@@ -8,7 +8,7 @@ const MostLovedBrands = () => {
   return (
     <section className="bg-gray-50 py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start">
-        <div className={`md:w-1/3 ${isRTL ? 'ml-32' : 'text-left'} text-center md:text-left`}>
+        <div className={`md:w-1/3 ${isRTL ? 'lg:ml-32 ml-0' : 'text-left'} text-center md:text-left`}>
           <h2 className="text-3xl font-bold text-gray-900">
             <span className="text-black">{t('most')}</span> <span className="text-Green">{t('loved_brands')}</span>
           </h2>

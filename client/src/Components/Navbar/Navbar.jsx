@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import LanguageToggle from "../../LanguageToggle";
 import { useTranslation } from "react-i18next"; // Import useTranslation
-import logo12 from "./logo12.jpg"; // Default LTR logo
-import i5 from "./i5.jpeg"; // RTL logo
+import i22 from "./i22.png"; // Default LTR logo
+import i24 from "./i24.png"; // RTL logo
 
 const Navbar = () => {
   const { t, i18n } = useTranslation(); // Access translation function and i18n instance
@@ -29,14 +29,14 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   // Determine the logo based on the language direction
-  const logo = i18n.dir() === "rtl" ? i5 : logo12;
+  const logo = i18n.dir() === "rtl" ? i24 : i22;
 
   return (
     <nav
-      className={`bg-Green shadow-md py-4 px-6 lg:flex hidden lg:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      } fixed top-0 left-0 w-full z-50`}
-    >
+    className={`bg-Green shadow-md py-4 px-6 lg:flex hidden lg:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
+      isVisible ? "translate-y-0" : "-translate-y-full"
+    } fixed top-0 left-0 w-full z-50`}
+  >
       {/* Left Side: Logo */}
       <a href="/" className="text-xl font-bold text-white mb-4 md:mb-0">
         <img src={logo} alt="Logo" className="h-10 w-auto" />

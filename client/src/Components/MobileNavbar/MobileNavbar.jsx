@@ -1,68 +1,59 @@
 import React, { useState } from "react";
 import { FaTimes } from 'react-icons/fa';
-import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next"; // Import useTranslation
 import LanguageToggle from "../../LanguageToggle";
+import { Helmet } from "react-helmet";
+
+import i22 from "./i22.png"; // LTR image
+import i24 from "./i24.png"; // RTL image
 
 const MobileNavbar = () => {
-  const { t } = useTranslation(); // Get translation function
+  const { t, i18n } = useTranslation(); // Get translation function & i18n instance
   const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <div className="bg-white shadow-md font-Poppins border-b-2">
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
+  const isRTL = i18n.dir() === "rtl"; // Check if language is RTL
 
-      {/* Mobile Menu Button (Visible Only on Mobile) */}
+  return (
+    <div className="bg-Green shadow-md font-Poppins border-b-2 flex items-center justify-between px-4 py-3 md:hidden lg:hidden">
+      {/* Logo (Changes based on RTL/LTR) */}
+      <a href="/" className="flex items-center">
+        <img src={isRTL ? i24 : i22} alt="Logo" className="h-16 w-auto" />
+      </a>
+
+      {/* Mobile Menu Button */}
       <button
-        className="absolute top-2 right-4 z-50 bg-white p-2 rounded-md text-Green outline-Green outline-2 shadow-md md:hidden transition duration-300 ease-in-out"
+        className="bg-green p-2 rounded-md outline-white text-white outline-2 shadow-md transition duration-300 ease-in-out"
         onClick={() => setIsOpen(true)}
       >
-        ☰ {/* Hamburger Icon */}
+        ☰
       </button>
 
       {/* Sidebar Menu */}
       <div
-        className={`fixed top-0 left-0 h-full w-3/4 bg-Green text-white shadow-lg transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden z-40 flex flex-col p-6`}
+        className={`fixed top-0 ${isRTL ? "right-0" : "left-0"} h-full w-3/4 bg-Green text-white shadow-lg transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : isRTL ? "translate-x-full" : "-translate-x-full"
+        } z-40 flex flex-col p-6`}
       >
         {/* Close Button */}
         <button
           className="self-end mb-4 text-white text-2xl bg-transparent hover:text-green-200 transition duration-300 ease-in-out"
           onClick={() => setIsOpen(false)}
         >
-          <FaTimes /> {/* Cross Icon */}
+          <FaTimes />
         </button>
 
         {/* Menu Items */}
         <nav className="flex flex-col space-y-6 text-xl">
-          <a
-            href="/tiers-benefits"
-            className="px-4 py-2 border-b-2 border-white hover:text-black text-white hover:border-green-200 transition duration-300 ease-in-out"
-          >
+          <a href="/tiers-benefits" className="px-4 py-2 border-b border-white hover:text-black transition duration-300">
             {t("Explore Tiers")}
           </a>
-          <a
-            href="/brands"
-            className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
-          >
+          <a href="/brands" className="px-4 py-2 border-b border-white hover:text-green-200 transition duration-300">
             {t("Discover Brands")}
           </a>
-          <a
-            href="/offers-rewards"
-            className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
-          >
+          <a href="/offers-rewards" className="px-4 py-2 border-b border-white hover:text-green-200 transition duration-300">
             {t("Unlock Rewards")}
           </a>
-          <a
-            href="/contact-us"
-            className="px-4 py-2 border-b-2 border-white text-white hover:text-green-200 hover:border-green-200 transition duration-300 ease-in-out"
-          >
+          <a href="/contact-us" className="px-4 py-2 border-b border-white hover:text-green-200 transition duration-300">
             {t("Get Support")}
           </a>
           <LanguageToggle />
