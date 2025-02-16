@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import LanguageToggle from "../../LanguageToggle";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import logo12 from "./logo12.jpg"; // Default LTR logo
+import i5 from "./i5.jpeg"; // RTL logo
 
 const Navbar = () => {
   const { t, i18n } = useTranslation(); // Access translation function and i18n instance
@@ -26,6 +28,9 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
 
+  // Determine the logo based on the language direction
+  const logo = i18n.dir() === "rtl" ? i5 : logo12;
+
   return (
     <nav
       className={`bg-Green shadow-md py-4 px-6 lg:flex hidden lg:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
@@ -34,7 +39,7 @@ const Navbar = () => {
     >
       {/* Left Side: Logo */}
       <a href="/" className="text-xl font-bold text-white mb-4 md:mb-0">
-        LOGO
+        <img src={logo} alt="Logo" className="h-10 w-auto" />
       </a>
 
       {/* Center: Menu Items */}

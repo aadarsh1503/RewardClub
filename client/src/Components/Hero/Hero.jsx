@@ -19,7 +19,7 @@ const LifestyleRewards = () => {
   return (
     <div>
       <ImageSlider />
-      <div className="bg-white py-16 px-8 md:px-16 lg:px-24">
+      <div className="bg-white py-16 font-roboto px-8 md:px-16 lg:px-24">
         <div className="flex flex-col max-w-5xl mx-auto lg:flex-row items-center justify-between">
           {/* Left Section (Text) */}
           <div className={`lg:w-1/2 ${isRTL ? 'text-right' : 'text-left'} mb-12 lg:mb-0`}>

@@ -3,12 +3,16 @@ import Slider from "react-slick"; // Import react-slick
 import 'slick-carousel/slick/slick.css'; // Import slick carousel CSS
 import 'slick-carousel/slick/slick-theme.css'; // Import slick theme CSS
 import './i.css'; // Import custom CSS file
-
+import i1 from "./i1.png"
+import i2 from "./i2.png"
+import i3 from "./i3.png"
+import i5 from "./i5.png"
 const ImageSlider = () => {
   const images = [
-    "https://www.aura-mena.com/sites/default/files/2024-10/Aura%20Mobile%20Desktop%20%281%29.jpg",
-    "https://www.aura-mena.com/sites/default/files/2024-12/Hero%20Banner%20-%20Mockup%202%20-%20Desktop%20-%20En.png",
-    "https://www.aura-mena.com/sites/default/files/2024-06/Hero-Banner-Mockup1-Desktop-En.png",
+i1,
+i2,
+i3,
+i5
   ];
 
   const settings = {
