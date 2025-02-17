@@ -14,7 +14,7 @@ const MobileNavbar = () => {
   const isRTL = i18n.dir() === "rtl"; // Check if language is RTL
 
   return (
-    <div className="bg-Green shadow-md font-Poppins border-b-2 flex items-center justify-between px-4 py-3 md:hidden lg:hidden">
+    <div className="bg-Green shadow-md font-Poppins  flex items-center justify-between px-4 py-3 md:hidden lg:hidden">
       {/* Logo (Changes based on RTL/LTR) */}
       <a href="/" className="flex items-center">
         <img src={isRTL ? i24 : i22} alt="Logo" className="h-16 w-auto" />

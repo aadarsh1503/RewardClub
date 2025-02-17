@@ -40,7 +40,7 @@ const Footer = () => {
               <FaInstagram className="text-Green text-xl" />
             </div>
           </div>
-          <h3 className="font-semibold">{t("downloadApp")}</h3>
+          {/* <h3 className="font-semibold">{t("downloadApp")}</h3>
           <div className="mt-2">
             <img
               src="https://d10mzz35brm2m8.cloudfront.net/App/ios-app-store_2023-e6cb1744-ade8-483d-9758-a6b706fce7b7.webp?h=40&la=en&w=120"
@@ -52,7 +52,7 @@ const Footer = () => {
               alt="Google Play"
               className="w-32 mt-2"
             />
-          </div>
+          </div> */}
         </div>
       </div>
       <hr className="my-6 border-gray-300" />
