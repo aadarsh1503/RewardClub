@@ -2,6 +2,7 @@ import { FaDiamond } from "react-icons/fa6";
 import React from "react";
 import PointsCalculator from "./PointsCalculator";
 import { useTranslation } from "react-i18next"; // Import useTranslation
+import Faqactive from "../Faq/Faqactive";
 
 const AuraStarCard = () => {
   const { t ,i18n} = useTranslation(); 
@@ -117,6 +118,7 @@ const AuraStarCard = () => {
       </div>
 
       <PointsCalculator />
+      <Faqactive />
     </div>
   );
 };

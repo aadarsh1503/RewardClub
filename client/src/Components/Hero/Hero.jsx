@@ -5,6 +5,7 @@ import TierCard from '../TierCard/TierCard';
 import MostLovedBrands from '../MostLovedBrands/MostLovedBrands';
 import Slide from '../Slide/Slide';
 import { useTranslation } from 'react-i18next';
+import Faqactive from '../Faq/Faqactive';
 
 const LifestyleRewards = () => {
   const { t, i18n } = useTranslation();
@@ -87,6 +88,7 @@ const LifestyleRewards = () => {
       <Slide />
       <TierCard />
       <MostLovedBrands />
+      <Faqactive />
     </div>
   );
 };

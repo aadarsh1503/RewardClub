@@ -3,6 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { useTranslation } from "react-i18next";
+import Faqactive from "../Faq/Faqactive";
 
 const SupportSection = () => {
   const { t, i18n } = useTranslation(); // Initialize translation
@@ -19,7 +20,8 @@ const SupportSection = () => {
   };
 
   return (
-    <div className="flex flex-col items-center mt-20 text-center py-10 px-4 bg-white">
+    <div className="bg-[#FBF9FC]">
+    <div className="flex flex-col items-center mt-20 text-center py-10 px-4 ">
       <h2 className="text-3xl font-semibold text-Green">{t("support")}</h2>
       <p className="mt-2 text-gray-600 max-w-lg">
         {t("select_country")} {/* Translated message for selecting country */}
@@ -89,6 +91,8 @@ const SupportSection = () => {
           <p className="break-all text-center ml-5 w-56">{supportInfo[country].address}</p>
         </div>
       </div>
+    </div>
+    <Faqactive />
     </div>
   );
 };

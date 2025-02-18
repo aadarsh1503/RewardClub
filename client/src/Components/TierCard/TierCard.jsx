@@ -71,7 +71,7 @@ const TierCard = () => {
 
       {/* Button below the cards */}
       <a href='/tiers-benefits' className="flex justify-center mt-8 mb-8">
-        <button className="px-5 py-2 bg-Green cursor-pointer hover:text-[#827127] outline outline-black text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-white transition duration-300">
+        <button className="px-5 py-2 bg-Green cursor-pointer hover:text-[#827127] outline hover:outline-black text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-white transition duration-300">
           {t('get_started')}
         </button>
       </a>

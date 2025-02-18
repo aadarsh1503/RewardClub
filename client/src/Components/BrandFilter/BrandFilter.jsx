@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { useTranslation } from 'react-i18next';
+import Faqactive from "../Faq/Faqactive";
 
 const brands = [
  
@@ -85,7 +86,8 @@ export default function BrandFilter() {
   });
 
   return (
-    <div className="p-6 max-w-5xl mx-auto mt-32">
+    <div className="bg-[#FBF9FC]">
+    <div className="p-6  max-w-5xl mx-auto mt-32">
       <h2 className="text-3xl font-semibold text-gray-800 mb-4">
         {t("discover_brands")} <span className="text-Green"> {t("discover_brands1")}</span>
       </h2>
@@ -121,6 +123,8 @@ export default function BrandFilter() {
           </div>
         ))}
       </div>
+    </div>
+    <Faqactive />
     </div>
   );
 }
