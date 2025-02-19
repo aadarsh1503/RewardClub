@@ -272,7 +272,41 @@
             },
             "bahrain_address":"Flat 22, Building 661, Block 712, Road 1208, Manama, Kingdom of Bahrain",
              "uae_address":"221 Salah Al Din St -Deira - Dubai - United Arab Emirates",
-             "About_us":"About us"
+             "About_us":"About us",
+             
+              "member_register": "MEMBER REGISTER",
+              "first_name": "First Name",
+              "last_name": "Last Name",
+              "email": "Email",
+              "secondary_email": "Secondary Email",
+              "password": "Password",
+              "confirm_password": "Confirm Password",
+              "male": "Male",
+              "female": "Female",
+              "primary_phone": "Primary Phone",
+              "secondary_phone": "Secondary Phone",
+              "building_no": "Building No",
+              "street_name": "Street Name",
+              "select_country": "Select Country",
+              "select_state": "Select State",
+              "postal_code": "Postal / Zip Code",
+              "bank_name": "Name of Bank",
+              "account_number": "Account Number",
+              "select_referral_type": "Select Referral Type",
+              "test_referral": "Test Referral",
+              "print_media": "Print Media",
+              "online_ads": "Online Ads",
+              "social_media": "Social Media",
+              "friends": "Friends",
+              "terms_and_conditions": "Terms and Conditions May Apply is a documentary that addresses how corporations and the government utilize the information that users provide when agreeing to browse a website, install an application.",
+              "register": "REGISTER",
+              "Capital Governorate": "Capital Governorate",
+              "Central Governorate": "Central Governorate",
+              "Muharraq Governorate": "Muharraq Governorate",
+              "Northern Governorate": "Northern Governorate",
+              "Southern Governorate": "Southern Governorate"
+ 
+            
           
           
         

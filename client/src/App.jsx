@@ -14,6 +14,7 @@ import MobileNavbar from './Components/MobileNavbar/MobileNavbar';
 import { DirectionProvider } from './Components/DirectionContext';
 import FAQ from './Components/Faq/Faq';
 import About from './Components/About/About';
+import MemberRegister from './Components/MemberRegister/MemberRegister';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/privacy-statement" element={<PrivacyPolicy />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/member-register" element={<MemberRegister />} />
 
       </Routes>
       <Footer />

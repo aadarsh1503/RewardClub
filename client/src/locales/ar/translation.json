@@ -275,7 +275,46 @@
                     },
                   "bahrain_address":"فلیٹ 22، بلڈنگ 661، بلاک 712، روڈ 1208، منامہ، کنگڈم آف بحرین",
                   "uae_address":"221 صلاح الدین سینٹ -دیرا - دبئی -متحدہ عرب امارات",
-                   "About_us":"معلومات عنا"
+                   "About_us":"معلومات عنا",
+                   
+                    "member_register": "تسجيل العضوية",
+                    "first_name": "الاسم الأول",
+                    "last_name": "اسم العائلة",
+                    "email": "البريد الإلكتروني",
+                    "secondary_email": "البريد الإلكتروني الثانوي",
+                    "password": "كلمة المرور",
+                    "confirm_password": "تأكيد كلمة المرور",
+                    "male": "ذكر",
+                    "female": "أنثى",
+                    "primary_phone": "رقم الهاتف الأساسي",
+                    "secondary_phone": "رقم الهاتف الثانوي",
+                    "building_no": "رقم المبنى",
+                    "street_name": "اسم الشارع",
+                    "select_country": "اختر الدولة",
+                    "select_state": "اختر الولاية",
+                    "postal_code": "الرمز البريدي",
+                    "bank_name": "اسم البنك",
+                    "account_number": "رقم الحساب",
+                    "select_referral_type": "اختر نوع الإحالة",
+                    "test_referral": "إحالة اختبارية",
+                    "print_media": "الصحف المطبوعة",
+                    "online_ads": "الإعلانات عبر الإنترنت",
+                    "social_media": "وسائل التواصل الاجتماعي",
+                    "friends": "الأصدقاء",
+                    "terms_and_conditions":    
+                   " قد تنطبق الشروط والأحكام، وهو فيلم وثائقي يتناول كيفية استخدام الشركات والحكومات للمعلومات التي يقدمها المستخدمون عند الموافقة على تصفح موقع ويب أو تثبيت تطبيق.",
+                  
+                    "register": "تسجيل",
+                    
+                      "Capital Governorate": "محافظة العاصمة",
+                      "Central Governorate": "المحافظة الوسطى",
+                      "Muharraq Governorate": "محافظة المحرق",
+                      "Northern Governorate": "المحافظة الشمالية",
+                      "Southern Governorate": "المحافظة الجنوبية"
+                    
+                    
+                  
+                  
                   
                   
                 

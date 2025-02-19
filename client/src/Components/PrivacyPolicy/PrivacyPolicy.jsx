@@ -252,7 +252,7 @@ const PrivacyPolicy = () => {
             confirming that you have their consent to do so.
           </p>
 
-          <h2 className="text-xl font-semibold mb-1 mt-6">What are cookies</h2>
+          <h2 className="text-xl font-bold mb-1 mt-6">What are cookies?</h2>
           <p className="mt-2">
             As is common practice with almost all professional websites this
             site uses cookies, which are tiny files that are downloaded to your
@@ -281,14 +281,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-xl font-bold mb-1 mt-4">Disabling cookies</h2>
             <div>
               <p>
-                You can prevent the setting of cookies by adjusting the settings
-                on your browser (see your browser Help for how to do this). Be
-                aware that disabling cookies will affect the functionality of
-                this and many other websites that you visit. Disabling cookies
-                will usually result in also disabling certain functionality and
-                features of the site. Therefore, it is recommended that you do
-                not disable cookies. This Cookies Policy was created with the
-                help of the Cookies Policy Generator from{" "}
+              You can prevent the setting of cookies by adjusting the settings on your browser (see your browser Help for how to do this). Be aware that disabling cookies will affect the functionality of this and many other websites that you visit. Disabling cookies will usually result in also disabling certain functionality and features of the site. Therefore it is recommended that you do not disable cookies. This Cookies Policy was created with the help of the Cookies Policy Generator from {" "}
                 <a
                   href="https://www.cookiepolicygenerator.com/"
                   target="_blank"
@@ -391,6 +384,7 @@ const PrivacyPolicy = () => {
               <br />
               For more information on Google Analytics cookies, see the official
               Google Analytics page.
+              <br />
               <br />
               <li>
                 {" "}

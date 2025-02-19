@@ -250,9 +250,9 @@ const About = () => {
             </p>
             <br />
             <p>
-              Classic Card members earn 1 point on each .100 BHD spent. As soon as
+              Classic Card members earn 1 point on each 1.000 BHD spent. As soon as
               500 points are accumulated, members are given the opportunity to
-              exchange them with .100 BHD value digital voucher. Upon reaching
+              exchange them with 1.000 BHD value digital voucher. Upon reaching
               20,000 points members will be upgraded to the Gold card with access to
               additional benefits;
             </p>
@@ -260,7 +260,7 @@ const About = () => {
             <p>
               {" "}
               <strong>(b) GOLD CARD:</strong> Gold Card holders earn double the
-              points for each .100 BHD , meaning 2 points on each .100 BHD spent. If
+              points for each 1.000 BHD , meaning 2 points on each 1.000 BHD spent. If
               points reach 50,000, members will be upgraded to the Platinum Card
               with increased privileges, added benefits and further rewards;
             </p>
@@ -268,7 +268,7 @@ const About = () => {
             <p>
               {" "}
               <strong>(c) PLATINUM CARD:</strong> Platinum Card members gain triple
-              the points for each BHD , meaning 3 points on each .100 BHD spent.
+              the points for each BHD , meaning 3 points on each 1.000 BHD spent.
             </p>
             <br />
             <p>

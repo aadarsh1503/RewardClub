@@ -1,10 +1,12 @@
 .image-container {
     position: relative;
     overflow: hidden; /* Prevents image overflow during animation */
+    outline: none;
   }
   
   .fade-out {
     animation: fadeOut 1s forwards;
+    outline: none;
   }
   
   @keyframes fadeOut {
@@ -34,6 +36,7 @@
   }
   .slide-item a {
     display: inline-block;
+    outline: none;
 }
 
 .slide-item .slide-image {
@@ -43,6 +46,7 @@
   padding: 0; /* Remove any padding inside the image */
   display: block; /* Ensure the image is a block element */
   max-width: 200%; /* Ensure the image takes full width without overflow */
+  outline: none;
 }
 
 .slide-item:hover .slide-image {
@@ -64,5 +68,6 @@
   justify-content: center;
   align-items: center;
   margin: 0 5px; /* Optional: fine-tune the space between slides */
+  outline: none;
 }
 

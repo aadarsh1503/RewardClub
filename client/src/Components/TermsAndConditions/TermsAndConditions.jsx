@@ -198,7 +198,7 @@ Members must keep their email and mobile phone numbers current. Neither the Comp
           </h3>
           <br />
           <p>{t('termsAndConditions.generalTermsDescription')}</p>
-          <ul className="list-disc ">
+          <ul className=" ">
             <li> (a) any loss or misdirection of, or delay in receiving, any Member application, correspondence, redemption requests, Voucher, Redemption Awards or Member benefits;
             </li>
             <li> (b) theft or unauthorized redemption of points or Redemption Awards or use of a Redemption Award;
@@ -216,10 +216,13 @@ Members must keep their email and mobile phone numbers current. Neither the Comp
           <br />
           <p> The more members use the Loyalty Program; the more points they accumulate. Loyalty Program, Points, Redemption, Promotions and other associated benefits or services are the sole property of the company. They have no cash value and the company will not compensate or pay cash for any forfeited or unused points. Members are prohibited from bartering or selling points for cash. Each point earned will be valid for 1 year from addition date.
           </p>
+          <br />
           <p> Members are responsible for remaining acknowledged of the Program Rules and/or any Program Rule Changes. The company may terminate the Loyalty Program, in whole or in part, with one (1) month advance notice to all active Loyalty Members. Your continued participation in the Loyalty Program will constitute your acceptance of any such Program Rule Changes.
           </p>
+          <br />
           <p>Membership in the Loyalty Program is free and available to any individual who:
           </p>
+          <br />
           <ul>
             <li> (a) must be18 years of age and above;</li>
             <li> (b) possesses the legal authority to agree to the Program Rules;</li>

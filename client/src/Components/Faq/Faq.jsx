@@ -136,7 +136,7 @@ const FAQ = () => {
             اجمع 50,000 نقطة على البطاقة الذهبية خلال فترة 12 شهرًا من تاريخ الترقية، وستتم ترقيتك إلى عضو البطاقة البلاتينية. <br />
             لمعرفة المزيد عن ترقيات المستويات، قم بزيارة{" "}
             <a
-              href="https://myrewardsclub.com/welcome"
+              href="https://rewardclub.net/my-benefits"
               target="_blank"
               rel="noopener noreferrer"
               className="text-Green underline"
@@ -153,9 +153,9 @@ const FAQ = () => {
           <>
             <strong>برنامج ولاء نادي المكافآت:</strong> <br />
             <br />
-            أعضاء البطاقة الكلاسيكية يجمعون نقطة واحدة على كل 0.100 دينار بحريني يتم إنفاقه. <br />
+            أعضاء البطاقة الكلاسيكية يجمعون نقطة واحدة على كل 1.000 دينار بحريني يتم إنفاقه. <br />
             <br />
-            تجمع نقطة واحدة على كل 0.100 دينار بحريني يتم إنفاقه على البطاقة الكلاسيكية، ونقطتين على كل 0.100 دينار بحريني يتم إنفاقه على البطاقة الذهبية، وثلاث نقاط على كل 0.100 دينار بحريني يتم إنفاقه على البطاقة البلاتينية.
+            تجمع نقطة واحدة على كل 1.000 دينار بحريني يتم إنفاقه على البطاقة الكلاسيكية، ونقطتين على كل 1.000 دينار بحريني يتم إنفاقه على البطاقة الذهبية، وثلاث نقاط على كل 1.000 دينار بحريني يتم إنفاقه على البطاقة البلاتينية.
           </>
         ),
       },
@@ -236,9 +236,10 @@ const FAQ = () => {
   : [
     {
         question: "1. How do I become a Reward Club member?",
-        answer:
-          "There are several easy ways to join the Reward Club program. You can enroll on www.rewardsclub.net or at any group Account Manager via form or online link Reward Club participating brands cash desks. You can start enjoying the benefits immediately after activation the membership.",
-      },
+        answer:(
+          <>
+          There are several easy ways to join the Reward Club program. You can enroll on <a href="/www.rewardsclub.net" className="underline text-Green "target="_blank" >www.rewardsclub.net</a> or at any group Account Manager via form or online link Reward Club participating brands cash desks. You can start enjoying the benefits immediately after activation the membership.
+          </> ) },
       {
         question: "2. How do I create a new account?",
         answer:
@@ -368,7 +369,7 @@ const FAQ = () => {
             upgrade date, and you’ll be upgraded to Platinum Card member. <br />
             To find out more about tier upgrades, visit{" "}
             <a
-              href="https://myrewardsclub.com/welcome"
+              href="https://rewardclub.net/my-benefits"
               target="_blank"
               rel="noopener noreferrer"
               className="text-Green underline"
@@ -385,10 +386,10 @@ const FAQ = () => {
           <>
             <strong>Reward Club Loyalty Program:</strong> <br />
             <br />
-            Classic Card members earn 1 point on each 0.100 BHD spent. <br />
+            Classic Card members earn 1 point on each 1.000 BHD spent. <br />
             <br />
-            You earn 1 point on each 0.100 BHD spent on the Classic Card, 2 points
-            for each 0.100 BHD spent on the Gold Card, and 3 points for each 0.100
+            You earn 1 point on each 1.000 BHD spent on the Classic Card, 2 points
+            for each 1.000 BHD spent on the Gold Card, and 3 points for each 1.000
             BHD spent on the Platinum Card.
           </>
         ),

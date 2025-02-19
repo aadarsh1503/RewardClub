@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -33,13 +34,21 @@ const Footer = () => {
         </div>
 
         <div className="relative left-0 lg:left-30 lg:right-30">
-          <div className="mb-4">
-            <h3 className="font-semibold">{t("followUs")}</h3>
-            <div className="flex space-x-3 mt-2">
-              <FaFacebookF className="text-Green text-xl" />
-              <FaInstagram className="text-Green text-xl" />
-            </div>
-          </div>
+        <div className="mb-4">
+  <h3 className="font-semibold">{t("followUs")}</h3>
+  <div className="flex space-x-3 mt-2">
+    <a href="https://www.facebook.com/rewardclubloyalty" target="_blank" rel="noopener noreferrer">
+      <FaFacebookF className="text-Green text-xl hover:text-black" />
+    </a>
+    <a href="https://www.instagram.com/reward_club_/" target="_blank" rel="noopener noreferrer">
+      <FaInstagram className="text-Green text-xl hover:text-black" />
+    </a>
+    <a href="https://x.com/Reward_Club_" target="_blank" rel="noopener noreferrer">
+      <FaXTwitter className="text-Green text-xl hover:text-black" />
+    </a>
+  </div>
+</div>
+
           {/* <h3 className="font-semibold">{t("downloadApp")}</h3>
           <div className="mt-2">
             <img

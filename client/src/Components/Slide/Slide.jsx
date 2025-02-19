@@ -3,24 +3,27 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "./Slide.css";
-import { useTranslation } from 'react-i18next'; // Import the useTranslation hook
+import { useTranslation } from 'react-i18next';
 import i2 from "./i2.png";
-import i4 from "./i4.png";
 import i5 from "./i5.png";
-import i1 from "./i1.png";
 import i6 from "./i6.png";
 import i7 from "./i7.png";
-import i8 from "./i8.png";
-import i9 from "./i9.png";
+import i100 from "./i100.png";
 import i10 from "./i10.png";
-import i11 from "./i11.png";
 import i12 from "./i12.png";
 
 const Slide = () => {
-    const { t } = useTranslation();  // Use the useTranslation hook to access translations
-    const images = [i1, i2, i4, i5, i6 ,i7,i8,i9,i10,i11,i12];
+    const { t } = useTranslation(); 
+    const images = [ i2, i5, i6 ,i7, i10, i12, i100 ];
+    
     const imageLinks = [
-        // Add image links if required
+        "https://alshaheen.pro/",
+        "https://alshaheenexpress.com/",
+        "https://gvscargo.com/",
+        "https://gvs-bh.com/",
+        "https://www.aquacare.me/",
+        "https://arabiaseel.com/",
+        "https://alzyara.com/"
     ];
 
     const [isLoaded, setIsLoaded] = useState(false);
@@ -62,37 +65,17 @@ const Slide = () => {
             }
         },
         responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                }
-            },
-            {
-                breakpoint: 360,
-                settings: {
-                    slidesToShow: 1,
-                }
-            }
+            { breakpoint: 1024, settings: { slidesToShow: 4 } },
+            { breakpoint: 768, settings: { slidesToShow: 3 } },
+            { breakpoint: 480, settings: { slidesToShow: 1 } },
+            { breakpoint: 360, settings: { slidesToShow: 1 } }
         ]
     };
 
     return (
-        <section className="py-10 lg:max-w-7xl  mt-0 lg:mt-56 lg:w-full w-[200px] mx-auto">
+        <section className="py-10 lg:max-w-7xl mt-0 lg:mt-56 lg:w-full w-[200px] mx-auto">
             <h1 className='text-center text-3xl font-semibold mb-14'>
-                {t('trusted_brands')} {/* Use i18next's t function to fetch the translation */}
+                {t('trusted_brands')}
             </h1>
             <div className="">
                 {isLoaded ? (

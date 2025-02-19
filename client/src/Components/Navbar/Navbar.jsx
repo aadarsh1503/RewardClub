@@ -67,12 +67,12 @@ const Navbar = () => {
       </ul>
 
       <div>
-        <a href="https://rewardclub.net/login" target="_blank">
+        <a href="/" target="_blank">
         <button className="px-4 py-2  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Login")}
         </button>
         </a>
-        <a href="https://www.rewardsclub.net/" target="_blank">
+        <a href="/member-register" target="_blank">
         <button className="px-4 py-2 mr-4 ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Signup")}
         </button>

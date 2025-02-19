@@ -13,10 +13,10 @@ const SupportSection = () => {
   const supportInfo = {
     Bahrain: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/bh.png" },
     UAE: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("uae_address"), flag: "https://flagcdn.com/w40/ae.png" },
-    Oman: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/om.png" },
-    Kuwait: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/kw.png" },
-    Qatar: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/qa.png" },
-    KSA: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/sa.png" }
+    // Oman: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/om.png" },
+    // Kuwait: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/kw.png" },
+    // Qatar: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/qa.png" },
+    // KSA: { phone: "+971 45284037", email: "support@rewardclub.net", address: t("bahrain_address"), flag: "https://flagcdn.com/w40/sa.png" }
   };
 
   return (

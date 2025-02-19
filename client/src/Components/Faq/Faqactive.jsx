@@ -11,7 +11,7 @@ const Faqactive = () => {
   return (
     <div>
 {isRTL ? (
-    <div className="text-Green bg-[#FBF9FC] text-center text-2xl py-10 flex justify-center items-center">
+    <div className="text-Green bg-[#FBF9FC] text-center text-xl lg:text-2xl py-10 flex justify-center items-center">
     هل لديك أي أسئلة أخرى؟ تحقق من{" "}
     <a
       href="/faq"
@@ -22,7 +22,7 @@ const Faqactive = () => {
   </div>
   
 ):(
-    <div className="text-Green bg-[#FBF9FC] text-center text-2xl py-10 flex justify-center items-center">
+    <div className="text-Green bg-[#FBF9FC] text-center text-xl lg:text-2xl py-10 flex justify-center items-center">
     Any more questions? Check out{" "}
     <a
       href="/faq"
