@@ -29,7 +29,7 @@ const FAQ = () => {
           <>
             قم بزيارة{" "}
             <a
-              href="https://www.rewardsclub.net"
+              href="https://rewardclub.net/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-Green underline"
@@ -251,7 +251,7 @@ const FAQ = () => {
           <>
             Visit{" "}
             <a
-              href="https://www.rewardsclub.net"
+              href="https://rewardclub.net/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-Green underline"

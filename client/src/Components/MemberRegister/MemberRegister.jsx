@@ -12,23 +12,66 @@ const MemberRegister = () => {
   }, [isRTL]);
 
   const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedState, setSelectedState] = useState("");
   const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
 
   const countryStateData = {
-    Bahrain: [
-      "Capital Governorate",
-      "Central Governorate",
-      "Muharraq Governorate",
-      "Northern Governorate",
-      "Southern Governorate",
-    ],
+    Bahrain: {
+      states: ["Capital Governorate", "Central Governorate", "Muharraq Governorate"],
+      cities: {
+        "Capital Governorate": ["Manama", "Juffair", "Adliya"],
+        "Central Governorate": ["Isa Town", "Salmabad", "Riffa"],
+        "Muharraq Governorate": ["Muharraq", "Amwaj", "Arad"],
+      },
+    },
+    Qatar: {
+      states: ["Doha", "Al Rayyan", "Umm Salal"],
+      cities: {
+        Doha: ["West Bay", "Al Sadd", "Msheireb"],
+        "Al Rayyan": ["Education City", "Al Wajba"],
+        "Umm Salal": ["Umm Salal Ali", "Umm Salal Mohammed"],
+      },
+    },
+    UAE: {
+      states: ["Dubai", "Abu Dhabi", "Sharjah"],
+      cities: {
+        Dubai: ["Downtown", "JLT", "Deira"],
+        "Abu Dhabi": ["Al Khalidiya", "Mussafah"],
+        Sharjah: ["Al Nahda", "Muweilah"],
+      },
+    },
+    Kuwait: {
+      states: ["Al Asimah", "Hawalli", "Farwaniya"],
+      cities: {
+        "Al Asimah": ["Kuwait City", "Sharq"],
+        Hawalli: ["Salmiya", "Jabriya"],
+        Farwaniya: ["Khaitan", "Fintas"],
+      },
+    },
+    Oman: {
+      states: ["Muscat", "Dhofar", "Batinah"],
+      cities: {
+        Muscat: ["Muttrah", "Seeb", "Ruwi"],
+        Dhofar: ["Salalah", "Mirbat"],
+        Batinah: ["Sohar", "Barka"],
+      },
+    },
   };
 
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
-    setStates(countryStateData[country] || []);
+    setStates(countryStateData[country]?.states || []);
+    setSelectedState(""); // Reset state selection
+    setCities([]); // Reset cities
+  };
+
+  const handleStateChange = (e) => {
+    const state = e.target.value;
+    setSelectedState(state);
+    setCities(countryStateData[selectedCountry]?.cities[state] || []);
   };
 
   return (
@@ -69,6 +112,7 @@ const MemberRegister = () => {
             <input type="text" placeholder={t("building_no")} className="border p-3 rounded w-full" />
             <input type="text" placeholder={t("street_name")} className="border p-3 rounded w-full" />
 
+            {/* Country Dropdown */}
             <select className="border p-3 rounded w-full" onChange={handleCountryChange}>
               <option value="">{t("select_country")}</option>
               {Object.keys(countryStateData).map((country) => (
@@ -78,14 +122,29 @@ const MemberRegister = () => {
               ))}
             </select>
 
+            {/* State Dropdown */}
             <select
               className={`border p-3 rounded w-full ${!selectedCountry ? "opacity-50" : ""}`}
+              onChange={handleStateChange}
               disabled={!selectedCountry}
             >
               <option value="">{t("select_state")}</option>
               {states.map((state) => (
                 <option key={state} value={state}>
                   {t(state)}
+                </option>
+              ))}
+            </select>
+
+            {/* City Dropdown */}
+            <select
+              className={`border p-3 rounded w-full ${!selectedState ? "opacity-50" : ""}`}
+              disabled={!selectedState}
+            >
+              <option value="">{t("select_city")}</option>
+              {cities.map((city) => (
+                <option key={city} value={city}>
+                  {t(city)}
                 </option>
               ))}
             </select>
@@ -111,7 +170,9 @@ const MemberRegister = () => {
             <button
               type="submit"
               disabled={!isTermsAccepted}
-              className={`col-span-2 p-3 rounded text-center transition w-full ${isTermsAccepted ? "bg-Green hover:bg-white hover:outline-Green outline cursor-pointer text-white hover:text-green-500" : "bg-gray-300 cursor-not-allowed"}`}
+              className={`col-span-2 p-3 rounded text-center transition w-full ${
+                isTermsAccepted ? "bg-Green hover:bg-white hover:outline-Green outline cursor-pointer text-white hover:text-green-500" : "bg-gray-300 cursor-not-allowed"
+              }`}
             >
               {t("register")}
             </button>

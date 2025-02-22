@@ -127,7 +127,7 @@ export default function BrandFilter() {
         ))}
       </div>
       <div class="flex justify-center items-center ">
-    <span class="text-4xl text-Green font-bold ">COMING SOON</span>
+    <span class="text-4xl text-Green font-bold ">ACTIVE SOON</span>
 </div>
 
 

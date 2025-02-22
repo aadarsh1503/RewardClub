@@ -310,7 +310,10 @@
                       "Central Governorate": "المحافظة الوسطى",
                       "Muharraq Governorate": "محافظة المحرق",
                       "Northern Governorate": "المحافظة الشمالية",
-                      "Southern Governorate": "المحافظة الجنوبية"
+                      "Southern Governorate": "المحافظة الجنوبية",
+                       "select_city":"اختر المدينة",
+                       "Dubai":"دبي",
+                       "Abu Dhabi":"أبو ظبي"
                     
                     
                   

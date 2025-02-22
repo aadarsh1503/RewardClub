@@ -9,17 +9,19 @@ import i5 from "./i5.png";
 import i6 from "./i6.png";
 import i7 from "./i7.png";
 import i100 from "./i100.png";
+import i101 from "./i101.jpg";
 import i10 from "./i10.png";
 import i12 from "./i12.png";
 
 const Slide = () => {
     const { t } = useTranslation(); 
-    const images = [ i2, i5, i6 ,i7, i10, i12, i100 ];
+    const images = [ i2, i5, i6 , i101,i7, i10,i12, i100 ];
     
     const imageLinks = [
         "https://alshaheen.pro/",
         "https://alshaheenexpress.com/",
         "https://gvscargo.com/",
+        "https://gvscargo.net/",
         "https://gvs-bh.com/",
         "https://www.aquacare.me/",
         "https://arabiaseel.com/",

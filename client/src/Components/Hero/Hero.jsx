@@ -6,7 +6,11 @@ import MostLovedBrands from '../MostLovedBrands/MostLovedBrands';
 import Slide from '../Slide/Slide';
 import { useTranslation } from 'react-i18next';
 import Faqactive from '../Faq/Faqactive';
-
+import "./b.css"
+import i1 from "./i1.webp"
+import i2 from "./i2.webp"
+import i3 from "./i3.webp"
+import i4 from "./i4.png"
 const LifestyleRewards = () => {
   const { t, i18n } = useTranslation();
   const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
@@ -37,19 +41,20 @@ const LifestyleRewards = () => {
           <div className="lg:w-[500px] lg:h-[400px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
             {/* Brands */}
             <div className="p-6 bg-white rounded-[40px] lg:w-64 lg:h-72 text-black flex shadow-custom flex-col justify-between items-center h-48">
-              <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/brand%20%281%29%201.png" alt="Icon" className="w-20 h-20 mb-4" />
+              <img src={i2} alt="Icon" className="w-20 h-20 mb-4" />
               <div className="w-full">
                 <div className="w-full h-0.5 bg-black rounded-full mb-0 lg:mb-8"></div>
                 <div className="text-center">
                   <h3 className="lg:text-6xl text-2xl font-bold">70+</h3>
                   <p className="text-lg">{t("brands")}</p>
+                  <p className='text-[15px]  font-bold text-Green blinking-text'>ACTIVE SOON</p>
                 </div>
               </div>
             </div>
 
             {/* Countries */}
             <div className="p-6 bg-white relative top-0 lg:-top-14 lg:w-64 lg:h-72 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
-              <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/location-pin%201_0.png" alt="Icon" className="w-20 h-20 mb-4" />
+              <img src={i3} alt="Icon" className="w-20 h-20 mb-4" />
               <div className="w-full">
                 <div className="w-full h-0.5 bg-black rounded-full mb-0 lg:mb-8"></div>
                 <div className="text-center">
@@ -61,7 +66,7 @@ const LifestyleRewards = () => {
 
             {/* Tiers */}
             <div className="p-6 bg-white lg:w-64 lg:h-72 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
-              <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/premium%20%281%29%201.png" alt="Icon" className="w-20 h-20 mb-4" />
+              <img src={i1} alt="Icon" className="w-20 h-20 mb-4" />
               <div className="w-full">
                 <div className="w-full h-0.5 bg-black rounded-full mb-0 lg:mb-8"></div>
                 <div className="text-center">
@@ -73,7 +78,7 @@ const LifestyleRewards = () => {
 
             {/* Rewards */}
             <div className="p-6 bg-white lg:w-64 lg:h-72 relative top-0 lg:-top-14 rounded-[40px] shadow-custom text-black flex flex-col justify-between items-center h-48">
-              <img src="https://www.aura-mena.com/sites/default/files/aura-statistic-logo/2024-05/favorite%201_0.png" alt="Icon" className="w-20 h-20 mb-4" />
+              <img src={i4} alt="Icon" className="w-20 h-20 mb-4" />
               <div className="w-full">
                 <div className="w-full h-0.5 bg-black rounded-full mb-0 lg:mb-8"></div>
                 <div className="text-center">
