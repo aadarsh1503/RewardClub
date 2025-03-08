@@ -19,11 +19,12 @@ const MemberRegister = () => {
 
   const countryStateData = {
     Bahrain: {
-      states: ["Capital Governorate", "Central Governorate", "Muharraq Governorate"],
+      states: ["Capital Governorate", "Northern Governorate", "Muharraq Governorate","Southern Governorate"],
       cities: {
         "Capital Governorate": ["Manama", "Juffair", "Adliya"],
-        "Central Governorate": ["Isa Town", "Salmabad", "Riffa"],
         "Muharraq Governorate": ["Muharraq", "Amwaj", "Arad"],
+        "Northern Governorate": ["Muharraq", "Amwaj", "Arad"],
+        "Southern Governorate": ["Muharraq", "Amwaj", "Arad"],
       },
     },
     Qatar: {
@@ -75,7 +76,7 @@ const MemberRegister = () => {
   };
 
   return (
-    <div className="mb-4 lg:mb-20">
+    <div className="mb-4 font-sans lg:mb-20">
       <div className="min-h-screen flex items-center mt-4 lg:mt-20 justify-center">
         <div
           className="lg:max-w-4xl max-w-7xl w-full mx-auto p-6 -mt-4 bg-white bg-opacity-90 shadow-md rounded-md relative"

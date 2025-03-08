@@ -79,7 +79,7 @@ const Navbar = () => {
         </a>
       </div>
 
-      <div className="text-white cursor-pointer">
+      <div className="text-white relative z-120 cursor-pointer">
         {/* Right Side: Language Switch */}
         <LanguageToggle />
       </div>

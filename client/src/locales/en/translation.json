@@ -307,7 +307,15 @@
               "Southern Governorate": "Southern Governorate",
               "select_city":"Select City",
               "Abu Dhabi":"Abu Dhabi",
-                                     "Dubai":"Dubai"
+                                     "Dubai":"Dubai",
+                                     "login": "LOG IN",
+                                     "enterUsername": "Enter User Name",
+                                     "enterPassword": "Enter Password",
+                                     "forgotPassword": "FORGOT PASSWORD?",
+                                     "loginButton": "LOGIN",
+                                     "registerNow": "REGISTER NOW",
+                                     "or": "OR",
+                                     "background": "Background"
  
             
           

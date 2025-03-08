@@ -15,6 +15,8 @@ import { DirectionProvider } from './Components/DirectionContext';
 import FAQ from './Components/Faq/Faq';
 import About from './Components/About/About';
 import MemberRegister from './Components/MemberRegister/MemberRegister';
+// import LoginPage from './Components/Login/Login';
+// import VendorRegister from './Components/VendorRegister/VendorRegister';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/member-register" element={<MemberRegister />} />
+        {/* <Route path="/login" element={<LoginPage />} /> */}
+        {/* <Route path="/vendor-register" element={<VendorRegister />} /> */}
 
       </Routes>
       <Footer />

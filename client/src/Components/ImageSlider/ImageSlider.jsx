@@ -12,12 +12,14 @@ import g1 from "./g1.png";
 import g2 from "./g2.png";
 import g3 from "./g3.png";
 import g5 from "./g5.jpeg";
-
+import r1 from "./r1.png"
+import r2 from "./r2.png"
+import r3 from "./r3.png"
 const ImageSlider = () => {
   const { i18n } = useTranslation(); // Access i18n instance
   const isRTL = i18n.dir() === "rtl"; // Check if current language is RTL
 
-  const ltrImages = [i2, i3, i1, i5]; // LTR images
+  const ltrImages = [r1, r2, r3, i5]; // LTR images
   const rtlImages = [g2, g3, g1, g5]; // RTL images
 
   const images = isRTL ? rtlImages : ltrImages;
@@ -36,14 +38,14 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[700px] lg:h-[70vh] mt-0 lg:mt-14 overflow-hidden top-0 z-10">
+    <div className="relative w-full h-[700px] lg:h-[80vh] mt-0 lg:mt-14 overflow-hidden top-0 z-10">
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index} className="relative">
             <img
               src={image}
               alt={`Image ${index + 1}`}
-              className="w-full h-[572px] lg:h-full object-cover"
+              className="w-full h-[472px] lg:h-[500px] object-fill"
             />
           </div>
         ))}

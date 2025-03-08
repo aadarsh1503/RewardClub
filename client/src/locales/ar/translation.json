@@ -313,7 +313,15 @@
                       "Southern Governorate": "المحافظة الجنوبية",
                        "select_city":"اختر المدينة",
                        "Dubai":"دبي",
-                       "Abu Dhabi":"أبو ظبي"
+                       "Abu Dhabi":"أبو ظبي",
+                       "login": "تسجيل الدخول",
+                       "enterUsername": "أدخل اسم المستخدم",
+                       "enterPassword": "أدخل كلمة المرور",
+                       "forgotPassword": "نسيت كلمة المرور؟",
+                       "loginButton": "تسجيل الدخول",
+                       "registerNow": "سجل الآن",
+                       "or": "أو",
+                       "background": "الخلفية"
                     
                     
                   
