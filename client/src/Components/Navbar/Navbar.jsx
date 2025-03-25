@@ -11,6 +11,12 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation(); // Get current route
 
+  const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
+  
+  useEffect(() => {
+    setIsRTL(i18n.language === 'ar');
+    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+  }, [i18n.language]);
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY) {
@@ -73,7 +79,7 @@ const Navbar = () => {
         </button>
         </a>
         <a href="https://rewardclub.space/frontend/member" target="_blank">
-        <button className="px-4 py-2 mr- ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
+        <button className={`px-4 py-2 ${i18n.language === 'ar' ? 'relative right-4' : ''} mr- ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black`}>
           {t("Signup")}
         </button>
         </a>
