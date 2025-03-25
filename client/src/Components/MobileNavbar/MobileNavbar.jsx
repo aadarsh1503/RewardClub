@@ -57,7 +57,7 @@ const MobileNavbar = () => {
             {t("Get Support")}
           </a>
           <div>
-        <a href="/" target="_blank">
+        <a href="https://rewardclub.space/login" target="_blank">
         <button className="px-4 py-2  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Login")}
         </button>
