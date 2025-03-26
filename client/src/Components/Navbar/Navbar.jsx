@@ -73,17 +73,17 @@ const Navbar = () => {
       </ul>
 
       <div>
-        <a href="https://rewardclub.space/frontend/login" target="_blank">
+        <a href="https://rewardclub.space/frontend/login?id=1" target="_blank">
         <button className="px-4 py-2  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Login")}
         </button>
         </a>
-        <a href="https://rewardclub.space/frontend/member" target="_blank">
+        <a href="https://rewardclub.space/frontend/login?id=2" target="_blank">
         <button className={`px-4 py-2 ${i18n.language === 'ar' ? 'relative right-4' : ''} mr- ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black`}>
           {t("Signup")}
         </button>
         </a>
-        <a href="https://rewardclub.space/frontend/vendor" target="_blank">
+        <a href="https://rewardclub.space/frontend/login?id=3" target="_blank">
         <button className={`px-4 py-2 mr-4 ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black`}>
           {t("Vendor_Register")}
         </button>
