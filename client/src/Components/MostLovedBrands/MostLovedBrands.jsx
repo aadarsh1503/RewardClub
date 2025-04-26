@@ -1,14 +1,20 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import i2 from "./i2.png"
+import i3 from "./i3.png"
+import i4 from "./i4.png"
+import i5 from "./i5.png"
+import i6 from "./i6.png"
 
 const MostLovedBrands = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl"; // Check if the language is right-to-left
 
   return (
-    <section className="bg-gray-50 py-12 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start">
-        <div className={`md:w-1/3 ${isRTL ? 'lg:ml-32 ml-0' : 'text-left'} text-center md:text-left`}>
+    <section className="bg-gray-50 py-12 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
+        {/* left section */}
+        <div className={`w-full md:w-2/5 lg:w-1/3 ${isRTL ? '' : ''} text-center md:text-left`}>
           <h2 className="text-3xl font-bold text-gray-900">
             <span className="text-black">{t('most')}</span> <span className="text-Green">{t('loved_brands')}</span>
           </h2>
@@ -21,61 +27,41 @@ const MostLovedBrands = () => {
             </button>
           </a>
         </div>
-        <div className="md:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 md:mt-0">
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
+        {/* right section */}
+        <div className="w-full md:w-3/5 shrink-0 lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-">
+          <div className="bg-white p-4 sm:p- rounded-xl shadow-custom flex items-center justify-center">
             <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-12/Logo%20July%202024_CHIPOTLE_en.png"
+              src={i2}
               alt="chipotle"
-              className="max-w-full h-20"
+              className="h-16 sm:h-32 object-contain"
             />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
             <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/HEN.png"
+              src={i3}
               alt="hm"
-              className="max-w-full h-16"
+              className="h-16 sm:h-32 object-contain"
             />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
             <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/BAT.png"
+              src={i4}
               alt="bath_body_works"
-              className="max-w-full h-16"
+              className="h-16 sm:h-32 object-contain"
             />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
             <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/AME.png"
+              src={i5}
               alt="american_eagle"
-              className="max-w-full h-20"
+              className="h-16 sm:h-32 object-contain"
             />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
             <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/VIF.png"
+              src={i6}
               alt="victorias_secret"
-              className="max-w-full h-16"
-            />
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CHA.png"
-              alt="charlotte_tilbury"
-              className="max-w-full h-20"
-            />
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/FOO_0.png"
-              alt="heart_of_sneakers"
-              className="max-w-full h-16"
-            />
-          </div>
-          <div className="bg-white p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src="https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/SHA_0.png"
-              alt="shake_shack"
-              className="max-w-full h-20"
+              className="h-16 sm:h-32 object-contain"
             />
           </div>
         </div>
