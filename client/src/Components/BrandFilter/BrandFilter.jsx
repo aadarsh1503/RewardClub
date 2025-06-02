@@ -3,7 +3,7 @@ import React from "react";
 import { useTranslation } from 'react-i18next';
 import Faqactive from "../Faq/Faqactive";
 import "./b.css";
-
+import i8 from "../../assets/Images/i8.jpg"
 // Dynamically import all PNGs in the folder
 const imageModules = import.meta.glob('../../assets/images/*.png', { eager: true });
 
@@ -23,7 +23,7 @@ const brands = [
   { name: "COS", category: "Fashion & Footwear", src: images["i5"], alt: "COS" },
   { name: "Milano", category: "Fashion & Footwear", src: images["i6"], alt: "Milano" },
   { name: "New Balance(NB)", category: "Fashion & Footwear", src: images["i7"], alt: "New Balance(NB)" },
-  { name: "Next", category: "Fashion & Footwear", src: images["i8"], alt: "Next" },
+  { name: "Next", category: "Fashion & Footwear", src: i8, alt: "Next" },
   { name: "Victoria Secret (Beauty and Accessories)", category: "Fashion & Footwear", src: images["i9"], alt: "Victoria Secret (Beauty and Accessories)" },
   { name: "Pink", category: "Fashion & Footwear", src: images["i10"], alt: "Pink" },
   { name: "JACK WILLS", category: "Fashion & Footwear", src: images["i11"], alt: "JACK WILLS" },
