@@ -2,62 +2,59 @@ import { useState } from "react";
 import React from "react";
 import { useTranslation } from 'react-i18next';
 import Faqactive from "../Faq/Faqactive";
-import "./b.css"
+import "./b.css";
+
+// Dynamically import all PNGs in the folder
+const imageModules = import.meta.glob('../../assets/images/*.png', { eager: true });
+
+// Convert to a usable image map like: { i1: 'path/to/i1.png', i2: '...', ... }
+const images = {};
+Object.entries(imageModules).forEach(([path, module]) => {
+  const fileName = path.split('/').pop().split('.')[0]; // e.g. 'i1'
+  images[fileName] = module.default;
+});
+
 
 const brands = [
- 
-  { name: "H&M", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/HEN.png", alt: "H&M" },
+  { name: "H&M", category: "Fashion & Footwear", src: images["i1"], alt: "H&M" },
+  { name: "American Eagle", category: "Fashion & Footwear", src: images["i2"], alt: "American Eagle" },
+  { name: "Victoria's Secret", category: "Fashion & Footwear", src: images["i3"], alt: "Victoria's Secret" },
+  { name: "Claire's", category: "Fashion & Footwear", src: images["i4"], alt: "Claire's" },
+  { name: "COS", category: "Fashion & Footwear", src: images["i5"], alt: "COS" },
+  { name: "Milano", category: "Fashion & Footwear", src: images["i6"], alt: "Milano" },
+  { name: "New Balance(NB)", category: "Fashion & Footwear", src: images["i7"], alt: "New Balance(NB)" },
+  { name: "Next", category: "Fashion & Footwear", src: images["i8"], alt: "Next" },
+  { name: "Victoria Secret (Beauty and Accessories)", category: "Fashion & Footwear", src: images["i9"], alt: "Victoria Secret (Beauty and Accessories)" },
+  { name: "Pink", category: "Fashion & Footwear", src: images["i10"], alt: "Pink" },
+  { name: "JACK WILLS", category: "Fashion & Footwear", src: images["i11"], alt: "JACK WILLS" },
+  { name: "Harvey Nichols", category: "Fashion & Footwear", src: images["i12"], alt: "Harvey Nichols" },
 
-  { name: "American Eagle", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/AME.png", alt: "American Eagle" },
-  { name: "Victoria's Secret", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/VIF.png", alt: "Victoria's Secret" },
-  { name: "Claire's", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CLA.png", alt: "Claire's" },
-  { name: "COS", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/COL.png", alt: "COS" },
-  { name: "Kurt Geiger", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/KUT.png", alt: "Kurt Geiger" },
-  { name: "Milano", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/MIL.png", alt: "Milano" },
-  { name: "New Balance(NB)", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/NEW.png", alt: "New Balance(NB)" },
-  { name: "Next", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/NEX.png", alt: "Next" },
-  { name: "Payless", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/PAY.png", alt: "Payless" },
-  { name: "Victoria Secret (Beauty and Accessories)", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/VIF-VSB.png", alt: "Victoria Secret (Beauty and Accessories)" },
-  { name: "Pink", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/VIF-VSP.png", alt: "Pink" },
-  { name: "Justice", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/LIM.png", alt: "Justice" },
-  { name: "JACK WILLS", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-06/JAC.png", alt: "JACK WILLS" },
-  { name: "Harvey Nichols", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-06/HAS.png", alt: "Harvey Nichols" },
- 
-  { name: "The Heart of Sneakers", category: "Fashion & Footwear", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/FOO_0.png", alt: "The Heart of Sneakers" },
-  
+  { name: "PinkBerry", category: "Food & Restaurants", src: images["i13"], alt: "PinkBerry" },
+  { name: "Starbucks", category: "Food & Restaurants", src: images["i14"], alt: "Starbucks" },
+  { name: "Pf Changs", category: "Food & Restaurants", src: images["i15"], alt: "Pf Changs" },
+  { name: "The Cheese Cake Factory", category: "Food & Restaurants", src: images["i16"], alt: "The Cheese Cake Factory" },
+  { name: "Texas Roadhouse", category: "Food & Restaurants", src: images["i17"], alt: "Texas Roadhouse" },
+  { name: "Shake Shack", category: "Food & Restaurants", src: images["i18"], alt: "Shake Shack" },
 
+  { name: "Bath & Body Works", category: "Health & Beauty", src: images["i19"], alt: "Bath & Body Works" },
+  { name: "Boots", category: "Health & Beauty", src: images["i20"], alt: "Boots" },
+  { name: "DebanHams", category: "Health & Beauty", src: images["i21"], alt: "DebanHams" },
+  { name: "Jo Malone", category: "Health & Beauty", src: images["i22"], alt: "Jo Malone" },
+  { name: "MAC", category: "Health & Beauty", src: images["i23"], alt: "MAC" },
+  { name: "nyx", category: "Health & Beauty", src: images["i24"], alt: "NYX" },
 
-  { name: "PinkBerry", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/Pinkberry.png", alt: "PinkBerry" },
-  { name: "Starbucks", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/SBX%20295.png", alt: "Starbucks" },
-  { name: "Ashas", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/ASH.png", alt: "Ashas" },
-  { name: "Pf Changs", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/PFC.png", alt: "Pf Changs" },
-  { name: "The Cheese Cake Factory", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/CHE.png", alt: "The Cheese Cake Factory" },
-  { name: "Texas Roadhouse", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/TEX.png", alt: "Texas Roadhouse" },
-  { name: "Rising Canes", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/RAI_0.png", alt: "Rising Canes" },
-  { name: "Shake Shack", category: "Food & Restaurants", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/SHA_0.png", alt: "Shake Shack" },
+  { name: "Pottery barn Kids", category: "Home Furnishings", src: images["i25"], alt: "Pottery barn Kids" },
+  { name: "West elm", category: "Home Furnishings", src: images["i26"], alt: "West elm" },
 
+  { name: "MotherCare", category: "Kids", src: images["i27"], alt: "MotherCare" },
 
-  { name: "Bath & Body Works", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/BAT.png", alt: "Bath & Body Works" },
-  { name: "Boots", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BOO.png", alt: "Boots" },
-  { name: "DebanHams", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/DCO.png", alt: "DebanHams" },
-  { name: "Jo Malone", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/JOM.png", alt: "Jo Malone" },
-  { name: "MAC", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/MAC.png", alt: "MAC" },
-  { name: "nyx", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/NYX.png", alt: "NYX" },
-  { name: "Solaris", category: "Health & Beauty", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/SOL_2.png", alt: "Solaris" },
-
-
-  { name: "Pottery barn Kids", category: "Home Furnishings", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/PBK.png", alt: "Pottery barn Kids" },
-  { name: "West elm", category: "Home Furnishings", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/WES_1.png", alt: "West elm" },
-
-  { name: "MotherCare", category: "Kids", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/MOT.png", alt: "MotherCare" },
-  
-  { name: "aerie", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/AME-AER.png", alt: "aerie" },
-  { name: "DebanHams", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/DCO.png", alt: "DebanHams" },
-  { name: "River Island", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-03/RIV.png", alt: "River Island" },
-  { name: "The Body Shop", category: "Leisure & Entertainment", src: "https://www.aura-mena.com/sites/default/files/brand-logo-web/2024-04/BOD.png", alt: "The Body Shop" },
-  
+  { name: "aerie", category: "Leisure & Entertainment", src: images["i28"], alt: "aerie" },
+  { name: "DebanHams", category: "Leisure & Entertainment", src: images["i29"], alt: "DebanHams" },
+  { name: "River Island", category: "Leisure & Entertainment", src: images["i30"], alt: "River Island" },
+  { name: "The Body Shop", category: "Leisure & Entertainment", src: images["i31"], alt: "The Body Shop" },
 
 ];
+
 
 
 

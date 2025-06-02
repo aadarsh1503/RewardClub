@@ -66,7 +66,7 @@ const Footer = () => {
       </div>
       <hr className="my-6 border-gray-300" />
       <div className="flex flex-col md:flex-row justify-between text-gray-500 text-sm text-center md:text-left">
-        <p>©2025 {t("copyright")}</p>
+      <p>©{new Date().getFullYear()} {t("copyright")}</p>
         <div className="flex lg:ml-0 ml-4 lg:mt-0 mt-2 space-x-4">
         <a href="/about-us">{t("About_us")}</a>
           <a href="/terms-conditions">{t("termsConditions")}</a>
