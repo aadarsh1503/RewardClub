@@ -316,7 +316,12 @@
                                      "registerNow": "REGISTER NOW",
                                      "or": "OR",
                                      "background": "Background",
-                                     "Vendor_Register":"Vendor Register"
+                                     "Vendor_Register":"Vendor Register",
+                                     "newsletterHeading": "Stay Updated",
+                                     "enterYourEmail": "Enter your email",
+                                     "register": "Subscribe",
+                                     "submitting": "Submitting...",
+                                     "Thank you for subscribing!":"Thank you for subscribing!"
  
             
           
