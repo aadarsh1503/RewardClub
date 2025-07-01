@@ -22,7 +22,7 @@ const Footer = () => {
       setLoading(true);
       const formData = new FormData();
       formData.append('email', email);
-      formData.append('list', 'z7Gg90WXm8bPE7z05nRLSg'); // Your list ID
+      formData.append('list', '7H892J5BEVl7HofjvP7MYb9w'); // Your list ID
       formData.append('subform', 'yes');
       formData.append('hp', '');
 
