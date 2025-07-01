@@ -11,9 +11,7 @@ const ProductCard = ({ imgSrc, brandLogo, title }) => {
       <div className="rounded-xl shadow-lg mt-10 overflow-hidden bg-white">
         <div className="relative">
           <img src={imgSrc} alt="Product" className="w-full h-64 object-cover" />
-          <div className="absolute bottom-3 right-3 bg-white p-2 rounded-lg shadow-md">
-            <img src={brandLogo} alt="Brand Logo" className="w-10 h-10 object-contain" />
-          </div>
+          
         </div>
         <div className="p-4">
           <span className="px-2 py-1 rounded-md whitespace-nowrap flex items-center gap-1">
@@ -33,17 +31,17 @@ const ProductSection = () => {
 
   const products = [
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2024-12/LL%20Classic%20Collection%201125%20x%20750_11zon%20%284%29.jpg?itok=yBM4UV15",
+      imgSrc: "https://splashfragrance.in/wp-content/uploads/2023/09/Neroli-36-By-Le-Labo-100ml-Perfume-Tester-with-Cap-min.jpg",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-05/LEL.png?itok=nnYs_pkE",
       titleKey: "product1", // Link to the title in the translation file
     },
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2024-12/Al%20Shaya%20Aura%20App-02_11zon%20%281%29.jpg?itok=udmgf65f",
+      imgSrc: "https://5.imimg.com/data5/SELLER/Default/2022/9/NY/RN/UX/94407416/new-product.jpeg",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-05/MAC.png?itok=JClg16gW",
       titleKey: "product2", // Link to the title in the translation file
     },
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2024-12/738571AM-JOM-QT-OO2.jpg?itok=MqLkB8dO",
+      imgSrc: "https://www.flowesscents.com/cdn/shop/articles/Scent_Wheel_480x480_888d4e9d-3f52-440b-a6f2-ee3fa6a2f52f.webp?v=1662747623",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-04/JOM.png?itok=H3WfslOe",
       titleKey: "product3", // Link to the title in the translation file
     },

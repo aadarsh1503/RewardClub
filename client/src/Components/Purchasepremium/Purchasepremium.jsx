@@ -9,9 +9,7 @@ const ProductCard = ({ imgSrc, brandLogo, title, points }) => {
       <div className="rounded-xl shadow-lg mt-10 overflow-hidden bg-white flex flex-col h-full">
         <div className="relative">
           <img src={imgSrc} alt="Product" className="w-full h-64 object-cover" />
-          <div className="absolute bottom-3 right-3 bg-white p-2 rounded-lg shadow-md">
-            <img src={brandLogo} alt="Brand Logo" className="w-10 h-10 object-contain" />
-          </div>
+         
         </div>
         <div className="p-4 flex-grow flex flex-col">
           <span className="flex items-center gap-2 text-gray-700 text-sm font-semibold">
@@ -35,19 +33,19 @@ const Purchasepremium = () => {
   const { t } = useTranslation();
   const products = [
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2024-12/TBS%20Kuwait%20%26%20Qatar%20-%20KWT_1125x750%20%284%29.jpg?itok=wLLDVcH2",
+      imgSrc: "https://www.medoget.com/cdn/shop/files/downloadcopy_66d364e2-0828-4c53-90d8-abc9bed5549c.png?v=1712659651",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-04/BOD.png?itok=-C4DKiAK",
       title: "product11",
       points: 1000,
     },
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2024-12/kwt%202_11zon.png?itok=z6u8v3sS",
+      imgSrc: "https://u-mercari-images.mercdn.net/photos/m75885557112_1.jpg",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-05/ALY.png?itok=kJCP8sBc",
       title: "product22",
       points: 500,
     },
     {
-      imgSrc: "https://www.aura-mena.com/sites/default/files/styles/promo_image_medium/public/promotion/2025-01/451628RR-BOO-QT-OO2.jpg?itok=kwnWAT_l",
+      imgSrc: "https://aqualogica.in/cdn/shop/files/Pink_Sorbet_Plump__Lip_balm.jpg?v=1722338000",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-06/Boots%20Aura%202.0-01.jpg?itok=Vlvxy0JX",
       title: "product33",
       points: 1500,
@@ -68,7 +66,7 @@ const Purchasepremium = () => {
           <div key={index} className="h-full">
             <ProductCard
               imgSrc={product.imgSrc}
-              brandLogo={product.brandLogo}
+          
               title={product.title}
               points={product.points}
             />
