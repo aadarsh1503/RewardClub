@@ -54,15 +54,13 @@
       "discover_brands1": "Brands",
       "explore_brands": "Explore brands across fashion, beauty, home, dining, and more.",
       "search_placeholder": "Search brands...",
-      "categories": [
-        "All",
-        "Fashion & Footwear",
-        "Food & Restaurants",
-        "Health & Beauty",
-        "Home Furnishings",
-        "Kids",
-        "Leisure & Entertainment"
-      ],
+     "categories": [
+  "All",
+  "Manpower",
+  "Food",
+  "Transport",
+  "Logistics"
+],
       "support": "Get Support",
       "select_country": "Select Country",
       "support_in_your_country": "Get Support in Your Selected Country",
