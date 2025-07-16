@@ -16,14 +16,13 @@ import r1 from "./r1.png"
 import r2 from "./r2.png"
 import r3 from "./r3.png"
 const ImageSlider = () => {
-  const { i18n } = useTranslation(); // Access i18n instance
-  const isRTL = i18n.dir() === "rtl"; // Check if current language is RTL
+  const { i18n } = useTranslation();
+  const isRTL = i18n.dir() === "rtl";
 
-  const ltrImages = [r1, r2, r3, i5]; // LTR images
-  const rtlImages = [g2, g3, g1, g5]; // RTL images
-
+  const ltrImages = ["https://ik.imagekit.io/cviw7sztp/Rewardclub/i1%20(4).jpg?updatedAt=1752646434814","https://ik.imagekit.io/cviw7sztp/Rewardclub/22%20(1).jpg?updatedAt=1752646464267","https://ik.imagekit.io/cviw7sztp/Rewardclub/33.jpg?updatedAt=1752646498078","https://ik.imagekit.io/cviw7sztp/Rewardclub/444.jpg?updatedAt=1752646497955"]; 
+  const rtlImages = [g2, g3, g1, g5];
   const images = isRTL ? rtlImages : ltrImages;
-
+ 
   const settings = {
     dots: true,
     infinite: true,
