@@ -37,10 +37,10 @@ const PointsCalculator = () => {
     <section className="relative w-full py-24 px-4 bg-gray-50 mt-8 overflow-hidden font-sans">
       
       {/* --- 1. AMBIENT BACKGROUND --- */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* <div className="absolute inset-0 pointer-events-none">
         <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} w-[800px] h-[800px] border-[100px] border-Green/5 rounded-full blur-[100px] -translate-y-1/2`}></div>
         <div className="absolute bottom-0 left-20 w-64 h-64 bg-[#827127]/10 rounded-full blur-[80px]"></div>
-      </div>
+      </div> */}
 
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         
