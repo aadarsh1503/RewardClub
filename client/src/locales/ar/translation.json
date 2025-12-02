@@ -326,7 +326,41 @@
                        "enterYourEmail": "اپنا ای میل درج کریں",
                        "register": "سبسکرائب کریں",
                        "submitting": "جمع کر رہا ہے...",
-                        "Thank you for subscribing!": "سبسکرائب کرنے کا شکریہ!"
+                        "Thank you for subscribing!": "سبسکرائب کرنے کا شکریہ!",
+                        "pointsCalculator": {
+                          "title": "حاسبة النقاط",
+                          "description": "قدر عدد النقاط التي ستكسبها بناءً على إنفاقك وفئة عضويتك.",
+                          "headlinePrefix": "احسب",
+                          "headlineHighlight": "ثروتك المحتملة",
+                          "country": "الدولة",
+                          "purchaseAmount": "قيمة الشراء",
+                          "earningRate": "معدل الكسب",
+                          "points": "نقاط",
+                          "earned": "مكتسبة",
+                          "countries": {
+                            "Kuwait": "الكويت",
+                            "Qatar": "قطر",
+                            "Bahrain": "البحرين",
+                            "UAE": "الإمارات",
+                            "KSA": "السعودية",
+                            "Oman": "عمان"
+                          },
+                          "currencies": {
+                            "KWD": "د.ك",
+                            "QAR": "ر.ق",
+                            "BHD": "د.ب",
+                            "AED": "د.إ",
+                            "SAR": "ر.س",
+                            "OMR": "ر.ع"
+                          },
+                          "tiers": {
+                            "classic": "كلاسيك",
+                            "silver": "فضي",
+                            "gold": "ذهبي"
+                          }
+                          
+                        },
+                        "curated_selection": "مجموعة مختارة"
                     
                     
                   

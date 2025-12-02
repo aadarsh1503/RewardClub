@@ -15,6 +15,7 @@ import { DirectionProvider } from './Components/DirectionContext';
 import FAQ from './Components/Faq/Faq';
 import About from './Components/About/About';
 import MemberRegister from './Components/MemberRegister/MemberRegister';
+import ChatWidget from './Components/ChatWidget/ChatWidget';
 // import LoginPage from './Components/Login/Login';
 // import VendorRegister from './Components/VendorRegister/VendorRegister';
 
@@ -24,6 +25,9 @@ function App() {
       <DirectionProvider />
       <Navbar />
       <MobileNavbar />
+      <ChatWidget 
+        supportNumber="+966553800550" 
+      />
       <Routes>
         <Route path="/" element={<LifestyleRewards />} />
         <Route path="/tiers-benefits" element={<AuraStarCard />} />

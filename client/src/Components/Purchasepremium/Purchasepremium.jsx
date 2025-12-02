@@ -33,7 +33,7 @@ const Purchasepremium = () => {
   const { t } = useTranslation();
   const products = [
     {
-      imgSrc: "https://www.medoget.com/cdn/shop/files/downloadcopy_66d364e2-0828-4c53-90d8-abc9bed5549c.png?v=1712659651",
+      imgSrc: "https://www.medoget.com/cdn/shop/files/Yesfir_Romanticize_Inspired_by_SRK_Signature_Scent.png?v=1759754514&width=800",
       brandLogo: "https://www.aura-mena.com/sites/default/files/styles/brand_logo/public/brand-logo/2024-04/BOD.png?itok=-C4DKiAK",
       title: "product11",
       points: 1000,

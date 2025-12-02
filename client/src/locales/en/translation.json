@@ -120,7 +120,7 @@
       "earn_points": "Earn points on every purchase and move up the tiers for personalized offers.",
       "classic_tier": "Classic",
       "classic_points": "0 to 5,999 pts",
-      "classic_description": "Earn points on every purchase and contribute points towards Classic tier.",
+      "classic_description": "Earn points on every purchase and contribute towards Classic tier.",
       "silver_tier": "Silver",
       "silver_points": "6,000 to 23,999 pts",
       "silver_description": "Earn 1.5 times more points than Classic.",
@@ -319,12 +319,45 @@
                                      "enterYourEmail": "Enter your email",
                                      "register": "Subscribe",
                                      "submitting": "Submitting...",
-                                     "Thank you for subscribing!":"Thank you for subscribing!"
+                                     "Thank you for subscribing!":"Thank you for subscribing!",
+                                     "pointsCalculator": {
+    "title": "POINTS CALCULATOR",
+    "description": "Estimate how many points you will earn based on your spending and membership tier.",
+    "headlinePrefix": "Calculate your",
+    "headlineHighlight": "Wealth Potential",
+    "country": "COUNTRY",
+    "purchaseAmount": "PURCHASE AMOUNT",
+    "earningRate": "EARNING RATE",
+    "points": "Points",
+    "earned": "Earned",
+    "countries": {
+      "Kuwait": "Kuwait",
+      "Qatar": "Qatar",
+      "Bahrain": "Bahrain",
+      "UAE": "UAE",
+      "KSA": "KSA",
+      "Oman": "Oman"
+    },
+    "currencies": {
+      "KWD": "KWD",
+      "QAR": "QAR",
+      "BHD": "BHD",
+      "AED": "AED",
+      "SAR": "SAR",
+      "OMR": "OMR"
+    },
+    "tiers": {
+      "classic": "Classic",
+      "silver": "Silver",
+      "gold": "Gold"
+    }
+   
+  },
  
             
           
           
-        
+         "curated_selection": "Curated Selection"
         
       
       

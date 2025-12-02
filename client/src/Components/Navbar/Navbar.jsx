@@ -1,99 +1,175 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation
+import { useLocation } from "react-router-dom";
 import LanguageToggle from "../../LanguageToggle";
-import { useTranslation } from "react-i18next"; // Import useTranslation
-import i22 from "./i22.png"; // Default LTR logo
-import i24 from "./i24.png"; // RTL logo
+import { useTranslation } from "react-i18next";
+import i22 from "./i22.png";
+import i24 from "./i24.png";
 
 const Navbar = () => {
-  const { t, i18n } = useTranslation(); // Access translation function and i18n instance
+  const { t, i18n } = useTranslation();
   const [isVisible, setIsVisible] = useState(true);
+  const [isAtTop, setIsAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const location = useLocation(); // Get current route
-
+  const location = useLocation();
   const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
-  
+
   useEffect(() => {
     setIsRTL(i18n.language === 'ar');
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
   }, [i18n.language]);
+
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > lastScrollY) {
-      setIsVisible(false);
-    } else {
+
+    if (currentScrollY < 10) {
+      setIsAtTop(true);
       setIsVisible(true);
+    } else {
+      setIsAtTop(false);
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
     }
     setLastScrollY(currentScrollY);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Determine the logo based on the language direction
   const logo = i18n.dir() === "rtl" ? i24 : i22;
+
+  const navItems = [
+    { href: "/tiers-benefits", label: t("Explore Tiers") },
+    { href: "/brands", label: t("Discover Brands") },
+    { href: "/offers-rewards", label: t("Unlock Rewards") },
+    { href: "/contact-us", label: t("Get Support") },
+  ];
 
   return (
     <nav
-    className={`bg-Green shadow-md py-4 px-6 lg:flex hidden lg:flex-row justify-between items-start md:items-center transition-transform duration-300 ${
-      isVisible ? "translate-y-0" : "-translate-y-full"
-    } fixed top-0 left-0 w-full z-50`}
-  >
-      {/* Left Side: Logo */}
-      <a href="/" className="text-xl font-bold text-white mb-4 md:mb-0">
-        <img src={logo} alt="Logo" className="h-10 w-auto" />
-      </a>
+      className={`
+        fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        flex items-center justify-between
+        
+        ${isVisible ? "translate-y-0" : "-translate-y-[200%]"}
 
-      {/* Center: Menu Items */}
-      <ul className="flex flex-col md:flex-row ml-20 mr-20 md:flex-1 md:justify-start space-y-2 md:space-y-0 md:space-x-6 text-white font-medium">
-        {[
-          { href: "/tiers-benefits", label: t("Explore Tiers") },
-          { href: "/brands", label: t("Discover Brands") },
-          { href: "/offers-rewards", label: t("Unlock Rewards") },
-          { href: "/contact-us", label: t("Get Support") },
-        ].map((item, index) => (
-          <li key={index} className="relative group">
+        ${/* --- LAYOUT LOGIC --- */""}
+        ${isAtTop 
+          ? "top-0 w-full rounded-none bg-Green shadow-md py-4 px-6 xl:px-12 border-transparent"
+          : "top-4 lg:top-5 w-[98%] xl:w-[92%] max-w-[1800px] rounded-full bg-Green backdrop-blur-xl border border-white/20 shadow-2xl py-2.5 px-4 xl:px-8 left-0 right-0 mx-auto" // NEW: Optimized width to prevent Arabic cut-off
+        }
+      `}
+    >
+      {/* ---------------- LEFT: LOGO ---------------- */}
+      <div className="flex-shrink-0">
+        <a href="/" className="relative group block">
+          {!isAtTop && <div className="absolute inset-0 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>}
+          <img 
+            src={logo} 
+            alt="Logo" 
+            className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-10' : 'h-8 xl:h-10'}`} 
+          />
+        </a>
+      </div>
+
+      {/* ---------------- CENTER: NAV LINKS ---------------- */}
+      {/* RESPONSIVE GAP: gap-4 on Large screens (to fit Arabic), gap-8 on XL screens */}
+      <ul className={`
+        hidden lg:flex items-center justify-center text-white font-medium transition-all duration-500 flex-nowrap
+        ${isAtTop ? "gap-6 xl:gap-8" : "gap-3 xl:gap-8"} 
+      `}>
+        {navItems.map((item, index) => (
+          <li key={index} className="relative group shrink-0">
             <a
               href={item.href}
-              className={`cursor-pointer relative transition-all duration-300 ${
-                location.pathname === item.href
-                  ? "text-gray-400"
-                  : "hover:text-gray-900"
-              }`}
+              className={`
+                cursor-pointer relative whitespace-nowrap transition-all duration-300 tracking-wide
+                ${location.pathname === item.href ? "text-white font-bold" : "text-white/90 hover:text-white"}
+                ${isAtTop ? 'text-base' : 'text-xs xl:text-sm'} /* Smaller text in floating mode to fit Arabic */
+              `}
             >
               {item.label}
-              <span className="absolute left-0 top-6 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className={`
+                absolute left-0 -bottom-1 h-[2px] bg-white transition-all duration-300 shadow-[0_0_10px_white]
+                ${location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full"}
+              `}></span>
             </a>
           </li>
         ))}
       </ul>
 
-      <div>
-        <a href="https://rewardclub.space/frontend/login?id=1" target="_blank">
-        <button className="px-4 py-2  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
-          {t("Login")}
-        </button>
+      {/* ---------------- RIGHT: BUTTONS & TOGGLE ---------------- */}
+      {/* RESPONSIVE GAP: Tighter gap on laptop screens */}
+      <div className={`hidden lg:flex items-center flex-nowrap ${isAtTop ? 'gap-4' : 'gap-2 xl:gap-4'}`}>
+        
+        {/* 1. Login Button */}
+        <a href="https://rewardclub.space/frontend/login?id=1" target="_blank" rel="noreferrer">
+          <button className={`
+            font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
+            ${isAtTop 
+              ? "px-5 py-2 rounded-md border-2 border-white text-white hover:bg-white hover:text-black text-sm xl:text-base" 
+              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white hover:text-Green hover:border-white text-xs xl:text-sm" // Compact in floating
+            }
+          `}>
+            {t("Login")}
+          </button>
         </a>
-        <a href="https://rewardclub.space/frontend/login?id=2" target="_blank">
-        <button className={`px-4 py-2 ${i18n.language === 'ar' ? 'relative right-4' : ''} mr- ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black`}>
-          {t("Signup")}
-        </button>
-        </a>
-        <a href="https://rewardclub.space/frontend/login?id=3" target="_blank">
-        <button className={`px-4 py-2 mr-4 ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black`}>
-          {t("Vendor_Register")}
-        </button>
-        </a>
-      </div>
 
-      <div className="text-white relative z-120 cursor-pointer">
-        {/* Right Side: Language Switch */}
-        <LanguageToggle />
+        {/* 2. Signup Button */}
+        <a href="https://rewardclub.space/frontend/login?id=2" target="_blank" rel="noreferrer">
+          <button className={`
+            font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
+            ${isAtTop 
+              ? "px-5 py-2.5 rounded-md bg-white text-black hover:bg-gray-100 border-2 border-white text-sm xl:text-base"
+              : "relative overflow-hidden px-4 xl:px-6 py-1.5 xl:py-2.5 rounded-full bg-white text-black shadow-lg hover:scale-105 text-xs xl:text-sm" // Compact in floating
+            }
+          `}>
+            <span className="relative z-10">{t("Signup")}</span>
+            {!isAtTop && (
+               <div className="absolute inset-0 -translate-x-full hover:animate-[shimmer_1s_infinite] bg-gradient-to-r from-transparent via-gray-200 to-transparent z-0 w-full h-full"></div>
+            )}
+          </button>
+        </a>
+
+        {/* 3. Vendor Register */}
+        <a href="https://rewardclub.space/frontend/login?id=3" target="_blank" rel="noreferrer">
+          <button className={`
+            font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
+            ${isAtTop 
+              ? "px-5 py-2 rounded-md border-2 border-white text-white hover:bg-white hover:text-black text-sm xl:text-base" 
+              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white hover:text-Green hover:border-white text-xs xl:text-sm" // Compact in floating
+            }
+          `}>
+            {t("Vendor_Register")}
+          </button>
+        </a>
+
+        {/* 4. LANGUAGE TOGGLE */}
+        <div className="flex items-center shrink-0">
+          <div className={`
+             h-6 xl:h-8 w-[1px] bg-gradient-to-b from-transparent via-white/50 to-transparent
+             ${isRTL ? 'ml-2 xl:ml-4' : 'mr-2 xl:mr-4'}
+          `}></div>
+
+          <div className={`
+             relative z-10 p-0.5 xl:p-1 cursor-pointer rounded-full transition-all duration-300
+             ${`!isAtTop ? 'bg-white/10 hover:bg-white/20 backdrop-blur-md ' : ''`}
+          `}>
+            <LanguageToggle />
+          </div>
+        </div>
+
       </div>
+      
+      <style jsx>{`
+        @keyframes shimmer {
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </nav>
   );
 };

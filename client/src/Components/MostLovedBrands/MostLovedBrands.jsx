@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import i2 from "./i2.png"
 import i3 from "./i3.png"
@@ -8,64 +8,214 @@ import i6 from "./i6.png"
 
 const MostLovedBrands = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.dir() === "rtl"; // Check if the language is right-to-left
+  const isRTL = i18n.dir() === "rtl";
+  
+  const [activeIndex, setActiveIndex] = useState(0); 
+  
+  // 1. Hover state
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // 2. Viewport visibility state
+  const [isInView, setIsInView] = useState(false);
+  
+  // 3. NEW: Scroll state
+  const [isScrolling, setIsScrolling] = useState(false);
+  
+  const sectionRef = useRef(null);
+  const scrollTimeoutRef = useRef(null); // Timer store karne ke liye
+
+  const brands = useMemo(() => [
+    { id: 1, img: i2, name: "Alshaheen Manpower", color: "bg-gray-100", link: "https://alshaheen.pro/" },
+    { id: 2, img: i3, name: "Arabi Aseel", color: "bg-gray-50", link: "https://arabiaseel.com/" },
+    { id: 3, img: i4, name: "Saffary", color: "bg-gray-100", link: "https://www.saffary.com/" },
+    { id: 4, img: i5, name: "Shaheen express", color: "bg-gray-50", link: "https://shaheen.express/" },
+    { id: 5, img: i6, name: "GVS Cargo", color: "bg-gray-100", link: "https://gvscargo.com/" },
+  ], []);
+
+  // --- LOGIC 1: Intersection Observer (View Detection) ---
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
+  // --- LOGIC 2: Global Scroll Detection (NEW) ---
+  useEffect(() => {
+    const handleScroll = () => {
+      // Scroll start hote hi animation rok do
+      setIsScrolling(true);
+
+      // Agar purana timer chal raha hai toh use clear karo
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Naya timer set karo. Agar 150ms tak scroll nahi hua, toh maano scroll ruk gaya.
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    // Passive true performance ke liye better hai
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, []);
+
+  // --- LOGIC 3: Animation Loop ---
+  useEffect(() => {
+    // Condition: Agar Hovered hai OR View mein nahi hai OR Scroll ho raha hai -> TOH RUK JAO
+    if (isHovered || !isInView || isScrolling) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % brands.length);
+    }, 2000); 
+
+    return () => clearInterval(interval);
+  }, [isHovered, isInView, isScrolling, brands.length]); // Added isScrolling to dependencies
+
+  const handleCardClick = (link) => {
+    if (link) window.open(link, "_blank");
+  };
+
+  const handleMouseEnter = (index) => {
+    setActiveIndex(index);
+    setIsHovered(true); // Hover start
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false); // Hover end
+  };
+
+  const activeId = brands[activeIndex].id;
 
   return (
-    <section className="bg-gray-50 py-12 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
-        {/* left section */}
-        <div className={`w-full md:w-2/5 lg:w-1/3 ${isRTL ? '' : ''} text-center md:text-left`}>
-          <h2 className="text-3xl font-bold text-gray-900">
-            <span className="text-black">{t('most')}</span> <span className="text-Green">{t('loved_brands')}</span>
-          </h2>
-          <p className="text-gray-600 mt-4">
-            {t('personalized_offers')}
-          </p>
-          <a href="/brands">
-            <button className="mt-6 px-6 py-3 bg-Green hover:bg-white outline hover:outline-black hover:text-[#827127] cursor-pointer text-white font-semibold rounded-lg">
-              {t('discover_brands12')}
-            </button>
-          </a>
-        </div>
-        {/* right section */}
-        <div className="w-full md:w-3/5 shrink-0 lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-">
-          <div className="bg-white p-4 sm:p- rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src={i2}
-              alt="chipotle"
-              className="h-16 sm:h-32 object-contain"
-            />
-          </div>
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src={i3}
-              alt="hm"
-              className="h-16 sm:h-32 object-contain"
-            />
-          </div>
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src={i4}
-              alt="bath_body_works"
-              className="h-16 sm:h-32 object-contain"
-            />
-          </div>
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src={i5}
-              alt="american_eagle"
-              className="h-16 sm:h-32 object-contain"
-            />
-          </div>
-          <div className="bg-white p-4 sm:p-6 rounded-xl shadow-custom flex items-center justify-center">
-            <img
-              src={i6}
-              alt="victorias_secret"
-              className="h-16 sm:h-32 object-contain"
-            />
-          </div>
-        </div>
+    <section ref={sectionRef} className="relative bg-white py-24 px-4 overflow-hidden font-sans select-none">
+      
+      {/* Background Decor */}
+      <div className="absolute top-10 left-0 w-full text-center pointer-events-none opacity-[0.03]">
+        <h1 className="text-[12rem] md:text-[20rem] font-black tracking-tighter text-black leading-none whitespace-nowrap">
+          EXCLUSIVE
+        </h1>
       </div>
+
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-16">
+        
+        {/* TOP SECTION */}
+        <div className="flex flex-col md:flex-row items-end justify-between gap-8">
+          <div className={`max-w-2xl ${isRTL ? 'text-right' : 'text-left'}`}>
+            <div className="inline-flex items-center gap-2 mb-4">
+               <div className="w-8 h-[2px] bg-Green"></div>
+               <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">{t('curated_selection')}</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-bold text-black leading-[0.9] tracking-tight">
+              {t('most')} <br/>
+              <span className="text-Green bg-clip-text bg-gradient-to-r from-Green to-[#827127] italic">
+                <span>{t('loved_brands')}</span>
+              </span>
+            </h2>
+          </div>
+
+          <div className={`flex flex-col items-start ${isRTL ? 'md:items-start' : 'md:items-end'} gap-6`}>
+            <p className="text-gray-500 text-lg font-light max-w-sm leading-relaxed">
+              {t('personalized_offers')}
+            </p>
+            <a href="/brands">
+              <button className="group relative px-8 py-3 bg-transparent overflow-hidden rounded-full border border-gray-200 hover:border-black transition-colors duration-300">
+                <span className="absolute inset-0 w-full h-full bg-Green/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                <span className="relative flex cursor-pointer items-center gap-3 text-black font-semibold group-hover:text-Green transition-colors">
+                  {t('discover_brands12')}
+                  <span className={`text-xl transition-transform duration-300 ${isRTL ? 'group-hover:-translate-x-2 rotate-180 mt-2' : 'group-hover:translate-x-2'}`}>→</span>
+                </span>
+              </button>
+            </a>
+          </div>
+        </div>
+
+        {/* BOTTOM SECTION: The Kinetic Deck */}
+        <div 
+          className="w-full h-[450px] flex gap-2 md:gap-4"
+          // Removed inline setIsPaused to use cleaner separate handlers
+          onMouseLeave={handleMouseLeave}
+        >
+          {brands.map((brand, index) => (
+            <div
+              key={brand.id}
+              onClick={() => handleCardClick(brand.link)} 
+              onMouseEnter={() => handleMouseEnter(index)}
+              className={`
+                relative h-full rounded-[2rem] cursor-pointer overflow-hidden 
+                transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                border border-gray-100 shadow-xl shadow-gray-200/50 will-change-auto
+                ${activeId === brand.id ? 'flex-[4] opacity-100' : 'flex-[1] opacity-60 hover:opacity-80'}
+                ${brand.color}
+              `}
+              style={{ willChange: 'flex-grow' }} 
+            >
+              {/* Background Glow */}
+              <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-black/5 opacity-0 transition-opacity duration-500 ${activeId === brand.id ? 'opacity-100' : ''}`}></div>
+
+              {/* Vertical Text (Collapsed) */}
+              <div className={`
+                absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300
+                ${activeId === brand.id ? 'opacity-0 scale-50' : 'opacity-100 scale-100'}
+              `}>
+                <span className="whitespace-nowrap -rotate-90 text-gray-400 font-bold tracking-widest text-lg uppercase">
+                  {brand.name}
+                </span>
+              </div>
+
+              {/* Content (Expanded) */}
+              <div className={`
+                absolute inset-0 flex flex-col items-center justify-center p-8 transition-all duration-700 delay-100
+                ${activeId === brand.id ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-90'}
+              `}>
+                
+                {/* 3D Logo */}
+                <div className="relative w-full h-full max-h-[200px] flex items-center justify-center filter drop-shadow-2xl">
+                  <img 
+                    src={brand.img} 
+                    alt={brand.name} 
+                    className="w-full h-full object-contain transition-transform duration-500 hover:scale-110" 
+                  />
+                  {/* Reflection */}
+                  <div className="absolute -bottom-8 w-full h-1/2 opacity-20 blur-sm scale-y-[-1] pointer-events-none mask-fade-bottom">
+                    <img src={brand.img} alt="" className="w-full h-full object-contain" />
+                  </div>
+                </div>
+                
+                <div className="mt-4 opacity-0 animate-pulse group-hover:opacity-100">
+                    <span className="text-[10px] uppercase font-bold text-Green tracking-widest">Click to Visit</span>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      <style jsx>{`
+        .mask-fade-bottom {
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
+          -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent);
+        }
+      `}</style>
+
     </section>
   );
 };

@@ -12,11 +12,11 @@ const LanguageToggle = () => {
   };
 
   return (
-    <div className="cursor-pointer">
+    <div className="">
     {currentLanguage === 'en' ? (
-      <button onClick={() => toggleLanguage('ar')}>عربی</button>
+      <button className='cursor-pointer border-white hover:bg-white border p-2 font-extrabold rounded-full text-white' onClick={() => toggleLanguage('ar')}>عربی</button>
     ) : (
-      <button onClick={() => toggleLanguage('en')}>English</button>
+      <button className='cursor-pointer border-white hover:bg-white border p-2 font-bold rounded-full text-white' onClick={() => toggleLanguage('en')}>English</button>
     )}
   </div>
   );
