@@ -40,7 +40,7 @@ const SupportSection = () => {
     <div className="relative min-h-screen bg-gray-50 overflow-hidden font-sans">
       
       {/* --- AMBIENT BACKGROUND GLOWS --- */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0  pointer-events-none">
         <div className={`absolute top-0 ${isRTL ? 'left-0' : 'right-0'} w-[600px] h-[600px] bg-Green/5 rounded-full blur-[100px] -translate-y-1/2`}></div>
         <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gray-200/50 rounded-full blur-[120px]"></div>
       </div>
@@ -48,7 +48,7 @@ const SupportSection = () => {
       <div className="relative z-10 pt-24 pb-10 px-4 md:px-8 max-w-7xl mx-auto flex flex-col items-center">
         
         {/* --- HEADER --- */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 mt-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-gray-200 rounded-full shadow-sm mb-4">
              <span className="w-2 h-2 rounded-full bg-Green animate-pulse"></span>
              <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{t("support")}</span>

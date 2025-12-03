@@ -13,6 +13,9 @@ const Navbar = () => {
   const location = useLocation();
   const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
 
+  // Check if current page is Homepage
+  const isHomePage = location.pathname === "/";
+
   useEffect(() => {
     setIsRTL(i18n.language === 'ar');
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
@@ -57,9 +60,13 @@ const Navbar = () => {
         
         ${isVisible ? "translate-y-0" : "-translate-y-[200%]"}
 
-        ${/* --- GLASS EFFECT & LAYOUT LOGIC --- */""}
+        ${/* --- LAYOUT LOGIC --- */""}
         ${isAtTop 
-          ? "top-0 w-full rounded-none bg-[#827127]/10 backdrop-blur-sm shadow-md py-4 px-6 xl:px-12 border-b border-white/10"
+          ? `top-0 w-full rounded-none shadow-md py-4 px-6 xl:px-12 border-b border-white/10 ${
+              isHomePage 
+                ? "bg-[#827127]/10 backdrop-blur-sm" // Glass effect ONLY for Homepage
+                : "bg-Green"                          // Solid Green for all other pages
+            }`
           : "top-4 lg:top-5 w-[98%] bg-[#827127]/90 font-semibold xl:w-[92%] max-w-[1800px] rounded-full bg-Green/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] py-2.5 px-4 xl:px-8 left-0 right-0 mx-auto" 
         }
       `}
