@@ -360,7 +360,21 @@
                           }
                           
                         },
-                        "curated_selection": "مجموعة مختارة"
+                        "curated_selection": "مجموعة مختارة",
+                        "slider_menu": "القائمة",
+                        "slider_discover": "اكتشف",
+                        "slider_title_main": "مكافآت نمط الحياة",
+                        "slider_title_sub": "المصممة خصيصًا لك",
+                        "slider_description": "يعزز نادي المكافآت حياتك اليومية، مما يضمن أن الاستثنائي دائمًا في متناول اليد.",
+                "slider_unlock_btn": "استكشاف المستويات",
+                        "slider_brands": "العلامات التجارية",
+                        "slider_brands_note": "نشط قريبًا",
+                        "slider_countries": "البلدان",
+                        "slider_global_reach": "انتشار عالمي",
+                        "slider_tiers": "المستويات",
+                        "slider_silver_gold": "من الفضي إلى الذهبي",
+                        "slider_rewards": "المكافآت",
+                        "slider_partners_note": "شركاء موثوقون"
                     
                     
                   

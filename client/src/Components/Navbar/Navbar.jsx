@@ -57,10 +57,10 @@ const Navbar = () => {
         
         ${isVisible ? "translate-y-0" : "-translate-y-[200%]"}
 
-        ${/* --- LAYOUT LOGIC --- */""}
+        ${/* --- GLASS EFFECT & LAYOUT LOGIC --- */""}
         ${isAtTop 
-          ? "top-0 w-full rounded-none bg-Green shadow-md py-4 px-6 xl:px-12 border-transparent"
-          : "top-4 lg:top-5 w-[98%] xl:w-[92%] max-w-[1800px] rounded-full bg-Green backdrop-blur-xl border border-white/20 shadow-2xl py-2.5 px-4 xl:px-8 left-0 right-0 mx-auto" // NEW: Optimized width to prevent Arabic cut-off
+          ? "top-0 w-full rounded-none bg-[#827127]/10 backdrop-blur-sm shadow-md py-4 px-6 xl:px-12 border-b border-white/10"
+          : "top-4 lg:top-5 w-[98%] bg-[#827127]/90 font-semibold xl:w-[92%] max-w-[1800px] rounded-full bg-Green/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] py-2.5 px-4 xl:px-8 left-0 right-0 mx-auto" 
         }
       `}
     >
@@ -71,16 +71,15 @@ const Navbar = () => {
           <img 
             src={logo} 
             alt="Logo" 
-            className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-10' : 'h-8 xl:h-10'}`} 
+            className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-16' : 'h-8 xl:h-12'}`} 
           />
         </a>
       </div>
 
       {/* ---------------- CENTER: NAV LINKS ---------------- */}
-      {/* RESPONSIVE GAP: gap-4 on Large screens (to fit Arabic), gap-8 on XL screens */}
       <ul className={`
         hidden lg:flex items-center justify-center text-white font-medium transition-all duration-500 flex-nowrap
-        ${isAtTop ? "gap-6 xl:gap-8" : "gap-3 xl:gap-8"} 
+        ${isAtTop ? "gap-6 xl:gap-8" : "gap-3 xl:gap-8 font-semibold"} 
       `}>
         {navItems.map((item, index) => (
           <li key={index} className="relative group shrink-0">
@@ -89,13 +88,13 @@ const Navbar = () => {
               className={`
                 cursor-pointer relative whitespace-nowrap transition-all duration-300 tracking-wide
                 ${location.pathname === item.href ? "text-white font-bold" : "text-white/90 hover:text-white"}
-                ${isAtTop ? 'text-base' : 'text-xs xl:text-sm'} /* Smaller text in floating mode to fit Arabic */
+                ${isAtTop ? 'text-base' : 'text-xs xl:text-sm font-bold'}
               `}
             >
               {item.label}
               <span className={`
                 absolute left-0 -bottom-1 h-[2px] bg-white transition-all duration-300 shadow-[0_0_10px_white]
-                ${location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full"}
+                ${location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full "}
               `}></span>
             </a>
           </li>
@@ -103,7 +102,6 @@ const Navbar = () => {
       </ul>
 
       {/* ---------------- RIGHT: BUTTONS & TOGGLE ---------------- */}
-      {/* RESPONSIVE GAP: Tighter gap on laptop screens */}
       <div className={`hidden lg:flex items-center flex-nowrap ${isAtTop ? 'gap-4' : 'gap-2 xl:gap-4'}`}>
         
         {/* 1. Login Button */}
@@ -112,7 +110,7 @@ const Navbar = () => {
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
               ? "px-5 py-2 rounded-md border-2 border-white text-white hover:bg-white hover:text-black text-sm xl:text-base" 
-              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white hover:text-Green hover:border-white text-xs xl:text-sm" // Compact in floating
+              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white/20 hover:backdrop-blur-md hover:border-white text-xs xl:text-sm"
             }
           `}>
             {t("Login")}
@@ -125,7 +123,7 @@ const Navbar = () => {
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
               ? "px-5 py-2.5 rounded-md bg-white text-black hover:bg-gray-100 border-2 border-white text-sm xl:text-base"
-              : "relative overflow-hidden px-4 xl:px-6 py-1.5 xl:py-2.5 rounded-full bg-white text-black shadow-lg hover:scale-105 text-xs xl:text-sm" // Compact in floating
+              : "relative overflow-hidden px-4 xl:px-6 py-1.5 xl:py-2.5 rounded-full bg-white text-black shadow-lg hover:scale-105 text-xs xl:text-sm"
             }
           `}>
             <span className="relative z-10">{t("Signup")}</span>
@@ -141,7 +139,7 @@ const Navbar = () => {
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
               ? "px-5 py-2 rounded-md border-2 border-white text-white hover:bg-white hover:text-black text-sm xl:text-base" 
-              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white hover:text-Green hover:border-white text-xs xl:text-sm" // Compact in floating
+              : "px-3 xl:px-5 py-1.5 xl:py-2 rounded-full border border-white/50 text-white hover:bg-white/20 hover:backdrop-blur-md hover:border-white text-xs xl:text-sm"
             }
           `}>
             {t("Vendor_Register")}
@@ -157,7 +155,7 @@ const Navbar = () => {
 
           <div className={`
              relative z-10 p-0.5 xl:p-1 cursor-pointer rounded-full transition-all duration-300
-             ${`!isAtTop ? 'bg-white/10 hover:bg-white/20 backdrop-blur-md ' : ''`}
+             ${!isAtTop ? 'bg-white/10 hover:bg-white/20 backdrop-blur-md ' : ''}
           `}>
             <LanguageToggle />
           </div>

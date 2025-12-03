@@ -357,7 +357,21 @@
             
           
           
-         "curated_selection": "Curated Selection"
+         "curated_selection": "Curated Selection",
+         "slider_menu": "Menu",
+  "slider_discover": "Discover",
+  "slider_title_main": "Lifestyle Rewards",
+  "slider_title_sub": "Tailored To You",
+  "slider_description": "Rewardclub amplifies your every day, making sure the extraordinary is always within reach.",
+  "slider_unlock_btn": "Explore Tiers",
+  "slider_brands": "Brands",
+  "slider_brands_note": "Active Soon",
+  "slider_countries": "Countries",
+  "slider_global_reach": "Global Reach",
+  "slider_tiers": "Tiers",
+  "slider_silver_gold": "Silver to Gold",
+  "slider_rewards": "Rewards",
+  "slider_partners_note": "Trusted Partners"
         
       
       
