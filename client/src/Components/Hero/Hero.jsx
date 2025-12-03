@@ -81,7 +81,7 @@ const LifestyleRewards = () => {
     <div className="bg-white  overflow-hidden">
       <ImageSlider />
 
-      <section ref={sectionRef} className="relative -mt-2 w-full lg:h-[600px] flex flex-col lg:flex-row font-roboto bg-white">
+      <section ref={sectionRef} className="relative  w-full lg:h-[600px] flex flex-col lg:flex-row font-roboto bg-white">
         
         {/* LEFT PANEL */}
         <div className="lg:w-[35%] w-full relative z-20 flex flex-col justify-center px-8 md:px-16 py-16 bg-white border-b lg:border-b-0 lg:border-r border-gray-100 shadow-xl lg:shadow-none">

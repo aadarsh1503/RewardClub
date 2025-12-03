@@ -1,51 +1,60 @@
 import React from "react";
-import Slider from "react-slick"; // Import react-slick
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
-import "slick-carousel/slick/slick.css"; // Import slick carousel CSS
-import "slick-carousel/slick/slick-theme.css"; // Import slick theme CSS
-import "./i.css"; // Import custom CSS file
-import i1 from "./i1.png";
-import i2 from "./i2.png";
-import i3 from "./i3.png";
-import i5 from "./i5.png";
-import g1 from "./g1.png";
-import g2 from "./g2.png";
-import g3 from "./g3.png";
-import g5 from "./g5.jpeg";
-import r1 from "./r1.png"
-import r2 from "./r2.png"
-import r3 from "./r3.png"
+import Slider from "react-slick"; 
+import { useTranslation } from "react-i18next"; 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css"; 
+import "./i.css"; 
+
 const ImageSlider = () => {
   const { i18n } = useTranslation();
   const isRTL = i18n.dir() === "rtl";
 
-  const ltrImages = ["https://ik.imagekit.io/cviw7sztp/Rewardclub/i1%20(4).jpg?updatedAt=1752646434814","https://ik.imagekit.io/cviw7sztp/Rewardclub/22%20(1).jpg?updatedAt=1752646464267","https://ik.imagekit.io/cviw7sztp/Rewardclub/33.jpg?updatedAt=1752646498078","https://ik.imagekit.io/cviw7sztp/Rewardclub/444.jpg?updatedAt=1752646497955"]; 
-  const rtlImages = [g2, g3, g1, g5];
-  const images = isRTL ? rtlImages : ltrImages;
+  const ltrVideos = [
+    "https://www.pexels.com/download/video/3249674/"
+  ]; 
+
+  const rtlVideos = [
+    "https://www.pexels.com/download/video/2675511/"
+  ];
+
+  const videos = isRTL ? rtlVideos : ltrVideos;
  
+  const hasMultipleVideos = videos.length > 1;
+
   const settings = {
-    dots: true,
-    infinite: true,
+    dots: hasMultipleVideos,      
+    infinite: hasMultipleVideos,  
+    autoplay: hasMultipleVideos,  
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 5000,
     pauseOnHover: false,
-    rtl: isRTL, // Enable RTL mode dynamically
+    rtl: isRTL,
+    arrows: hasMultipleVideos,  
     customPaging: (i) => <div className="custom-dot"></div>,
   };
 
   return (
-    <div className="relative w-full h-[700px] lg:h-[80vh] mt-0 lg:mt-14 overflow-hidden top-0 z-10">
+    <div className="relative w-full h-[700px] lg:h-[100vh] mt-0 lg:mt-14 overflow-hidden top-0 z-10">
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <div key={index} className="relative">
-            <img
-              src={image}
-              alt={`Image ${index + 1}`}
-              className="w-full h-[472px] lg:h-[500px] object-fill"
+        {videos.map((videoSrc, index) => (
+          <div key={index} className="relative outline-none">
+            
+            {/* 1. The Video */}
+            <video
+              src={videoSrc}
+              className="w-full h-[472px] lg:h-[700px] object-fill" 
+              autoPlay
+              loop
+              muted
+              playsInline
             />
+
+            {/* 2. Dark Overlay Layer */}
+            {/* 'bg-black/40' adds the black tint. Change to 30 or 50 to adjust intensity. */}
+            <div className="absolute top-0 left-0 w-full h-full bg-[#827127]/20 z-10 pointer-events-none"></div>
+            
           </div>
         ))}
       </Slider>
