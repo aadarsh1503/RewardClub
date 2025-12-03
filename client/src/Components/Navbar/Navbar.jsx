@@ -62,7 +62,7 @@ const Navbar = () => {
 
         ${/* --- LAYOUT LOGIC --- */""}
         ${isAtTop 
-          ? `top-0 w-full rounded-none shadow-md py-4 px-6 xl:px-12 border-b border-white/10 ${
+          ? `top-0 w-full rounded-none shadow-md  px-6 xl:px-12 border-b border-white/10 ${
               isHomePage 
                 ? "bg-[#827127]/10 backdrop-blur-sm" // Glass effect ONLY for Homepage
                 : "bg-Green"                          // Solid Green for all other pages
@@ -78,7 +78,7 @@ const Navbar = () => {
           <img 
             src={logo} 
             alt="Logo" 
-            className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-16' : 'h-8 xl:h-12'}`} 
+            className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-20' : 'h-8 xl:h-16'}`} 
           />
         </a>
       </div>
