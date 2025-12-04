@@ -90,7 +90,7 @@ const LifestyleRewards = () => {
           </div>
 
           <div className="space-y-8">
-            <div className="w-16 h-1 bg-[#827127] mb-8"></div>
+            <div className="w-16 h-1 bg-[#827127] relative top-6 "></div>
             
             <h2 className="text-5xl lg:text-7xl font-bold text-black leading-[0.95] tracking-tighter">
               {t("discover_lifestyle").split(' ')[0]} <br/>
@@ -101,14 +101,32 @@ const LifestyleRewards = () => {
               {t("description")}
             </p>
 
-            <a href='/offers-rewards' className="inline-block pt-4">
-              <button className="relative px-8 py-3 overflow-hidden font-bold text-[#827127] border-2 border-[#827127] group rounded-lg transition-all hover:shadow-lg hover:shadow-[#827127]/20">
-                <span className="absolute top-0 left-0 w-full h-full bg-[#827127] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-                <span className="relative group-hover:text-white transition-colors duration-300 uppercase tracking-widest text-sm">
-                  {t("unlock_rewards")}
-                </span>
-              </button>
-            </a>
+<a href='/offers-rewards' className="inline-block pt-6">
+  <button className="relative px-10 py-4 group bg-transparent border-none outline-none cursor-pointer">
+    
+    {/* 1. Main Background with Cut Corners (Polygon Shape) */}
+    <div className="absolute inset-0 bg-transparent border-2 border-[#827127] transition-all duration-300 ease-out 
+      group-hover:bg-[#827127] group-hover:scale-[1.02]
+      [clip-path:polygon(20px_0,100%_0,100%_calc(100%-20px),calc(100%-20px)_100%,0_100%,0_20px)]">
+    </div>
+
+    {/* 2. Side "Technical" Bars (Left & Right) */}
+    <div className="absolute top-1/2 -left-2 -translate-y-1/2 h-1/2 w-1 bg-[#827127] transition-all duration-300 group-hover:h-full group-hover:-left-3"></div>
+    <div className="absolute top-1/2 -right-2 -translate-y-1/2 h-1/2 w-1 bg-[#827127] transition-all duration-300 group-hover:h-full group-hover:-right-3"></div>
+
+    {/* 3. Small Corner Dots (Decorative) */}
+    <div className="absolute top-0 left-0 w-1 h-1 bg-[#827127] transition-all group-hover:bg-white z-20"></div>
+    <div className="absolute bottom-0 right-0 w-1 h-1 bg-[#827127] transition-all group-hover:bg-white z-20"></div>
+
+    {/* 4. Text Content */}
+    <span className="relative z-10 flex items-center gap-3 font-mono font-bold tracking-[0.2em] uppercase text-[#827127] transition-colors duration-300 group-hover:text-white">
+      {t("unlock_rewards")} 
+      {/* Small Arrow Icon */}
+      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+    </span>
+
+  </button>
+</a>
           </div>
         </div>
 

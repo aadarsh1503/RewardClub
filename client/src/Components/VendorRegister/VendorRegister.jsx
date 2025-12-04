@@ -1,216 +1,215 @@
-// import { useState } from "react";
-// import React from "react";
-// import il from "./il.jpg";
+import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import il from "./il.jpg";
 
-// const VendorRegister = () => {
-//   const [isChecked, setIsChecked] = useState(false);
-//   const [properties, setProperties] = useState([]);
-//   const [attachment, setAttachment] = useState(null);
-
-//     const [pointValue, setPointValue] = useState("");
-//     const [pointValue1, setPointValue1] = useState("");
+const VendorRegister = () => {
+  const { t, i18n } = useTranslation();
   
-//     const handleInputChange = (e) => {
-//         let value = e.target.value;
-    
-//         // Allow only numbers and one decimal point
-//         value = value.replace(/[^0-9.]/g, "");
-    
-//         // Prevent multiple decimal points
-//         const parts = value.split(".");
-//         if (parts.length > 2) {
-//           value = parts[0] + "." + parts[1];
-//         }
-    
-//         // Limit to 2 digits before and 2 digits after decimal point
-//         if (parts[0].length > 2) {
-//           parts[0] = parts[0].slice(0, 2);
-//         }
-//         if (parts[1]?.length > 2) {
-//           parts[1] = parts[1].slice(0, 2);
-//         }
-    
-//         value = parts.join(".");
-    
-//         setPointValue(value);
-//       };
-//       const handleInputChange1 = (e) => {
-//         let value = e.target.value;
-    
-//         // Allow only numbers and one decimal point
-//         value = value.replace(/[^0-9.]/g, "");
-    
-//         // Prevent multiple decimal points
-//         const parts = value.split(".");
-//         if (parts.length > 2) {
-//           value = parts[0] + "." + parts[1];
-//         }
-    
-//         // Limit to 2 digits before and 2 digits after decimal point
-//         if (parts[0].length > 2) {
-//           parts[0] = parts[0].slice(0, 2);
-//         }
-//         if (parts[1]?.length > 2) {
-//           parts[1] = parts[1].slice(0, 2);
-//         }
-    
-//         value = parts.join(".");
-    
-//         setPointValue1(value);
-//       };
-    
+  // RTL Logic
+  const isRTL = i18n.dir() === "rtl";
+  useEffect(() => {
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+  }, [isRTL]);
 
-//   // Handle File Input Trigger
-//   const handleAttachmentClick = () => {
-//     document.getElementById("fileInput").click();
-//   };
+  const [isChecked, setIsChecked] = useState(false);
+  const [properties, setProperties] = useState([]);
+  const [attachment, setAttachment] = useState(null);
 
-//   // Handle File Selection (Only One File Allowed)
-//   const handleFileChange = (e) => {
-//     const file = e.target.files[0];
-//     if (file) setAttachment(file);
-//   };
+  // Note: ideally these should be inside the properties object to be unique per row, 
+  // but keeping your structure for now.
+  const [pointValue, setPointValue] = useState("");
+  const [pointValue1, setPointValue1] = useState("");
 
-//   // Remove Selected File
-//   const removeAttachment = () => {
-//     setAttachment(null);
-//   };
+  const handleInputChange = (e) => {
+    let value = e.target.value;
+    value = value.replace(/[^0-9.]/g, "");
+    const parts = value.split(".");
+    if (parts.length > 2) value = parts[0] + "." + parts[1];
+    if (parts[0].length > 2) parts[0] = parts[0].slice(0, 2);
+    if (parts[1]?.length > 2) parts[1] = parts[1].slice(0, 2);
+    value = parts.join(".");
+    setPointValue(value);
+  };
 
-//   // Add New Property Section
-//   const addProperty = () => {
-//     setProperties([...properties, { id: Date.now() }]);
-//   };
+  const handleInputChange1 = (e) => {
+    let value = e.target.value;
+    value = value.replace(/[^0-9.]/g, "");
+    const parts = value.split(".");
+    if (parts.length > 2) value = parts[0] + "." + parts[1];
+    if (parts[0].length > 2) parts[0] = parts[0].slice(0, 2);
+    if (parts[1]?.length > 2) parts[1] = parts[1].slice(0, 2);
+    value = parts.join(".");
+    setPointValue1(value);
+  };
 
-//   // Remove Property Section
-//   const removeProperty = (id) => {
-//     setProperties(properties.filter((property) => property.id !== id));
-//   };
-  
+  const handleAttachmentClick = () => {
+    document.getElementById("fileInput").click();
+  };
 
-//   return (
-//     <div className="min-h-screen flex mt-32 items-center font-sans justify-center bg-white relative">
-//       <div className="w-full max-w-4xl p-8 shadow-lg rounded-lg relative">
-//         <img
-//           src={il}
-//           alt="Decorative"
-//           className="absolute top-4 right-1  w-full h-full z-0 opacity-80"
-//         />
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setAttachment(file);
+  };
 
-//         <h2 className="text-3xl font-bold text-center mb-6 relative z-10">
-//           VENDOR REGISTER
-//         </h2>
+  const removeAttachment = () => {
+    setAttachment(null);
+  };
 
-//         <div className="bg-yellow-300 text-center  py-2 font-semibold mb-8 relative z-10">
-//           RETAIL00-8848
-//         </div>
+  const addProperty = () => {
+    setProperties([...properties, { id: Date.now() }]);
+  };
 
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 relative z-10">
-//           <input type="text" placeholder="Vendor Name" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Vendor Phone" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Company Name" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Company Reg Number" className="p-3 border rounded-md" />
-//           <input type="email" placeholder="Vendor Email" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Select Country" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Select State" className="p-3 border rounded-md" />
-//           <input type="text" placeholder="Select City" className="p-3 border rounded-md" />
-//         </div>
+  const removeProperty = (id) => {
+    setProperties(properties.filter((property) => property.id !== id));
+  };
 
-//         <textarea placeholder="Address" className="p-3 border rounded-md w-full mb-4 relative z-10"></textarea>
+  return (
+    <div className="max-w-4xl -mt-4 rounded-md font-sans bg-white mx-auto">
+      <div  className="w-full shadow-lg rounded-lg relative overflow-hidden">
+        {/* Image Background */}
+        <img
+        dir="ltr"
+          src={il}
+          alt="Decorative"
+          // Changed 'right-1' to 'end-1' for RTL support
+          className="absolute end-1 w-[600px] h-full z-0 opacity-80 pointer-events-none"
+        />
 
-//         <div className="flex items-center space-x-4 mb-6 relative z-10">
-//           {/* Hidden File Input */}
-//           <input
-//             type="file"
-//             id="fileInput"
-//             className="hidden"
-//             onChange={handleFileChange}
-//           />
-//           <button
-//             onClick={handleAttachmentClick}
-//             className="bg-blue-600 text-white px-4 py-2  rounded-md"
-//           >
-//             + Add Attachment
-//           </button>
+        <h2 className="text-3xl top-12 font-bold text-center mb-6 relative z-10">
+          {t("vendor_register")}
+        </h2>
 
-//           <button
-//             onClick={addProperty}
-//             className="bg-blue-600 text-white px-4 py-2 rounded-md"
-//           >
-//             + Add Property
-//           </button>
-//         </div>
+        <div className="p-4">
+          <div className="bg-yellow-300 top-8 p-4 text-center font-semibold mb-8 relative z-10">
+            RETAIL00-8848
+          </div>
+        </div>
 
-//         {/* Show Selected Attachment with Remove Option */}
-//         {attachment && (
-//           <div className="flex items-center relative z-10 bg-gray-100 p-3 rounded-md mb-4">
-//             <p className="text-sm text-gray-600 flex-grow">{attachment.name}</p>
-//             <button
-//               onClick={removeAttachment}
-//               className="text-red-500 font-bold ml-4"
-//             >
-//               ✕
-//             </button>
-//           </div>
-//         )}
+        {/* Basic Info Fields */}
+        <div className="grid p-4 grid-cols-1 md:grid-cols-2 gap-4 mb-4 relative z-10">
+          <input type="text" placeholder={t("vendor_name")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("vendor_phone")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("company_name")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("company_reg_number")} className="p-3 border rounded-md" />
+          <input type="email" placeholder={t("vendor_email")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("select_country")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("select_state")} className="p-3 border rounded-md" />
+          <input type="text" placeholder={t("select_city")} className="p-3 border rounded-md" />
+        </div>
 
-//         {/* Property Fields */}
-//         {properties.map((property) => (
-//           <div key={property.id} className="grid grid-cols-2 gap-4 mb-4 relative">
-//             <input type="text" placeholder="Select Category" className="p-3 border rounded-md" />
-//             <input type="text" placeholder="Property Name" className="p-3 border rounded-md" />
-//             <input type="text" placeholder="Property Amount" className="p-3 border rounded-md" />
-//             <input
-//         type="text"
-//         value={pointValue1}
-//         onChange={handleInputChange1}
-//         placeholder="00.00%"
-//         className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-//       />
-           
-// <input
-//         type="text"
-//         value={pointValue}
-//         onChange={handleInputChange}
-//         placeholder="00.00%"
-//         className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-//       />
-//        <select class="p-3 border rounded-md">
-//   <option value="" disabled selected>Select Status</option>
-//   <option value="active">Active</option>
-//   <option value="disable">Disable</option>
-// </select>
-//             <button
-//               onClick={() => removeProperty(property.id)}
-//               className="text-red-500 italic absolute right-0 top-0"
-//             >
-//               REMOVE
-//             </button>
-//           </div>
-//         ))}
+        <div className="p-4">
+          <textarea 
+            placeholder={t("address")} 
+            className="p-3 border rounded-md w-full mb-4 relative z-10"
+          ></textarea>
+        </div>
 
-//         {/* Terms and Conditions */}
-//         <div className="flex items-start relative z-10 mb-6">
-//           <input
-//             type="checkbox"
-//             id="terms"
-//             className="mt-1 mr-2"
-//             onChange={() => setIsChecked(!isChecked)}
-//           />
-//           <label htmlFor="terms" className="text-sm">
-//             Terms and Conditions May Apply is a documentary that addresses how corporations and the government utilize the information that users provide when agreeing to browse a website, install an application.
-//           </label>
-//         </div>
+        {/* Buttons */}
+        <div className="flex items-center space-x-4 rtl:space-x-reverse mb-6 p-4 relative z-10">
+          <input
+            type="file"
+            id="fileInput"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+          <button
+            onClick={handleAttachmentClick}
+            className="bg-Green text-white cursor-pointer px-4 py-2 mr-4 rounded-md whitespace-nowrap"
+          >
+            {t("add_attachment")}
+          </button>
 
-//         {/* Register Button */}
-//         <button
-//           className={`px-6 py-3 rounded-md relative z-10 w-full font-semibold transition-colors ${isChecked ? "bg-yellow-600 hover:bg-yellow-700 text-white" : "bg-gray-400 text-gray-200 cursor-not-allowed"}`}
-//           disabled={!isChecked}
-//         >
-//           REGISTER
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
+          <button
+            onClick={addProperty}
+            className="bg-Green text-white cursor-pointer px-4 py-2 mr-4 rounded-md whitespace-nowrap"
+          >
+            {t("add_property")}
+          </button>
+        </div>
 
-// export default VendorRegister;
+        {/* Attachment Display */}
+        {attachment && (
+          <div className="flex items-center relative z-10 bg-gray-100 p-3 rounded-md mb-4 mx-4">
+            <p className="text-sm text-gray-600 flex-grow">{attachment.name}</p>
+            <button
+              onClick={removeAttachment}
+              // Changed 'ml-4' to 'ms-4' (margin-start) for RTL support
+              className="text-red-500 font-bold ms-4"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+
+        <div className="p-4">
+          {/* Property Fields */}
+          {properties.map((property) => (
+            <div key={property.id} className="grid grid-cols-2 gap-4 mb-4 relative pt-6 md:pt-0">
+              <input type="text" placeholder={t("select_category")} className="p-3 border rounded-md" />
+              <input type="text" placeholder={t("property_name")} className="p-3 border rounded-md" />
+              <input type="text" placeholder={t("property_amount")} className="p-3 border rounded-md" />
+              <input
+                type="text"
+                value={pointValue1}
+                onChange={handleInputChange1}
+                placeholder="00.00%"
+                className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+
+              <input
+                type="text"
+                value={pointValue}
+                onChange={handleInputChange}
+                placeholder="00.00%"
+                className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+              />
+              <select className="p-3 border rounded-md">
+                <option value="" disabled selected>{t("select_status")}</option>
+                <option value="active">{t("active")}</option>
+                <option value="disable">{t("disable")}</option>
+              </select>
+              
+              <button
+                onClick={() => removeProperty(property.id)}
+                // Changed 'right-0' to 'end-0' so it flips to the left in Arabic
+                className="text-Green cursor-pointer italic absolute end-0 -top-1 md:top-0 text-xs md:text-sm font-bold"
+              >
+                {t("remove")}
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Terms and Conditions */}
+        <div className="flex items-start relative z-10 mb-6 p-4">
+          <input
+            type="checkbox"
+            id="terms"
+            // Changed 'mr-2' to 'me-2'
+            className="mt-1 me-2"
+            onChange={() => setIsChecked(!isChecked)}
+          />
+          <label htmlFor="terms" className="text-sm">
+            {t("terms_vendor")}
+          </label>
+        </div>
+
+        <div className="p-4">
+          {/* Register Button */}
+          <button
+            className={`px-6 py-3 rounded-md relative z-10 w-full font-semibold transition-colors ${
+              isChecked
+                ? "bg-Green hover:bg-white hover:outline-Green outline cursor-pointer text-white hover:text-green-500"
+                : "bg-gray-400 text-gray-200 cursor-not-allowed"
+            }`}
+            disabled={!isChecked}
+          >
+            {t("register")}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VendorRegister;

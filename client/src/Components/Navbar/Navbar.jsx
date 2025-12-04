@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom"; 
 import LanguageToggle from "../../LanguageToggle";
 import { useTranslation } from "react-i18next";
 import i22 from "./i22.png";
@@ -10,10 +10,15 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  
   const location = useLocation();
-  const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
+  
+  // --- LOGIC FIX START ---
 
-  // Check if current page is Homepage
+  const background = location.state?.background || location;
+  // --- LOGIC FIX END ---
+
+  const [isRTL, setIsRTL] = useState(i18n.language === 'ar');
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
@@ -55,17 +60,16 @@ const Navbar = () => {
   return (
     <nav
       className={`
-        fixed z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        fixed z-[1000] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
         flex items-center justify-between
         
         ${isVisible ? "translate-y-0" : "-translate-y-[200%]"}
 
-        ${/* --- LAYOUT LOGIC --- */""}
         ${isAtTop 
           ? `top-0 w-full rounded-none shadow-md  px-6 xl:px-12 border-b border-white/10 ${
               isHomePage 
-                ? "bg-[#827127]/10 backdrop-blur-sm" // Glass effect ONLY for Homepage
-                : "bg-Green"                          // Solid Green for all other pages
+                ? "bg-[#827127]/10 backdrop-blur-sm" 
+                : "bg-Green"                          
             }`
           : "top-4 lg:top-5 w-[98%] bg-[#827127]/90 font-semibold xl:w-[92%] max-w-[1800px] rounded-full bg-Green/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] py-2.5 px-4 xl:px-8 left-0 right-0 mx-auto" 
         }
@@ -73,14 +77,14 @@ const Navbar = () => {
     >
       {/* ---------------- LEFT: LOGO ---------------- */}
       <div className="flex-shrink-0">
-        <a href="/" className="relative group block">
+        <Link to="/" className="relative group block">
           {!isAtTop && <div className="absolute inset-0 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>}
           <img 
             src={logo} 
             alt="Logo" 
             className={`w-auto relative z-10 transition-transform duration-300 group-hover:scale-105 ${isAtTop ? 'h-20' : 'h-8 xl:h-16'}`} 
           />
-        </a>
+        </Link>
       </div>
 
       {/* ---------------- CENTER: NAV LINKS ---------------- */}
@@ -90,8 +94,8 @@ const Navbar = () => {
       `}>
         {navItems.map((item, index) => (
           <li key={index} className="relative group shrink-0">
-            <a
-              href={item.href}
+            <Link
+              to={item.href}
               className={`
                 cursor-pointer relative whitespace-nowrap transition-all duration-300 tracking-wide
                 ${location.pathname === item.href ? "text-white font-bold" : "text-white/90 hover:text-white"}
@@ -103,7 +107,7 @@ const Navbar = () => {
                 absolute left-0 -bottom-1 h-[2px] bg-white transition-all duration-300 shadow-[0_0_10px_white]
                 ${location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full "}
               `}></span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -112,7 +116,11 @@ const Navbar = () => {
       <div className={`hidden lg:flex items-center flex-nowrap ${isAtTop ? 'gap-4' : 'gap-2 xl:gap-4'}`}>
         
         {/* 1. Login Button */}
-        <a href="https://rewardclub.space/frontend/login?id=1" target="_blank" rel="noreferrer">
+        <Link 
+          to="/login" 
+          state={{ background: background }} // Corrected here
+          replace={!!location.state?.background} // Replace history if switching between modals
+        >
           <button className={`
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
@@ -122,10 +130,14 @@ const Navbar = () => {
           `}>
             {t("Login")}
           </button>
-        </a>
+        </Link>
 
         {/* 2. Signup Button */}
-        <a href="https://rewardclub.space/frontend/login?id=2" target="_blank" rel="noreferrer">
+        <Link 
+          to="/member-register" 
+          state={{ background: background }} // Corrected here
+          replace={!!location.state?.background} // Replace history if switching between modals
+        >
           <button className={`
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
@@ -138,10 +150,14 @@ const Navbar = () => {
                <div className="absolute inset-0 -translate-x-full hover:animate-[shimmer_1s_infinite] bg-gradient-to-r from-transparent via-gray-200 to-transparent z-0 w-full h-full"></div>
             )}
           </button>
-        </a>
+        </Link>
 
         {/* 3. Vendor Register */}
-        <a href="https://rewardclub.space/frontend/login?id=3" target="_blank" rel="noreferrer">
+        <Link 
+          to="/vendor-register" 
+          state={{ background: background }} // Corrected here
+          replace={!!location.state?.background} // Replace history if switching between modals
+        >
           <button className={`
             font-semibold cursor-pointer whitespace-nowrap transition-all duration-300
             ${isAtTop 
@@ -151,7 +167,7 @@ const Navbar = () => {
           `}>
             {t("Vendor_Register")}
           </button>
-        </a>
+        </Link>
 
         {/* 4. LANGUAGE TOGGLE */}
         <div className="flex items-center shrink-0">

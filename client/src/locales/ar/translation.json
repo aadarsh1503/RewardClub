@@ -374,7 +374,28 @@
                         "slider_tiers": "المستويات",
                         "slider_silver_gold": "من الفضي إلى الذهبي",
                         "slider_rewards": "المكافآت",
-                        "slider_partners_note": "شركاء موثوقون"
+                        "slider_partners_note": "شركاء موثوقون",
+                        "vendor_register": "تسجيل المورد",
+                        "vendor_name": "اسم المورد",
+                        "vendor_phone": "هاتف المورد",
+                        "company_name": "اسم الشركة",
+                        "company_reg_number": "رقم السجل التجاري",
+                        "vendor_email": "البريد الإلكتروني للمورد",
+                        "select_country": "اختر الدولة",
+                        "select_state": "اختر المحافظة/المنطقة",
+                        "select_city": "اختر المدينة",
+                        "address": "العنوان",
+                        "add_attachment": "+ إضافة مرفق",
+                        "add_property": "+ إضافة عقار",
+                        "select_category": "اختر الفئة",
+                        "property_name": "اسم العقار",
+                        "property_amount": "قيمة العقار",
+                        "select_status": "اختر الحالة",
+                        "active": "نشط",
+                        "disable": "معطل",
+                        "remove": "إزالة",
+                        "terms_vendor": "قد تطبق الشروط والأحكام. هذه وثيقة تتناول كيفية استخدام الشركات والحكومات للمعلومات التي يقدمها المستخدمون عند الموافقة على تصفح موقع ويب أو تثبيت تطبيق.",
+                        "register": "تسجيل"
                     
                     
                   

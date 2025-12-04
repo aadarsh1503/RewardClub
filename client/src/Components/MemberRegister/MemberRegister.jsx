@@ -76,8 +76,8 @@ const MemberRegister = () => {
   };
 
   return (
-    <div className="mb-4 font-sans lg:mb-20">
-      <div className="min-h-screen flex items-center mt-4 lg:mt-20 justify-center">
+    <div className=" font-sans ">
+      <div className="min-h-screen flex items-center  justify-center">
         <div
           className="lg:max-w-4xl max-w-7xl w-full mx-auto p-6 -mt-4 bg-white bg-opacity-90 shadow-md rounded-md relative"
           style={{
@@ -87,7 +87,7 @@ const MemberRegister = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <h2 className="text-center text-2xl font-bold mt-4 lg:mt-10 mb-8">
+          <h2 className="text-center text-3xl font-bold mt-4 lg:mt-10 mb-8">
             {t("member_register")}
           </h2>
           <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ const MemberRegister = () => {
           </form>
         </div>
       </div>
-      <Faqactive />
+ 
     </div>
   );
 };

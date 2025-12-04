@@ -67,15 +67,38 @@ const ImageSlider = () => {
           <p className="text-white/90 text-sm md:text-lg max-w-xl mb-10 leading-relaxed font-light drop-shadow-md">
             {t("slider_description")}
           </p>
-          <a href="/tiers-benefits">
-          <button 
-            className="relative cursor-pointer overflow-hidden px-8 py-3 md:px-12 md:py-4 text-white uppercase text-xs md:text-sm tracking-[0.15em] font-semibold border transition-all duration-500 hover:text-black group"
-            style={{ backgroundColor: goldColor, borderColor: goldColor }}
-          >
-            <span className="absolute inset-0 w-full h-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out"></span>
-            <span className="relative z-10">{t("slider_unlock_btn")}</span>
-          </button>
-          </a>
+          <a href="/tiers-benefits" className="inline-block py-2">
+  <button className="relative group cursor-pointer isolate">
+    
+    {/* 1. The Glowing Backdrop (Creates the 'Levitation' feel) */}
+    <div className="absolute -inset-0.5 bg-[#827127] rounded-sm opacity-20 blur-md group-hover:opacity-60 transition duration-500 group-hover:duration-200"></div>
+    
+    {/* 2. Main Button Body */}
+    <div className="relative px-10 py-4 bg-white/95 backdrop-blur-xl border border-[#827127]/30 transition-all duration-300 group-hover:bg-[#827127] group-hover:border-[#827127]">
+      
+      {/* 3. The 'Tech' Corners (The cutout look without using clip-path) */}
+      {/* Top Left Corner */}
+      <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-[#827127] transition-all duration-300 group-hover:border-white"></span>
+      {/* Bottom Right Corner */}
+      <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-[#827127] transition-all duration-300 group-hover:border-white"></span>
+      
+      {/* 4. The Running Light Animation (Shine Effect) */}
+      <div className="absolute inset-0 overflow-hidden">
+         <div className="absolute top-0 left-[-100%] w-[50%] h-full skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-700 ease-in-out group-hover:left-[200%]"></div>
+      </div>
+
+      {/* 5. Content */}
+      <span className="relative flex items-center justify-center gap-3">
+        <span className="font-bold uppercase tracking-[0.25em] text-xs md:text-sm text-[#827127] transition-colors duration-300 group-hover:text-white">
+          {t("slider_unlock_btn")}
+        </span>
+        {/* Futuristic Chevron */}
+        <span className="text-lg leading-none text-[#827127] transition-all duration-300 group-hover:text-white group-hover:translate-x-1">›</span>
+      </span>
+
+    </div>
+  </button>
+</a>
         </div>
 
         {/* --- Footer Stats Bar --- */}

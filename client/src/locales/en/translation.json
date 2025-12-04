@@ -371,7 +371,28 @@
   "slider_tiers": "Tiers",
   "slider_silver_gold": "Silver to Gold",
   "slider_rewards": "Rewards",
-  "slider_partners_note": "Trusted Partners"
+  "slider_partners_note": "Trusted Partners",
+  "vendor_register": "VENDOR REGISTER",
+  "vendor_name": "Vendor Name",
+  "vendor_phone": "Vendor Phone",
+  "company_name": "Company Name",
+  "company_reg_number": "Company Reg Number",
+  "vendor_email": "Vendor Email",
+  "select_country": "Select Country",
+  "select_state": "Select State",
+  "select_city": "Select City",
+  "address": "Address",
+  "add_attachment": "+ Add Attachment",
+  "add_property": "+ Add Property",
+  "select_category": "Select Category",
+  "property_name": "Property Name",
+  "property_amount": "Property Amount",
+  "select_status": "Select Status",
+  "active": "Active",
+  "disable": "Disable",
+  "remove": "REMOVE",
+  "terms_vendor": "Terms and Conditions May Apply is a documentary that addresses how corporations and the government utilize the information that users provide when agreeing to browse a website, install an application.",
+  "register": "REGISTER"
         
       
       
