@@ -272,7 +272,7 @@
              "uae_address":"221 Salah Al Din St -Deira - Dubai - United Arab Emirates",
              "About_us":"About us",
              
-              "member_register": "MEMBER REGISTER",
+              "member_register": "MEMBER REGISTRATION",
               "first_name": "First Name",
               "last_name": "Last Name",
               "email": "Email",
@@ -372,7 +372,7 @@
   "slider_silver_gold": "Silver to Gold",
   "slider_rewards": "Rewards",
   "slider_partners_note": "Trusted Partners",
-  "vendor_register": "VENDOR REGISTER",
+  "vendor_register": "VENDOR REGISTRATION",
   "vendor_name": "Vendor Name",
   "vendor_phone": "Vendor Phone",
   "company_name": "Company Name",
@@ -386,13 +386,15 @@
   "add_property": "+ Add Property",
   "select_category": "Select Category",
   "property_name": "Property Name",
-  "property_amount": "Property Amount",
-  "select_status": "Select Status",
+  "property_amount": "Amount",
+  "select_status": "Select",
   "active": "Active",
   "disable": "Disable",
   "remove": "REMOVE",
   "terms_vendor": "Terms and Conditions May Apply is a documentary that addresses how corporations and the government utilize the information that users provide when agreeing to browse a website, install an application.",
-  "register": "REGISTER"
+  "register": "REGISTER",
+  "Point_A": "Point A",
+"Point_B": "Point B"
         
       
       

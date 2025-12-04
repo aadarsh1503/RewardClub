@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import il from "./il.jpg";
-
+import { FaTrash, FaTag, FaFileSignature, FaMoneyBillWave, FaPercent, FaToggleOn } from "react-icons/fa";
 const VendorRegister = () => {
   const { t, i18n } = useTranslation();
   
@@ -141,44 +141,114 @@ const VendorRegister = () => {
           </div>
         )}
 
-        <div className="p-4">
-          {/* Property Fields */}
-          {properties.map((property) => (
-            <div key={property.id} className="grid grid-cols-2 gap-4 mb-4 relative pt-6 md:pt-0">
-              <input type="text" placeholder={t("select_category")} className="p-3 border rounded-md" />
-              <input type="text" placeholder={t("property_name")} className="p-3 border rounded-md" />
-              <input type="text" placeholder={t("property_amount")} className="p-3 border rounded-md" />
-              <input
-                type="text"
-                value={pointValue1}
-                onChange={handleInputChange1}
-                placeholder="00.00%"
-                className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
-              />
-
-              <input
-                type="text"
-                value={pointValue}
-                onChange={handleInputChange}
-                placeholder="00.00%"
-                className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
-              />
-              <select className="p-3 border rounded-md">
-                <option value="" disabled selected>{t("select_status")}</option>
-                <option value="active">{t("active")}</option>
-                <option value="disable">{t("disable")}</option>
-              </select>
-              
-              <button
-                onClick={() => removeProperty(property.id)}
-                // Changed 'right-0' to 'end-0' so it flips to the left in Arabic
-                className="text-Green cursor-pointer italic absolute end-0 -top-1 md:top-0 text-xs md:text-sm font-bold"
-              >
-                {t("remove")}
-              </button>
+<div className="space-y-6 p-4">
+  {properties.map((property, index) => (
+    <div 
+      key={property.id} 
+      className="group relative flex flex-col md:flex-row bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-[#827127]/30 transition-all duration-300 overflow-hidden"
+    >
+      
+      {/* LEFT SIDE: INPUT FORM GRID */}
+      <div className="flex-1 p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+        
+        {/* 1. Category */}
+        <div className="lg:col-span-2 space-y-1">
+            <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("select_category")}</label>
+            <div className="relative">
+                <FaTag className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
+                <input 
+                  type="text" 
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
+                  placeholder={t("select_category")}
+                />
             </div>
-          ))}
         </div>
+
+        {/* 2. Property Name */}
+        <div className="lg:col-span-2 space-y-1">
+            <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("property_name")}</label>
+            <div className="relative">
+                <FaFileSignature className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
+                <input 
+                  type="text" 
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
+                  placeholder={t("property_name")}
+                />
+            </div>
+        </div>
+
+        {/* 3. Amount */}
+        <div className="lg:col-span-1 space-y-1">
+            <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("property_amount")}</label>
+            <div className="relative">
+                <FaMoneyBillWave className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
+                <input 
+                  type="text" 
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
+                  placeholder="0.00"
+                />
+            </div>
+        </div>
+
+        {/* 4. Status */}
+        <div className="lg:col-span-1 space-y-1">
+            <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("select_status")}</label>
+            <div className="relative">
+                <select className="w-full px-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none appearance-none cursor-pointer">
+                  <option value="" disabled selected>{t("select_status")}</option>
+                  <option value="active">{t("active")}</option>
+                  <option value="disable">{t("disable")}</option>
+                </select>
+                <FaToggleOn className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none rtl:left-3 rtl:right-auto" />
+            </div>
+        </div>
+
+        {/* 5. Points Inputs (Full Row on Mobile, Split on Desktop) */}
+        <div className="lg:col-span-3 space-y-1">
+             <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("Point_A")} %</label>
+             <div className="relative">
+                <FaPercent className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-300 rtl:right-3 rtl:left-auto" />
+                <input
+                  type="text"
+                  value={pointValue1}
+                  onChange={handleInputChange1}
+                  placeholder="00.00%"
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none text-center rtl:pr-9 rtl:pl-4"
+                />
+             </div>
+        </div>
+
+        <div className="lg:col-span-3 space-y-1">
+             <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("Point_B")} %</label>
+             <div className="relative">
+                <FaPercent className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-300 rtl:right-3 rtl:left-auto" />
+                <input
+                  type="text"
+                  value={pointValue}
+                  onChange={handleInputChange}
+                  placeholder="00.00%"
+                  className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none text-center rtl:pr-9 rtl:pl-4"
+                />
+             </div>
+        </div>
+
+      </div>
+
+      {/* RIGHT SIDE: SEPARATE ACTION SECTION */}
+      {/* Displays a divider and a nice big delete button */}
+      <div className="md:w-16 flex flex-col border-t md:border-t-0 md:border-l border-gray-100 rtl:border-r rtl:border-l-0">
+        <button
+          onClick={() => removeProperty(property.id)}
+          className="flex-1 w-full flex items-center justify-center p-4 bg-gray-50 text-gray-400 hover:bg-red-50 cursor-pointer hover:text-red-500 transition-colors duration-200 group-hover:bg-red-500 group-hover:text-white"
+          title={t("remove")}
+        >
+          <FaTrash className="text-lg transition-transform duration-200 group-hover:scale-110" />
+        </button>
+      </div>
+
+    </div>
+  ))}
+</div>
 
         {/* Terms and Conditions */}
         <div className="flex items-start relative z-10 mb-6 p-4">
