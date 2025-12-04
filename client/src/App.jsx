@@ -21,15 +21,25 @@ import ChatWidget from './Components/ChatWidget/ChatWidget';
 import LoginPage from './Components/Login/Login';
 import VendorRegister from './Components/VendorRegister/VendorRegister';
 
-// Import the new Modal component
+// Import the Modal component
 import Modal from './Components/Modal/Modal';
 
 function AppContent() {
   const location = useLocation();
   
-  // This logic determines if we should show a modal.
-  // We check if location.state has a 'background' property.
-  const background = location.state && location.state.background;
+  // --- FIX START ---
+  // Define which paths should always open as a modal over the home page
+  const modalPaths = ['/login', '/member-register', '/vendor-register'];
+  
+  // Check if we have state background OR if we are on a modal path directly
+  let background = location.state && location.state.background;
+
+  // Agar background null hai (direct url access) AUR hum modal path par hain,
+  // toh background ko manually Homepage ('/') set kar do.
+  if (!background && modalPaths.includes(location.pathname)) {
+    background = { pathname: '/' };
+  }
+  // --- FIX END ---
 
   return (
     <>
@@ -38,9 +48,9 @@ function AppContent() {
       <ChatWidget supportNumber="+966553800550" />
 
       {/* 
-         The Routes that show the main content.
-         If 'background' exists, we force these routes to render the BACKGROUND location,
-         so the page behind the modal stays visible.
+         Main Routes:
+         Agar 'background' set hai (chahe link click se ya direct access logic se),
+         ye Routes 'Home' page render karenge piche.
       */}
       <Routes location={background || location}>
         <Route path="/" element={<LifestyleRewards />} />
@@ -53,15 +63,19 @@ function AppContent() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/about-us" element={<About />} />
         
-        {/* These routes allow the pages to be accessed directly (e.g. refresh) without a modal */}
+        {/* 
+           Ye routes tabhi hit honge jab 'background' null hoga.
+           Lekin upar humne logic laga diya hai, to modalPaths ke liye ye kabhi hit nahi honge 
+           unless aap logic change karein. 
+        */}
         <Route path="/member-register" element={<MemberRegister />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/vendor-register" element={<VendorRegister />} />
       </Routes>
 
       {/* 
-         The Modal Routes.
-         These only render if 'background' exists (meaning we clicked a link to open them).
+         Modal Routes:
+         Ye tab render honge jab background exist karega.
       */}
       {background && (
         <Routes>
