@@ -57,7 +57,7 @@ const MobileNavbar = () => {
             {t("Get Support")}
           </a>
           <div>
-        <a href="https://rewardclub.space/login" target="_blank">
+        <a href="/login" target="_blank">
         <button className="px-4 py-2  rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Login")}
         </button>
@@ -65,6 +65,11 @@ const MobileNavbar = () => {
         <a href="/member-register" target="_blank">
         <button className="px-4 py-2 mr-4 ml-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
           {t("Signup")}
+        </button>
+        </a>
+        <a href="/vendor-register" target="_blank">
+        <button className="px-4 py-2 mt-4 rounded-md font-semibold outline cursor-pointer text-white outline-white hover:bg-white hover:text-black">
+          {t("Vendor_Register")}
         </button>
         </a>
       </div>

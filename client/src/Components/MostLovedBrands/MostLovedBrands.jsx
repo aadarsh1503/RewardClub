@@ -18,11 +18,11 @@ const MostLovedBrands = () => {
   // 2. Viewport visibility state
   const [isInView, setIsInView] = useState(false);
   
-  // 3. NEW: Scroll state
+  // 3. Scroll state
   const [isScrolling, setIsScrolling] = useState(false);
   
   const sectionRef = useRef(null);
-  const scrollTimeoutRef = useRef(null); // Timer store karne ke liye
+  const scrollTimeoutRef = useRef(null); 
 
   const brands = useMemo(() => [
     { id: 1, img: i2, name: "Alshaheen Manpower", color: "bg-gray-100", link: "https://alshaheen.pro/" },
@@ -32,7 +32,7 @@ const MostLovedBrands = () => {
     { id: 5, img: i6, name: "GVS Cargo", color: "bg-gray-100", link: "https://gvscargo.com/" },
   ], []);
 
-  // --- LOGIC 1: Intersection Observer (View Detection) ---
+  // --- LOGIC 1: Intersection Observer ---
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -50,24 +50,18 @@ const MostLovedBrands = () => {
     };
   }, []);
 
-  // --- LOGIC 2: Global Scroll Detection (NEW) ---
+  // --- LOGIC 2: Global Scroll Detection ---
   useEffect(() => {
     const handleScroll = () => {
-      // Scroll start hote hi animation rok do
       setIsScrolling(true);
-
-      // Agar purana timer chal raha hai toh use clear karo
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-
-      // Naya timer set karo. Agar 150ms tak scroll nahi hua, toh maano scroll ruk gaya.
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 150);
     };
 
-    // Passive true performance ke liye better hai
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -78,7 +72,6 @@ const MostLovedBrands = () => {
 
   // --- LOGIC 3: Animation Loop ---
   useEffect(() => {
-    // Condition: Agar Hovered hai OR View mein nahi hai OR Scroll ho raha hai -> TOH RUK JAO
     if (isHovered || !isInView || isScrolling) return;
 
     const interval = setInterval(() => {
@@ -86,7 +79,7 @@ const MostLovedBrands = () => {
     }, 2000); 
 
     return () => clearInterval(interval);
-  }, [isHovered, isInView, isScrolling, brands.length]); // Added isScrolling to dependencies
+  }, [isHovered, isInView, isScrolling, brands.length]); 
 
   const handleCardClick = (link) => {
     if (link) window.open(link, "_blank");
@@ -94,35 +87,35 @@ const MostLovedBrands = () => {
 
   const handleMouseEnter = (index) => {
     setActiveIndex(index);
-    setIsHovered(true); // Hover start
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false); // Hover end
+    setIsHovered(false);
   };
 
   const activeId = brands[activeIndex].id;
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-24 px-4 overflow-hidden font-sans select-none">
+    <section ref={sectionRef} className="relative bg-white py-12 md:py-24 px-4 overflow-hidden font-sans select-none">
       
       {/* Background Decor */}
       <div className="absolute top-10 left-0 w-full text-center pointer-events-none opacity-[0.03]">
-        <h1 className="text-[12rem] md:text-[20rem] font-black tracking-tighter text-black leading-none whitespace-nowrap">
+        <h1 className="text-[6rem] md:text-[20rem] font-black tracking-tighter text-black leading-none whitespace-nowrap">
           EXCLUSIVE
         </h1>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-16">
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-10 md:gap-16">
         
-        {/* TOP SECTION */}
-        <div className="flex flex-col md:flex-row items-end justify-between gap-8">
+        {/* TOP SECTION (Headers) */}
+        <div className="flex flex-col md:flex-row items-start lg:items-end justify-between gap-8">
           <div className={`max-w-2xl ${isRTL ? 'text-right' : 'text-left'}`}>
             <div className="inline-flex items-center gap-2 mb-4">
                <div className="w-8 h-[2px] bg-Green"></div>
                <span className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400">{t('curated_selection')}</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-bold text-black leading-[0.9] tracking-tight">
+            <h2 className="text-4xl md:text-7xl font-bold text-black leading-[0.9] tracking-tight">
               {t('most')} <br/>
               <span className="text-Green bg-clip-text bg-gradient-to-r from-Green to-[#827127] italic">
                 <span>{t('loved_brands')}</span>
@@ -131,7 +124,7 @@ const MostLovedBrands = () => {
           </div>
 
           <div className={`flex flex-col items-start ${isRTL ? 'md:items-start' : 'md:items-end'} gap-6`}>
-            <p className="text-gray-500 text-lg font-light max-w-sm leading-relaxed">
+            <p className="text-gray-500 text-base md:text-lg font-light max-w-sm leading-relaxed">
               {t('personalized_offers')}
             </p>
             <a href="/brands">
@@ -146,10 +139,38 @@ const MostLovedBrands = () => {
           </div>
         </div>
 
-        {/* BOTTOM SECTION: The Kinetic Deck */}
+        {/* ========================================= */}
+        {/* 1. MOBILE VIEW (Grid - 2 items per row)  */}
+        {/* ========================================= */}
+        <div className="grid grid-cols-2 gap-3 md:hidden">
+          {brands.map((brand) => (
+            <div
+              key={brand.id}
+              onClick={() => handleCardClick(brand.link)}
+              className={`
+                relative w-full aspect-square rounded-2xl p-6 
+                flex flex-col items-center justify-center 
+                border border-gray-100 shadow-sm transition-transform active:scale-95
+                ${brand.color}
+              `}
+            >
+              <img 
+                src={brand.img} 
+                alt={brand.name} 
+                className="w-full h-full object-contain drop-shadow-md"
+              />
+               <span className="mt-3 text-[10px] text-gray-400 font-bold uppercase tracking-wider text-center">
+                  {brand.name}
+               </span>
+            </div>
+          ))}
+        </div>
+
+        {/* ========================================= */}
+        {/* 2. DESKTOP VIEW (Kinetic Deck)           */}
+        {/* ========================================= */}
         <div 
-          className="w-full h-[450px] flex gap-2 md:gap-4"
-          // Removed inline setIsPaused to use cleaner separate handlers
+          className="hidden md:flex w-full h-[450px] gap-4"
           onMouseLeave={handleMouseLeave}
         >
           {brands.map((brand, index) => (

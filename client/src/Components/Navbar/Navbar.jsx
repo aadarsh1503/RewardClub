@@ -60,7 +60,7 @@ const Navbar = () => {
   return (
     <nav
       className={`
-        fixed z-[1000] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+        fixed z-[1000] lg:flex hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
         flex items-center justify-between
         
         ${isVisible ? "translate-y-0" : "-translate-y-[200%]"}
