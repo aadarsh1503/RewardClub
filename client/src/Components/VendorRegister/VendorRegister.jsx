@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import il from "./il.jpg";
 import { FaTrash, FaTag, FaFileSignature, FaMoneyBillWave, FaPercent, FaToggleOn,  FaUser, FaPhone, FaBuilding, FaIdCard, FaEnvelope, 
   FaGlobe, FaMapMarkerAlt, FaCity, FaPaperclip,FaCheck, FaArrowRight, FaShieldAlt, FaPlus, FaFileAlt, FaTimes  } from "react-icons/fa";
+
 const VendorRegister = () => {
   const { t, i18n } = useTranslation();
   
@@ -13,34 +14,29 @@ const VendorRegister = () => {
   }, [isRTL]);
 
   const [isChecked, setIsChecked] = useState(false);
-  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [attachment, setAttachment] = useState(null);
+  
+  // --- 1. Main Form State ---
+  const [formData, setFormData] = useState({
+    vendor_name: "",
+    vendor_phone: "",
+    company_name: "",
+    company_reg_number: "",
+    email: "",
+    country: "",
+    state: "",
+    city: "",
+    address: ""
+  });
 
-  // Note: ideally these should be inside the properties object to be unique per row, 
-  // but keeping your structure for now.
-  const [pointValue, setPointValue] = useState("");
-  const [pointValue1, setPointValue1] = useState("");
+  // --- 2. Properties State ---
+  const [properties, setProperties] = useState([]);
 
+  // Handle Text Inputs
   const handleInputChange = (e) => {
-    let value = e.target.value;
-    value = value.replace(/[^0-9.]/g, "");
-    const parts = value.split(".");
-    if (parts.length > 2) value = parts[0] + "." + parts[1];
-    if (parts[0].length > 2) parts[0] = parts[0].slice(0, 2);
-    if (parts[1]?.length > 2) parts[1] = parts[1].slice(0, 2);
-    value = parts.join(".");
-    setPointValue(value);
-  };
-
-  const handleInputChange1 = (e) => {
-    let value = e.target.value;
-    value = value.replace(/[^0-9.]/g, "");
-    const parts = value.split(".");
-    if (parts.length > 2) value = parts[0] + "." + parts[1];
-    if (parts[0].length > 2) parts[0] = parts[0].slice(0, 2);
-    if (parts[1]?.length > 2) parts[1] = parts[1].slice(0, 2);
-    value = parts.join(".");
-    setPointValue1(value);
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleAttachmentClick = () => {
@@ -54,15 +50,95 @@ const VendorRegister = () => {
 
   const removeAttachment = () => {
     setAttachment(null);
+    document.getElementById("fileInput").value = "";
   };
 
+  // --- Property Logic ---
   const addProperty = () => {
-    setProperties([...properties, { id: Date.now() }]);
+    setProperties([...properties, { 
+      id: Date.now(), 
+      category: "", 
+      name: "", 
+      amount: "", 
+      status: "active", 
+      point_a: "", 
+      point_b: "" 
+    }]);
   };
 
   const removeProperty = (id) => {
     setProperties(properties.filter((property) => property.id !== id));
   };
+
+  // Generic handler for property fields
+  const updateProperty = (id, field, value) => {
+    // If it's points, apply the number logic you had before
+    if (field === 'point_a' || field === 'point_b') {
+       value = value.replace(/[^0-9.]/g, "");
+       const parts = value.split(".");
+       if (parts.length > 2) value = parts[0] + "." + parts[1];
+       if (parts[0].length > 2) parts[0] = parts[0].slice(0, 2);
+       if (parts[1]?.length > 2) parts[1] = parts[1].slice(0, 2);
+       value = parts.join(".");
+    }
+
+    const updated = properties.map(p => {
+        if(p.id === id) return { ...p, [field]: value };
+        return p;
+    });
+    setProperties(updated);
+  };
+
+  // --- Submit Logic ---
+  const handleSubmit = async () => {
+    if(!formData.vendor_name || !formData.vendor_phone || !formData.email) {
+        alert("Please fill in Name, Phone, and Email");
+        return;
+    }
+
+    setLoading(true);
+    const dataToSend = new FormData();
+    
+    // Append Form Data
+    Object.keys(formData).forEach(key => dataToSend.append(key, formData[key]));
+    
+    // Append Fixed Values
+    dataToSend.append("user_type", "3");
+    
+    // Append File
+    if (attachment) dataToSend.append("attachment", attachment);
+    
+    // Append Properties (as JSON string)
+    dataToSend.append("properties", JSON.stringify(properties));
+
+    try {
+        const response = await fetch("http://localhost:8005/api/admin/register", {
+            method: "POST",
+            body: dataToSend
+        });
+        const result = await response.json();
+        
+        if(response.ok) {
+            alert("Vendor Registered Successfully");
+            // Clear form
+            setFormData({
+                vendor_name: "", vendor_phone: "", company_name: "", 
+                company_reg_number: "", email: "", country: "", state: "", city: "", address: ""
+            });
+            setProperties([]);
+            setAttachment(null);
+            setIsChecked(false);
+        } else {
+            alert(result.error?.[0]?.message || "Registration Failed");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Network Error");
+    } finally {
+        setLoading(false);
+    }
+  };
+
 
   return (
     <div className="max-w-4xl -mt-4 rounded-md font-sans bg-white mx-auto">
@@ -89,14 +165,14 @@ const VendorRegister = () => {
         {/* Basic Info Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-4">
     
-    {/* Helper Component for Inputs to keep code clean */}
-    {/* You can define this outside or just copy-paste the structure below */}
-    
     {/* 1. Vendor Name */}
     <div className="relative group z-10">
       <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="vendor_name"
+        value={formData.vendor_name}
+        onChange={handleInputChange}
         placeholder={t("vendor_name")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -107,6 +183,9 @@ const VendorRegister = () => {
       <FaPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="vendor_phone"
+        value={formData.vendor_phone}
+        onChange={handleInputChange}
         placeholder={t("vendor_phone")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -117,6 +196,9 @@ const VendorRegister = () => {
       <FaBuilding className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="company_name"
+        value={formData.company_name}
+        onChange={handleInputChange}
         placeholder={t("company_name")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -127,6 +209,9 @@ const VendorRegister = () => {
       <FaIdCard className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="company_reg_number"
+        value={formData.company_reg_number}
+        onChange={handleInputChange}
         placeholder={t("company_reg_number")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -137,6 +222,9 @@ const VendorRegister = () => {
       <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="email" 
+        name="email"
+        value={formData.email}
+        onChange={handleInputChange}
         placeholder={t("vendor_email")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -147,6 +235,9 @@ const VendorRegister = () => {
       <FaGlobe className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="country"
+        value={formData.country}
+        onChange={handleInputChange}
         placeholder={t("select_country")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -157,6 +248,9 @@ const VendorRegister = () => {
       <FaMapMarkerAlt className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="state"
+        value={formData.state}
+        onChange={handleInputChange}
         placeholder={t("select_state")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -167,6 +261,9 @@ const VendorRegister = () => {
       <FaCity className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#827127] transition-colors rtl:right-4 rtl:left-auto" />
       <input 
         type="text" 
+        name="city"
+        value={formData.city}
+        onChange={handleInputChange}
         placeholder={t("select_city")} 
         className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 focus:border-transparent transition-all shadow-sm rtl:pr-10 rtl:pl-4" 
       />
@@ -177,6 +274,9 @@ const VendorRegister = () => {
   <div className="px-4">
     <div className="relative z-10">
         <textarea 
+          name="address"
+          value={formData.address}
+          onChange={handleInputChange}
           placeholder={t("address")} 
           rows="3"
           className="w-full p-4 bg-gray-50 border border-gray-100 rounded-xl text-gray-700 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#827127]/50 transition-all shadow-sm resize-none"
@@ -256,6 +356,8 @@ const VendorRegister = () => {
                 <FaTag className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
                 <input 
                   type="text" 
+                  value={property.category}
+                  onChange={(e) => updateProperty(property.id, 'category', e.target.value)}
                   className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
                   placeholder={t("select_category")}
                 />
@@ -269,6 +371,8 @@ const VendorRegister = () => {
                 <FaFileSignature className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
                 <input 
                   type="text" 
+                  value={property.name}
+                  onChange={(e) => updateProperty(property.id, 'name', e.target.value)}
                   className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
                   placeholder={t("property_name")}
                 />
@@ -282,6 +386,8 @@ const VendorRegister = () => {
                 <FaMoneyBillWave className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 rtl:right-3 rtl:left-auto" />
                 <input 
                   type="text" 
+                  value={property.amount}
+                  onChange={(e) => updateProperty(property.id, 'amount', e.target.value)}
                   className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none rtl:pr-9 rtl:pl-4"
                   placeholder="0.00"
                 />
@@ -292,7 +398,10 @@ const VendorRegister = () => {
         <div className="lg:col-span-1 space-y-1">
             <label className="text-[10px] uppercase font-bold text-gray-400 tracking-wider ml-1">{t("select_status")}</label>
             <div className="relative">
-                <select className="w-full px-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none appearance-none cursor-pointer">
+                <select 
+                    value={property.status}
+                    onChange={(e) => updateProperty(property.id, 'status', e.target.value)}
+                    className="w-full px-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none appearance-none cursor-pointer">
                   <option value="" disabled selected>{t("select_status1")}</option>
                   <option value="active">{t("active")}</option>
                   <option value="disable">{t("disable")}</option>
@@ -308,8 +417,8 @@ const VendorRegister = () => {
                 <FaPercent className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-300 rtl:right-3 rtl:left-auto" />
                 <input
                   type="text"
-                  value={pointValue1}
-                  onChange={handleInputChange1}
+                  value={property.point_a}
+                  onChange={(e) => updateProperty(property.id, 'point_a', e.target.value)}
                   placeholder="00.00%"
                   className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none text-center rtl:pr-9 rtl:pl-4"
                 />
@@ -322,8 +431,8 @@ const VendorRegister = () => {
                 <FaPercent className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-300 rtl:right-3 rtl:left-auto" />
                 <input
                   type="text"
-                  value={pointValue}
-                  onChange={handleInputChange}
+                  value={property.point_b}
+                  onChange={(e) => updateProperty(property.id, 'point_b', e.target.value)}
                   placeholder="00.00%"
                   className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border-0 rounded-lg text-sm font-medium text-gray-700 focus:bg-white focus:ring-2 focus:ring-[#827127] transition-all outline-none text-center rtl:pr-9 rtl:pl-4"
                 />
@@ -382,10 +491,11 @@ const VendorRegister = () => {
   {/* --- 2. REGISTER BUTTON --- */}
   <div className="px-4 mb-4">
   <button
-    disabled={!isChecked}
+    onClick={handleSubmit}
+    disabled={!isChecked || loading}
     className={`
       relative w-full py-4 px-6 rounded-xl group overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
-      ${isChecked 
+      ${isChecked && !loading
         ? "cursor-pointer shadow-[0_10px_40px_-10px_rgba(130,113,39,0.5)] transform hover:scale-[1.02]" 
         : "cursor-not-allowed opacity-60 bg-gray-200"
       }
@@ -401,7 +511,7 @@ const VendorRegister = () => {
     </div>
 
     {/* --- LAYER 2: THE "LASER SHEEN" (High Speed Swipe) --- */}
-    {isChecked && (
+    {isChecked && !loading && (
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-25deg] transition-all duration-700 ease-in-out group-hover:left-[200%]"></div>
       </div>
@@ -429,11 +539,11 @@ const VendorRegister = () => {
           }
         `}
       >
-        {t("register")}
+        {loading ? t("processing...") : t("register")}
       </span>
 
       {/* Status Indicator Dot */}
-      {isChecked && (
+      {isChecked && !loading && (
         <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_10px_white] animate-pulse"></span>
       )}
     </span>

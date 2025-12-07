@@ -145,8 +145,8 @@ const LifestyleRewards = () => {
                 relative h-full border-b lg:border-b-0 lg:border-l border-white/10 
                 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden cursor-crosshair group will-change-auto
                 ${activeId === item.id 
-                  ? 'flex-[10] bg-white shadow-[-20px_0_40px_-10px_rgba(0,0,0,0.2)] z-10' 
-                  : 'flex-10 bg-gradient-to-b from-[#827127] h-[800px] to-[#63561e] hover:brightness-110'
+                  ? 'flex-[10] lg:flex-[3] bg-white shadow-[-20px_0_40px_-10px_rgba(0,0,0,0.2)] z-10' 
+                  : 'lg:flex-1 flex-10 bg-gradient-to-b from-[#827127] h-[800px] to-[#63561e] hover:brightness-110'
                 }
               `}
               style={{ willChange: 'flex-grow' }} 

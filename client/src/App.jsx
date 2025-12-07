@@ -23,23 +23,19 @@ import VendorRegister from './Components/VendorRegister/VendorRegister';
 
 // Import the Modal component
 import Modal from './Components/Modal/Modal';
+import VerifyEmail from './Components/Login/VerifyEmail';
 
 function AppContent() {
   const location = useLocation();
-  
-  // --- FIX START ---
-  // Define which paths should always open as a modal over the home page
-  const modalPaths = ['/login', '/member-register', '/vendor-register'];
-  
-  // Check if we have state background OR if we are on a modal path directly
+
+  const modalPaths = ['/login', '/member-register', '/vendor-register', '/verify-email'];
+ 
   let background = location.state && location.state.background;
 
-  // Agar background null hai (direct url access) AUR hum modal path par hain,
-  // toh background ko manually Homepage ('/') set kar do.
+  // If we reload the page on a modal route, treat it as a direct visit (no background)
   if (!background && modalPaths.includes(location.pathname)) {
     background = { pathname: '/' };
-  }
-  // --- FIX END ---
+}
 
   return (
     <>
@@ -48,9 +44,8 @@ function AppContent() {
       <ChatWidget supportNumber="+966553800550" />
 
       {/* 
-         Main Routes:
-         Agar 'background' set hai (chahe link click se ya direct access logic se),
-         ye Routes 'Home' page render karenge piche.
+         MAIN ROUTES (Direct Links)
+         Added /verify-email here so it works when clicked from email
       */}
       <Routes location={background || location}>
         <Route path="/" element={<LifestyleRewards />} />
@@ -63,23 +58,20 @@ function AppContent() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/about-us" element={<About />} />
         
-        {/* 
-           Ye routes tabhi hit honge jab 'background' null hoga.
-           Lekin upar humne logic laga diya hai, to modalPaths ke liye ye kabhi hit nahi honge 
-           unless aap logic change karein. 
-        */}
+        {/* Direct Page Access */}
         <Route path="/member-register" element={<MemberRegister />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/vendor-register" element={<VendorRegister />} />
+        
+        {/* 🔥 IMPORTANT: Add this here for Email Links to work! */}
+        <Route path="/verify-email" element={<VerifyEmail />} />
       </Routes>
 
-      {/* 
-         Modal Routes:
-         Ye tab render honge jab background exist karega.
-      */}
+      {/* MODAL ROUTES (Overlays) */}
       {background && (
         <Routes>
           <Route path="/login" element={<Modal><LoginPage /></Modal>} />
+          <Route path="/verify-email" element={<Modal><VerifyEmail /></Modal>} />
           <Route path="/member-register" element={<Modal><MemberRegister /></Modal>} />
           <Route path="/vendor-register" element={<Modal><VendorRegister /></Modal>} />
         </Routes>
