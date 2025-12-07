@@ -112,7 +112,7 @@ const VendorRegister = () => {
     dataToSend.append("properties", JSON.stringify(properties));
 
     try {
-        const response = await fetch("http://localhost:8005/api/admin/register", {
+        const response = await fetch("/api/admin/register", {
             method: "POST",
             body: dataToSend
         });

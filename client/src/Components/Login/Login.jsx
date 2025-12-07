@@ -34,7 +34,7 @@ export default function LoginPage() {
   const isModal = location.state?.background;
 
   // Configuration
-  const API_BASE = "http://localhost:8005/api/admin";
+  const API_BASE = "/api/admin";
   const CODEBASE_2_URL = "http://localhost:5174"; 
 
   // --- 1. DETECT EMAIL LINK (Reset Password Mode) ---
