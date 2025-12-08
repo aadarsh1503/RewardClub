@@ -67,23 +67,23 @@ export default function LoginPage() {
 
       const data = await response.json();
 
-      if (response.ok && data.result && data.result.token) {
-        // ... success logic (redirect) ...
-        const token = data.result.token;
-        const user = data.result.data;
-        const finalUserId = user.id || user.Id || user._id || user.user_id;
+      if (response.ok && data.result && data.result.authCode) {
+        // SECURE FLOW: We received an AUTH CODE
+        const { authCode, user_type } = data.result;
+
+        // Redirect to Codebase 2 with CODE (No Token)
+        const targetUrl = `${CODEBASE_2_URL}/sso-handler?code=${authCode}`;
         
-        const targetUrl = `${CODEBASE_2_URL}/sso-handler?token=${encodeURIComponent(token)}&userId=${finalUserId}&userType=${user.user_type}`;
+        console.log("Secure Redirect:", targetUrl);
         window.location.href = targetUrl;
 
       } else if (response.status === 403) {
-        // 🔥 NEW: Handle Unverified User
         setError(data.error?.[0]?.message || "Account not verified. Email sent.");
       } else {
         setError(data.error?.[0]?.message || t("Login Failed"));
       }
     } catch (err) {
-      console.error("Login catch error:", err);
+      console.error("Login error:", err);
       setError(t("Something went wrong."));
     } finally {
       setIsLoading(false);

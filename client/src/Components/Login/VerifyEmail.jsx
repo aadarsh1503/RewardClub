@@ -10,7 +10,7 @@ export default function VerifyEmail() {
   const location = useLocation();
 
   // Backend URL
-  const API_URL = "http://localhost:8005/api/admin/email-verification";
+  const API_URL = "/api/admin/email-verification";
 
   useEffect(() => {
     const verifyToken = async () => {
