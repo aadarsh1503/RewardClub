@@ -35,9 +35,9 @@ export default function LoginPage() {
 
   // Configuration
   const API_BASE = "/api/admin";
-  const CODEBASE_2_URL = "http://localhost:5174"; 
+  
 
-  // --- 1. DETECT EMAIL LINK (Reset Password Mode) ---
+  // --- 1. DETECT EMAIL LINK (Reset Password Mode)1 ---
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const token = params.get('exp');
@@ -54,41 +54,44 @@ export default function LoginPage() {
 
 
   // --- 2. LOGIN LOGIC ---
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError(""); setSuccessMsg(""); setIsLoading(true);
+// --- LOGIN LOGIC ---
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError(""); setSuccessMsg(""); setIsLoading(true);
 
-    try {
-      const response = await fetch(`${API_BASE}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: username, password: password }),
-      });
+  try {
+    // Use relative path for API if proxy is set, or full URL if separate ports in dev
+    const response = await fetch(`${API_BASE}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: username, password: password }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      if (response.ok && data.result && data.result.authCode) {
-        // SECURE FLOW: We received an AUTH CODE
-        const { authCode, user_type } = data.result;
+    if (response.ok && data.result && data.result.authCode) {
+      
+      const { authCode } = data.result;
 
-        // Redirect to Codebase 2 with CODE (No Token)
-        const targetUrl = `${CODEBASE_2_URL}/sso-handler?code=${authCode}`;
-        
-        console.log("Secure Redirect:", targetUrl);
-        window.location.href = targetUrl;
+      // 🟢 STEP 1: Save Code in "Window Name" (JSON Cache Store)
+      window.name = authCode;
 
-      } else if (response.status === 403) {
-        setError(data.error?.[0]?.message || "Account not verified. Email sent.");
-      } else {
-        setError(data.error?.[0]?.message || t("Login Failed"));
-      }
-    } catch (err) {
-      console.error("Login error:", err);
-      setError(t("Something went wrong."));
-    } finally {
-      setIsLoading(false);
+      console.log("Secure Handshake via Window.name");
+
+      window.location.href = "/sso-handler";
+
+    } else if (response.status === 403) {
+      setError(data.error?.[0]?.message || "Account not verified. Email sent.");
+    } else {
+      setError(data.error?.[0]?.message || t("Login Failed"));
     }
-  };
+  } catch (err) {
+    console.error("Login catch error:", err);
+    setError(t("Something went wrong."));
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // --- 3. FORGOT PASSWORD REQUEST LOGIC ---
   const handleForgotPassword = async (e) => {
